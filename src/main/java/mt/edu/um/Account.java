@@ -23,15 +23,15 @@ public class Account {
 	}
 	
 	public void setAccountNumber(int accNo){
-		accNo = accountNumber;
+		accountNumber = accNo;
 	}
 	
 	public void setAccountName(String accName){
-		accName = accountName;
+		accountName = accName;
 	}
 	
 	public void setAccountBalance(long accBal){
-		accBal = accountBalance;
+		accountBalance = accBal;
 	}
 	
 	int getAccountNumber(){
