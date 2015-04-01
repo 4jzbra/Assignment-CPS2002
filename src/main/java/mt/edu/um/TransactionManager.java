@@ -4,9 +4,20 @@ public class TransactionManager extends Transaction {
 	
 	private int numTransactionsProcessed;
 	
-	public TransactionManager(){
+	public TransactionManager(){   // default constructor
 
 	}
+	
+	/*
+	 * to calculate time:
+	 * (note need to keep a reference of the account being involved)
+	 * 
+	 * long startOfTransaction1 = new Date.getTime()
+	 * long startOfTransaction2 = new Date.getTime()
+	 * long diff = startOfTransaction2 - startOfTransaction1
+	 * 
+	 * if (diff < 15) ret false...
+	 */
 	
 	public boolean processTransaction(int src, int dst, long amount){
 		return true;
