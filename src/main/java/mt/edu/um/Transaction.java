@@ -2,11 +2,11 @@ package mt.edu.um;
 
 public class Transaction {
 
-	private int sourceAccountNumber;
-	private int destinationAccountNumber;
-	private long amount;
+	private int sourceAccountNumber;       // source of transaction
+	private int destinationAccountNumber;  // destination of transaction
+	private long amount;                  
 	
-	public Transaction(){
+	public Transaction(){       // default constructor
 		
 	}
 
@@ -24,20 +24,20 @@ public class Transaction {
 		sourceAccountNumber = accNo;
 	}
 	
-	public int getSourceAccountNumber(){
-		return sourceAccountNumber;
-	}
-	
 	public void setDestinationAccountNumber(int accNo) {
 		destinationAccountNumber = accNo;
 	}
 	
-	public int getDestinationAccountNumber(){
-		return destinationAccountNumber;
-	}
-	
 	public void setAmount(long amt){
 		amount = amt;
+	}
+	
+	public int getSourceAccountNumber(){
+		return sourceAccountNumber;
+	}
+	
+	public int getDestinationAccountNumber(){
+		return destinationAccountNumber;
 	}
 	
 	public long getAmount(){
