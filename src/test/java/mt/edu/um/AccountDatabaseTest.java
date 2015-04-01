@@ -5,6 +5,8 @@ import org.junit.Test;
 
 public class AccountDatabaseTest {
 	
+	private static AccountDatabase singleton = new AccountDatabase();
+	
 	@Test
 	public void getAccountTest(){
 		
@@ -12,7 +14,9 @@ public class AccountDatabaseTest {
 	
 	@Test
 	public void getSizeTest(){
-		
+		int actual = singleton.accountsArray.size();
+		int expected = singleton.getSize();
+		Assert.assertEquals(expected, actual);	
 	}
 
 }

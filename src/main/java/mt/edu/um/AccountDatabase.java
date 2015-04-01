@@ -7,13 +7,17 @@ public class AccountDatabase{
 	private static AccountDatabase instance = null;	
 	ArrayList<Account> accountsArray = new ArrayList<Account>();
 	
-	public Account getAccount (int accountNumber){
-		Account acc = new Account();
-		return acc;
+	public Account getAccount(int accountNumber){
+		for(int i = 0; i < this.accountsArray.size(); i++){
+			if (accountNumber == this.accountsArray.get(i).getAccountNumber()){
+				return this.accountsArray.get(i);
+			}
+		}
+		return null;
 	}
 	
 	public int getSize(){
-		return 0;
+		return this.accountsArray.size();
 	}
 
 }
