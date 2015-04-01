@@ -7,9 +7,7 @@ public class Account {
 	private long accountBalance; // current amount in the account
 	
 	public Account(){      //default constructor
-		accountNumber = 0;
-		accountName = null;
-		accountBalance = 0;
+
 	}
 	
 	public Account(int accNo, String accName, long accBal){
