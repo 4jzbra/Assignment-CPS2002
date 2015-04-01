@@ -50,11 +50,18 @@ public class TransactionTest {
 	
 	@Test
 	public void getDestinationAccountNumberTest(){
-		
+		instance = new Transaction();
+		int expected = 20000;
+		instance.setDestinationAccountNumber(expected);
+		Assert.assertTrue(instance.getDestinationAccountNumber() == expected);
 	}
 	
 	@Test
 	public void getAmountTest(){
+		instance = new Transaction();
+		int expected = 3000;
+		instance.setAmount(expected);
+		Assert.assertTrue(instance.getAmount() == expected);
 	}
 	
 
