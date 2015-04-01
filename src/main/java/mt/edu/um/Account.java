@@ -14,12 +14,12 @@ public class Account {
 	
 	public Account(int accNo, String accName, long accBal){
 		setAccountNumber(accNo);
-		accountName = accName;
-		accountBalance = accBal;
+		setAccountName(accName);
+		setAccountBalance(accBal);
 	}
 	
 	public boolean adjustBalance(long amount){   // checks if balance is correct
-		return false;
+		return true;    ///////
 	}
 	
 	public void setAccountNumber(int accNo){
@@ -44,6 +44,12 @@ public class Account {
 	
 	long getAccountBalance(){
 		return accountBalance;
+	}
+	
+	
+	public void printAccountDetails() {
+		System.out.println("Account Number: " + accountNumber + "\tName: "
+				+ accountName + "\tBalance: " + accountBalance);
 	}
 	
 	
