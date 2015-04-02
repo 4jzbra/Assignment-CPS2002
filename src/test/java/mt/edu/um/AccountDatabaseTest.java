@@ -32,17 +32,22 @@ public class AccountDatabaseTest {
 	}
 	
 	@Test
-	public void addNewAccountTest() {
-		int sizeBefore = singleton.getSize();
-		final Account newAcc = new Account(123, "Savings", 2000);
-		singleton.addNewAccount(newAcc);
-		int sizeAfter = singleton.getSize();
-		Assert.assertEquals(sizeBefore + 1, sizeAfter);
+	public void addNewAccountTest1() {
+		final Account acc = new Account(1, "Savings", 2000);
+		Assert.assertEquals(true, singleton.addNewAccount(acc));
+	}
+	
+	@Test
+	public void addNewAccountTest2(){
+		Account acc1 = new Account(1, "Fixed", 5600);
+		Account acc2 = new Account(1, "Savings", 89000);
+		singleton.addNewAccount(acc1);
+		Assert.assertEquals(false, singleton.addNewAccount(acc2));
 	}
 	
 	public void alreadyExistsTest(){
-		Account acc1 = new Account(1, "Fixed", 5600);
-		singleton.accountsArray.add(acc1);
+		Account newAcc = new Account(1, "Fixed", 5600);
+		singleton.accountsArray.add(newAcc);
 		Assert.assertEquals(true, singleton.alreadyExists(1));	
 	}
 
