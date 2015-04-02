@@ -30,6 +30,7 @@ public class AccountDatabaseTest {
 		
 		Assert.assertEquals(true, db1 == db2);
 	}
+	
 	@Test
 	public void addNewAccountTest() {
 		int sizeBefore = singleton.getSize();
@@ -37,6 +38,12 @@ public class AccountDatabaseTest {
 		singleton.addNewAccount(newAcc);
 		int sizeAfter = singleton.getSize();
 		Assert.assertEquals(sizeBefore + 1, sizeAfter);
+	}
+	
+	public void alreadyExistsTest(){
+		Account acc1 = new Account(1, "Fixed", 5600);
+		singleton.accountsArray.add(acc1);
+		Assert.assertEquals(true, singleton.alreadyExists(1));	
 	}
 
 }
