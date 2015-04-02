@@ -5,7 +5,20 @@ import org.junit.Test;
 
 
 public class AccountTest {
-final Account acc = new Account();
+	final Account acc = new Account();
+
+	@Test
+	public void adjustBalanceTest1(){
+		final Account acc1 = new Account(1, "Savings", 15000);
+		Assert.assertEquals(true, acc1.adjustBalance(-5000));
+	}
+	
+	@Test
+	public void adjustBalanceTest2(){
+		final Account acc1 = new Account(1, "Savings", 15000);
+		Assert.assertEquals(false, acc1.adjustBalance(-25000));
+	}
+	
 	
 	@Test
 	public void setAccountNumberTest(){

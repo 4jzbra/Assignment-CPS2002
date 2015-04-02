@@ -1,10 +1,13 @@
 package mt.edu.um;
 
+import java.util.Date;
+
 public class Transaction {
 
 	private int sourceAccountNumber;       // source of transaction
 	private int destinationAccountNumber;  // destination of transaction
 	private long amount;                  
+	private Date startTime;
 	
 	public Transaction(){       // default constructor
 		
@@ -30,6 +33,14 @@ public class Transaction {
 	
 	public void setAmount(long amt){
 		amount = amt;
+	}
+	
+	public void setStartOfTransaction(Date time){
+		startTime = time;
+	}
+	
+	public Date getStartOfTransaction(){
+		return startTime;
 	}
 	
 	public int getSourceAccountNumber(){

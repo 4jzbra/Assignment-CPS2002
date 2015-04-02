@@ -17,7 +17,12 @@ public class Account {
 	}
 	
 	public boolean adjustBalance(long amount){   // checks if balance is correct
-		return true;    ///////
+		//checking if balance is not smaller than 0 after adding amount
+		if((this.accountBalance + amount) >= 0){ 
+			this.accountBalance += amount;
+			return true;
+		}
+		return false;
 	}
 	
 	public void setAccountNumber(int accNo){

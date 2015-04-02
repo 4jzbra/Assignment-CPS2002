@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class AccountDatabaseTest {
-	
+	final AccountDatabase singleton = new AccountDatabase();
 	
 	@Test
 	public void getAccountTest(){
@@ -13,7 +13,6 @@ public class AccountDatabaseTest {
 	
 	@Test
 	public void getSizeTest(){
-		final AccountDatabase singleton = new AccountDatabase();
 		int actual = singleton.accountsArray.size();
 		int expected = singleton.getSize();
 		Assert.assertEquals(expected, actual);	
@@ -30,7 +29,14 @@ public class AccountDatabaseTest {
 		db2.addNewAccount(acc2);
 		
 		Assert.assertEquals(true, db1 == db2);
-		
+	}
+	@Test
+	public void addNewAccountTest() {
+		int sizeBefore = singleton.getSize();
+		final Account newAcc = new Account(123, "Savings", 2000);
+		singleton.addNewAccount(newAcc);
+		int sizeAfter = singleton.getSize();
+		Assert.assertEquals(sizeBefore + 1, sizeAfter);
 	}
 
 }
