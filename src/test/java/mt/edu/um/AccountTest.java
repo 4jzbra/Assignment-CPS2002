@@ -19,7 +19,6 @@ public class AccountTest {
 		Assert.assertEquals(false, acc1.adjustBalance(-25000)); // new balance < 0 therefore false
 	}
 	
-	
 	@Test
 	public void setAccountNumberTest(){
 		int expected = 34;

@@ -24,13 +24,6 @@ public class TransactionManager extends Transaction {
 		
 		return true;
 	}
-	
-	public void setNumTransactionsProcessed(){
-		numTransactionsProcessed++;
-	}
-	
-	public int getNumTransactionsProcessed(){
-		return numTransactionsProcessed;
-	}
+
 
 }
