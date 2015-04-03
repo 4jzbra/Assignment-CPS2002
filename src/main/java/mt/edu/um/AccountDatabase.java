@@ -1,22 +1,12 @@
 package mt.edu.um;
-
 import java.util.ArrayList;
 
-//Singleton Class
-public class AccountDatabase{
-	
-	private static AccountDatabase instance = null;	
+
+public class AccountDatabase{	
 	ArrayList<Account> accountsArray = new ArrayList<Account>();
 	
-	protected AccountDatabase(){
+	public AccountDatabase(){
 		
-	}
-	
-	public static AccountDatabase getInstance(){ //Lazy instantiation of the singleton object
-		if(instance == null){
-			instance = new AccountDatabase();
-		}
-		return instance;
 	}
 	
 	public Account getAccount(int accountNumber){
