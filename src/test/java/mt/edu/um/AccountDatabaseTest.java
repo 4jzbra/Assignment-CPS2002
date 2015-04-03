@@ -8,7 +8,9 @@ public class AccountDatabaseTest {
 	
 	@Test
 	public void getAccountTest(){
-		
+		Account acc = new Account(4, "Fixed", 1000);
+		database.accountsArray.add(acc);
+		Assert.assertEquals(acc, database.accountsArray.get(0));
 	}
 	
 	@Test
