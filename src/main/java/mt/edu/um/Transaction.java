@@ -20,7 +20,22 @@ public class Transaction {
 	}
 	
 	public boolean process() {
-		return true;
+		Account source = AccountDatabase.getAccount(sourceAccountNumber);
+		Account destination = AccountDatabase.getAccount(destinationAccountNumber);
+		if ((source == null)) {
+			System.out.println("Error: Source account does not exist!");
+			return false;
+		}
+		if ((destination == null)) {
+			System.out.println("Error: Destination account does not exist!");
+			return false;
+		}
+		if (source.getAccountBalance() >= 0)
+			return true;
+		else {
+			System.out.println("Error: Source account balance is not sufficient");
+			return false;
+		}
 	}
 
 	public void setSourceAccountNumber(int accNo) {

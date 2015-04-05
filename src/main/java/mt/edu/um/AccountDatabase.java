@@ -3,23 +3,23 @@ import java.util.ArrayList;
 
 
 public class AccountDatabase{	
-	ArrayList<Account> accountsArray = new ArrayList<Account>();
+	static ArrayList<Account> accountsArray = new ArrayList<Account>();
 	
 	public AccountDatabase(){
 		
 	}
 	
-	public Account getAccount(int accountNumber){
-		for(int i = 0; i < this.accountsArray.size(); i++){
-			if (accountNumber == this.accountsArray.get(i).getAccountNumber()){
-				return this.accountsArray.get(i);
+	public static Account getAccount(int accountNumber){
+		for(int i = 0; i < accountsArray.size(); i++){
+			if (accountNumber == accountsArray.get(i).getAccountNumber()){
+				return accountsArray.get(i);
 			}
 		}
 		return null;
 	}
 	
 	public int getSize(){
-		return this.accountsArray.size();
+		return accountsArray.size();
 	}
 	
 	//method to add new account to the ArrayList
@@ -28,7 +28,7 @@ public class AccountDatabase{
 			System.out.println("Error: Account number "+acc.getAccountNumber()+" already exists!");
 			return false;
 		} else {
-			this.accountsArray.add(acc);
+			accountsArray.add(acc);
 			return true;
 		}
 	}
