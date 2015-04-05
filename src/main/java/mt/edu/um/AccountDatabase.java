@@ -6,7 +6,7 @@ public class AccountDatabase{
 	static ArrayList<Account> accountsArray = new ArrayList<Account>();
 	
 	public AccountDatabase(){
-		
+		accountsArray.clear();
 	}
 	
 	public static Account getAccount(int accountNumber){
