@@ -5,17 +5,37 @@ import org.junit.Test;
 
 public class TransactionTest {
 	private Transaction instance;
+	final Account acc1 = new Account(1, "Fixed", 6000);
+	final Account acc2 = new Account(2, "Savings", 4500);
 	
 	@Test
-	public void processTest() {
-		final Account acc1 = new Account(1, "Fixed", 80000);
-		final Account acc2 = new Account(2, "Savings", 60000);
+	public void processTest1() {
 		AccountDatabase.accountsArray.add(acc1);
 		AccountDatabase.accountsArray.add(acc2);
 		instance = new Transaction(1,2,4000);
 		boolean actual = instance.process();
 		Assert.assertEquals(true, actual);
 	}
+	
+	@Test
+	public void processTest2() {
+		AccountDatabase.accountsArray.add(acc1);
+		AccountDatabase.accountsArray.add(acc2);
+		instance = new Transaction(1,3,4000);
+		boolean actual = instance.process();
+		Assert.assertEquals(false, actual);
+	}
+	
+	@Test
+	public void processTest3() {
+		AccountDatabase.accountsArray.add(acc1);
+		AccountDatabase.accountsArray.add(acc2);
+		instance = new Transaction(1,2,8000);
+		boolean actual = instance.process();
+		Assert.assertEquals(false, actual);
+	}
+	
+	
 	
 	@Test
 	public void setSourceAccountNumberTest(){

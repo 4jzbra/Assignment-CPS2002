@@ -4,24 +4,25 @@ import java.util.Date;
 
 public class Transaction {
 
-	private int sourceAccountNumber;       // source of transaction
-	private int destinationAccountNumber;  // destination of transaction
-	private long amount;                  
+	private int sourceAccountNumber; // source of transaction
+	private int destinationAccountNumber; // destination of transaction
+	private long amount;
 	private Date startTime;
-	
-	public Transaction(){       // default constructor
-		
+
+	public Transaction() { // default constructor
+
 	}
 
-	public Transaction(int src, int dst, long amt){
+	public Transaction(int src, int dst, long amt) {
 		setSourceAccountNumber(src);
 		setDestinationAccountNumber(dst);
 		setAmount(amt);
 	}
-	
+
 	public boolean process() {
 		Account source = AccountDatabase.getAccount(sourceAccountNumber);
-		Account destination = AccountDatabase.getAccount(destinationAccountNumber);
+		Account destination = AccountDatabase
+				.getAccount(destinationAccountNumber);
 		if ((source == null)) {
 			System.out.println("Error: Source account does not exist!");
 			return false;
@@ -30,9 +31,10 @@ public class Transaction {
 			System.out.println("Error: Destination account does not exist!");
 			return false;
 		}
-		if (source.getAccountBalance() >= 0)
+		if ((source.getAccountBalance() >= 0) && (source.getAccountBalance() - amount) > 0) {
+			System.out.println("here");
 			return true;
-		else {
+		} else {
 			System.out.println("Error: Source account balance is not sufficient");
 			return false;
 		}
@@ -41,32 +43,32 @@ public class Transaction {
 	public void setSourceAccountNumber(int accNo) {
 		sourceAccountNumber = accNo;
 	}
-	
+
 	public void setDestinationAccountNumber(int accNo) {
 		destinationAccountNumber = accNo;
 	}
-	
-	public void setAmount(long amt){
+
+	public void setAmount(long amt) {
 		amount = amt;
 	}
-	
-	public void setStartOfTransaction(Date time){
+
+	public void setStartOfTransaction(Date time) {
 		startTime = time;
 	}
-	
-	public Date getStartOfTransaction(){
+
+	public Date getStartOfTransaction() {
 		return startTime;
 	}
-	
-	public int getSourceAccountNumber(){
+
+	public int getSourceAccountNumber() {
 		return sourceAccountNumber;
 	}
-	
-	public int getDestinationAccountNumber(){
+
+	public int getDestinationAccountNumber() {
 		return destinationAccountNumber;
 	}
-	
-	public long getAmount(){
+
+	public long getAmount() {
 		return amount;
 	}
 
