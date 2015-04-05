@@ -24,7 +24,7 @@ public class AccountDatabase{
 	
 	//method to add new account to the ArrayList
 	public boolean addNewAccount(Account acc){
-		if (this.alreadyExists(acc.getAccountNumber()) == true) {
+		if (alreadyExists(acc.getAccountNumber()) == true) {
 			System.out.println("Error: Account number "+acc.getAccountNumber()+" already exists!");
 			return false;
 		} else {

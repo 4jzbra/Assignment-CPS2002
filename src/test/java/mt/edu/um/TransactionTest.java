@@ -8,7 +8,11 @@ public class TransactionTest {
 	
 	@Test
 	public void processTest() {
-		instance = new Transaction();
+		final Account acc1 = new Account(1, "Fixed", 80000);
+		final Account acc2 = new Account(2, "Savings", 60000);
+		AccountDatabase.accountsArray.add(acc1);
+		AccountDatabase.accountsArray.add(acc2);
+		instance = new Transaction(1,2,4000);
 		boolean actual = instance.process();
 		Assert.assertEquals(true, actual);
 	}
