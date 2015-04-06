@@ -9,7 +9,7 @@ public class AccountDatabaseTest {
 	
 	@Test
 	public void getAccountTest(){
-		Account acc = new Account(4, "Fixed", 1000);
+		Account acc = new Account(4, "Fixed", 1000, 0);
 		database.addNewAccount(acc);
 		Assert.assertEquals(acc, AccountDatabase.accountsArray.get(database.getSize()-1));
 	}
@@ -23,28 +23,28 @@ public class AccountDatabaseTest {
 	
 	@Test
 	public void addNewAccountTest1() {
-		final Account acc = new Account(9, "Savings", 2000);
+		final Account acc = new Account(9, "Savings", 2000, 0);
 		Assert.assertEquals(true, database.addNewAccount(acc));
 	}
 	
 	@Test
 	public void addNewAccountTest2(){
-		Account acc1 = new Account(1, "Fixed", 5600);
-		Account acc2 = new Account(1, "Savings", 89000);
+		Account acc1 = new Account(1, "Fixed", 5600, 0);
+		Account acc2 = new Account(1, "Savings", 89000, 0);
 		database.addNewAccount(acc1);
 		Assert.assertEquals(false, database.addNewAccount(acc2));
 	}
 	
 	@Test
 	public void alreadyExistsTest1(){
-		Account newAcc = new Account(1, "Fixed", 5600);
+		Account newAcc = new Account(1, "Fixed", 5600, 0);
 		AccountDatabase.accountsArray.add(newAcc);
 		Assert.assertEquals(true, database.alreadyExists(1));	
 	}
 	
 	@Test
 	public void alreadyExistsTest2(){
-		Account newAcc = new Account(1, "Fixed", 5600);
+		Account newAcc = new Account(1, "Fixed", 5600, 0);
 		AccountDatabase.accountsArray.add(newAcc);
 		Assert.assertEquals(false, database.alreadyExists(5));	
 	}  
