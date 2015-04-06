@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class Transaction {
 
-	private int sourceAccountNumber; // source of transaction
-	private int destinationAccountNumber; // destination of transaction
-	private long amount;
+	protected int sourceAccountNumber; // source of transaction
+	protected int destinationAccountNumber; // destination of transaction
+	protected long amount;
 	private Date startTime;
 
 	public Transaction() { // default constructor
@@ -21,8 +21,8 @@ public class Transaction {
 
 	public boolean process() {
 		Account source = AccountDatabase.getAccount(sourceAccountNumber);
-		Account destination = AccountDatabase
-				.getAccount(destinationAccountNumber);
+		Account destination = AccountDatabase.getAccount(destinationAccountNumber);
+		
 		if ((source == null)) {
 			System.out.println("Error: Source account does not exist!");
 			return false;

@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class AccountDatabaseTest {
+	
 	final AccountDatabase database = new AccountDatabase();
 	
 	@Test
@@ -35,11 +36,18 @@ public class AccountDatabaseTest {
 	}
 	
 	@Test
-	public void alreadyExistsTest(){
+	public void alreadyExistsTest1(){
 		Account newAcc = new Account(1, "Fixed", 5600);
 		AccountDatabase.accountsArray.add(newAcc);
 		Assert.assertEquals(true, database.alreadyExists(1));	
 	}
+	
+	@Test
+	public void alreadyExistsTest2(){
+		Account newAcc = new Account(1, "Fixed", 5600);
+		AccountDatabase.accountsArray.add(newAcc);
+		Assert.assertEquals(false, database.alreadyExists(5));	
+	}  
 
 
 }

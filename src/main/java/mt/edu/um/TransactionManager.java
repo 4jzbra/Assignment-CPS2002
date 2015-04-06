@@ -1,4 +1,5 @@
 package mt.edu.um;
+
 import java.util.Date;
 
 public class TransactionManager extends Transaction {
@@ -7,6 +8,11 @@ public class TransactionManager extends Transaction {
 	
 	public TransactionManager(){   // default constructor
 
+	}
+	
+	public TransactionManager(int src, int dst, long amt, int ntp){
+		super(src, dst, amt);
+		setNumTransactionsProcessed(ntp);
 	}
 	
 	/*
@@ -22,7 +28,16 @@ public class TransactionManager extends Transaction {
 	
 	public boolean processTransaction(int src, int dst, long amount){
 		
+		
 		return true;
+	}
+	
+	public void setNumTransactionsProcessed(int ntp){
+		numTransactionsProcessed += ntp;
+	}
+	
+	int getNumTransactionsProcessed(){
+		return numTransactionsProcessed;
 	}
 
 

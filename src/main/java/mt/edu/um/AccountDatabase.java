@@ -1,8 +1,10 @@
 package mt.edu.um;
+
 import java.util.ArrayList;
 
 
-public class AccountDatabase{	
+public class AccountDatabase{
+	
 	static ArrayList<Account> accountsArray = new ArrayList<Account>();
 	
 	public AccountDatabase(){
@@ -10,7 +12,7 @@ public class AccountDatabase{
 	}
 	
 	public static Account getAccount(int accountNumber){
-		for(int i = 0; i < accountsArray.size(); i++){
+		for(int i = 0; i < accountsArray.size(); ++i){
 			if (accountNumber == accountsArray.get(i).getAccountNumber()){
 				return accountsArray.get(i);
 			}
@@ -25,7 +27,7 @@ public class AccountDatabase{
 	//method to add new account to the ArrayList
 	public boolean addNewAccount(Account acc){
 		if (alreadyExists(acc.getAccountNumber()) == true) {
-			System.out.println("Error: Account number "+acc.getAccountNumber()+" already exists!");
+			System.out.println("Error: Account number " + acc.getAccountNumber() + " already exists!");
 			return false;
 		} else {
 			accountsArray.add(acc);
@@ -33,8 +35,9 @@ public class AccountDatabase{
 		}
 	}
 	
+	//method to ensure that account number is unique
 	public boolean alreadyExists(int accNo){
-		for(int i = 0; i < this.getSize(); i++){
+		for(int i = 0; i < this.getSize(); ++i){
 			if(accNo == accountsArray.get(i).getAccountNumber()){
 				return true;
 			}

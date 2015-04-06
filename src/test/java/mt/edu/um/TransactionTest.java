@@ -22,13 +22,22 @@ public class TransactionTest {
 	public void processTest2() {
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
-		transaction = new Transaction(1,3,4000);
+		transaction = new Transaction(3,1,4000);
 		boolean actual = transaction.process();
 		Assert.assertEquals(false, actual);
 	}
 	
 	@Test
 	public void processTest3() {
+		database.addNewAccount(acc1);
+		database.addNewAccount(acc2);
+		transaction = new Transaction(1,3,4000);
+		boolean actual = transaction.process();
+		Assert.assertEquals(false, actual);
+	}
+	
+	@Test
+	public void processTest4() {
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
 		transaction = new Transaction(1,2,8000);
