@@ -10,12 +10,12 @@ public class AccountDatabaseTest {
 	public void getAccountTest(){
 		Account acc = new Account(4, "Fixed", 1000);
 		database.addNewAccount(acc);
-		Assert.assertEquals(acc, database.accountsArray.get(database.getSize()-1));
+		Assert.assertEquals(acc, AccountDatabase.accountsArray.get(database.getSize()-1));
 	}
 	
 	@Test
 	public void getSizeTest(){
-		int actual = database.accountsArray.size();
+		int actual = AccountDatabase.accountsArray.size();
 		int expected = database.getSize();
 		Assert.assertEquals(expected, actual);	
 	}
@@ -37,7 +37,7 @@ public class AccountDatabaseTest {
 	@Test
 	public void alreadyExistsTest(){
 		Account newAcc = new Account(1, "Fixed", 5600);
-		database.accountsArray.add(newAcc);
+		AccountDatabase.accountsArray.add(newAcc);
 		Assert.assertEquals(true, database.alreadyExists(1));	
 	}
 
