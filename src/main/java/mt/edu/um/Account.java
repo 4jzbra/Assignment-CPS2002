@@ -49,12 +49,5 @@ public class Account {
 		return accountBalance;
 	}
 	
-	public void printAccountDetails() {
-		System.out.println("Account Number: " + accountNumber + "\tName: "
-				+ accountName + "\tBalance: " + accountBalance);
-	}
-	
-	
-	
 
 }
