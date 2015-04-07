@@ -43,9 +43,13 @@ public class App
 		System.out.println(transaction3.getNumTransactionsProcessed());
     }
     
+    
     public static void printAllAccounts() {
+    	Account acc = new Account();
 		for (int index = 0; index < database.accountsArray.size(); index++) {
-			database.accountsArray.get(index).printAccountDetails();
+			acc = database.accountsArray.get(index);
+			System.out.println("Account Number: " + acc.getAccountNumber() + "\tName: "
+					+ acc.getAccountName() + "\tBalance: " + acc.getAccountBalance());
 		}
 	}
 }

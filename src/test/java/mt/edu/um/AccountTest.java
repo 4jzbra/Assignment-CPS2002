@@ -67,23 +67,7 @@ public class AccountTest {
 		Assert.assertEquals(expected, actual);
 	}
 	
-	@Test
-	public void printAccountDetailsTest(){    // (provisional test)
-		int expected1 = 414;
-		String expected2 = "Savings";
-		long expected3 = 10000;
-		acc.setAccountNumber(expected1);
-		acc.setAccountName(expected2);
-		acc.setAccountBalance(expected3);
-		int actual1 = acc.getAccountNumber();
-		String actual2 = acc.getAccountName();
-		long actual3 = acc.getAccountBalance();
-		Assert.assertEquals(expected1, actual1);
-		Assert.assertEquals(expected2, actual2);
-		Assert.assertEquals(expected3, actual3);
-	}
-	
-	
+
 	
 
 }
