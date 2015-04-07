@@ -26,15 +26,17 @@ public class TransactionManager {
 		long now = date.getTime();
 
 		if (map.containsKey(src)) {
-			if (map.get(src) > now)
+			if (map.get(src) > now){
 				System.out.println("Error: 15 seconds have not passed");
 				boolSrc = false;
+			}
 		}
 
 		if (map.containsKey(dst)) {
-			if (map.get(dst) > now)
+			if (map.get(dst) > now){
 				System.out.println("Error: 15 seconds have not passed");
 				boolDst = false;
+			}
 		}
 		
 		if ((transaction.process() == true) && boolSrc && boolDst) {

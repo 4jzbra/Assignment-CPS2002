@@ -33,14 +33,15 @@ public class App
 		System.out.println(transaction2.getNumTransactionsProcessed());
 		printAllAccounts();
 		
-/*		try {
-		    Thread.sleep(25000);                 //1000 milliseconds is one second.
+		try {
+		    Thread.sleep(16000);                 //1000 milliseconds is one second.
 		} catch(InterruptedException ex) {
 		    Thread.currentThread().interrupt();
-		} */
+		} 
 		
 		TransactionManager transaction3 = new TransactionManager(1,5,4000);
 		System.out.println(transaction3.getNumTransactionsProcessed());
+		printAllAccounts();
     }
     
     
