@@ -6,7 +6,7 @@ public class App
 
     public static void main( String[] args )
     {
-    	Account acc1 = new Account(1, "Fixed", 1000);
+    	Account acc1 = new Account(1, "Fixed", 10000);
 		Account acc2 = new Account(2, "Savings", 2000);
 		Account acc3 = new Account(3, "Savings", 2500);
 		Account acc4 = new Account(4, "Fixed", 4000);
@@ -32,6 +32,15 @@ public class App
 		TransactionManager transaction2 = new TransactionManager(3,4,400);
 		System.out.println(transaction2.getNumTransactionsProcessed());
 		printAllAccounts();
+		
+		try {
+		    Thread.sleep(25000);                 //1000 milliseconds is one second.
+		} catch(InterruptedException ex) {
+		    Thread.currentThread().interrupt();
+		}
+		
+		TransactionManager transaction3 = new TransactionManager(1,5,4000);
+		System.out.println(transaction3.getNumTransactionsProcessed());
     }
     
     public static void printAllAccounts() {
