@@ -36,7 +36,7 @@ public class TransactionManager {
 				System.out.println("Error: 15 seconds have not passed");
 				bool2 = false;
 		}
-		System.out.println("here");
+		
 		if ((transaction.process() == true) && bool1 && bool2) {
 			map.put(source.getAccountNumber(), now + 15000);
 			map.put(destination.getAccountNumber(), now + 15000);
