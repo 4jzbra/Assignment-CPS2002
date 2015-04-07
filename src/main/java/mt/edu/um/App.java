@@ -29,7 +29,8 @@ public class App
 		printAllAccounts();
 		System.out.println("\n");
 		TransactionManager transaction = new TransactionManager(1,2,400);
-		TransactionManager transaction2 = new TransactionManager(1,2,400);
+		TransactionManager transaction2 = new TransactionManager(3,4,400);
+		System.out.println(transaction2.getNumTransactionsProcessed());
 		printAllAccounts();
     }
     

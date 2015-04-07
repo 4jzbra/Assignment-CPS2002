@@ -5,8 +5,8 @@ import java.util.HashMap;;
 
 public class TransactionManager extends Transaction {
 	
-	private int numTransactionsProcessed;
-	private HashMap<Integer, Long> map = new HashMap<Integer, Long>();
+	private static int numTransactionsProcessed;
+	private static HashMap<Integer, Long> map = new HashMap<Integer, Long>();
 	
 	public TransactionManager(){   
 
@@ -22,15 +22,18 @@ public class TransactionManager extends Transaction {
 		Account destination = AccountDatabase.getAccount(destinationAccountNumber);
 
 		boolean bool1 = true, bool2 = true;
-		long now = new Date().getTime();
+		Date date = new Date();
+		long now = date.getTime();
 
 		if (map.containsKey(sourceAccountNumber)) {
-			if (map.get(sourceAccountNumber) < now)
+			if (map.get(sourceAccountNumber) > now)
+				System.out.println("Error: 15seconds have not passed");
 				bool1 = false;
 		}
 
-		if (map.containsKey(destination)) {
-			if (map.get(destinationAccountNumber) < now)
+		if (map.containsKey(destinationAccountNumber)) {
+			if (map.get(destinationAccountNumber) > now)
+				System.out.println("Error: 15 seconds have not passed");
 				bool2 = false;
 		}
 
@@ -41,6 +44,7 @@ public class TransactionManager extends Transaction {
 			source.setAccountBalance(source.getAccountBalance() - amount);
 			destination.setAccountBalance(destination.getAccountBalance()+ amount);
 			numTransactionsProcessed++;
+			System.out.println("Transaction Processed Succesfully");
 			return true;
 		} else
 			return false;
