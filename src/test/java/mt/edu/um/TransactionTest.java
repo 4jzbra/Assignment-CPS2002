@@ -6,8 +6,8 @@ import org.junit.Test;
 public class TransactionTest {
 	private Transaction transaction;
 	AccountDatabase database = new AccountDatabase();
-	final Account acc1 = new Account(1, "Fixed", 6000, 0);
-	final Account acc2 = new Account(2, "Savings", 4500, 0);
+	final Account acc1 = new Account(1, "Fixed", 6000);
+	final Account acc2 = new Account(2, "Savings", 4500);
 	
 	@Test
 	public void processTest1() {

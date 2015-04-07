@@ -1,52 +1,53 @@
 package mt.edu.um;
 
 import java.util.Date;
+import java.util.HashMap;;
 
 public class TransactionManager extends Transaction {
 	
 	private int numTransactionsProcessed;
+	private HashMap<Integer, Long> map = new HashMap<Integer, Long>();
 	
-	public TransactionManager(){   // default constructor
+	public TransactionManager(){   
 
 	}
 	
-	public TransactionManager(int src, int dst, long amt, int ntp){
+	public TransactionManager(int src, int dst, long amt){
 		super(src, dst, amt);
-		setNumTransactionsProcessed(ntp);
+		processTransaction(src, dst, amt);
 	}
-	
-	/*
-	 * to calculate time:
-	 * (note need to keep a reference of the account being involved)
-	 * 
-	 * long startOfTransaction1 = new Date().getTime()
-	 * long startOfTransaction2 = new Date().getTime()
-	 * long diff = startOfTransaction2 - startOfTransaction1
-	 * 
-	 * if (diff < 15) ret false...
-	 */
 	
 	public boolean processTransaction(int src, int dst, long amount){
 		Account source = AccountDatabase.getAccount(sourceAccountNumber);
 		Account destination = AccountDatabase.getAccount(destinationAccountNumber);
-		
-		if (process() == true){
-			source.setAccountBalance(source.getAccountBalance() - amount);
-			destination.setAccountBalance(destination.getAccountBalance() + amount);
-			// need to do the other way round and tests
-			return true;
+
+		boolean bool1 = true, bool2 = true;
+		long now = new Date().getTime();
+
+		if (map.containsKey(sourceAccountNumber)) {
+			if (map.get(sourceAccountNumber) < now)
+				bool1 = false;
 		}
-		
-		return false;
-	}
-	
-	public void setNumTransactionsProcessed(int ntp){
-		numTransactionsProcessed += ntp;
+
+		if (map.containsKey(destination)) {
+			if (map.get(destinationAccountNumber) < now)
+				bool2 = false;
+		}
+
+		if ((process() == true) && bool1 && bool2) {
+			map.put(source.getAccountNumber(), now + 15000);
+			map.put(destination.getAccountNumber(), now + 15000);
+
+			source.setAccountBalance(source.getAccountBalance() - amount);
+			destination.setAccountBalance(destination.getAccountBalance()+ amount);
+			numTransactionsProcessed++;
+			return true;
+		} else
+			return false;
 	}
 	
 	int getNumTransactionsProcessed(){
 		return numTransactionsProcessed;
 	}
-
 
 }

@@ -6,13 +6,13 @@ public class App
 
     public static void main( String[] args )
     {
-    	Account acc1 = new Account(1, "Fixed", 1000, 0);
-		Account acc2 = new Account(2, "Savings", 2000, 0);
-		Account acc3 = new Account(3, "Savings", 2500, 0);
-		Account acc4 = new Account(4, "Fixed", 4000, 0);
-		Account acc5 = new Account(2, "Fixed", 6700, 0);
-		Account acc6 = new Account(4, "Fixed", 4900, 0);
-		Account acc7 = new Account(5, "Visa", -500, 0);
+    	Account acc1 = new Account(1, "Fixed", 1000);
+		Account acc2 = new Account(2, "Savings", 2000);
+		Account acc3 = new Account(3, "Savings", 2500);
+		Account acc4 = new Account(4, "Fixed", 4000);
+		Account acc5 = new Account(2, "Fixed", 6700);
+		Account acc6 = new Account(4, "Fixed", 4900);
+		Account acc7 = new Account(5, "Visa", -500);
 		
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
@@ -26,6 +26,10 @@ public class App
 		
 		System.out.println("Accounts in database: " + database.getSize());
 		
+		printAllAccounts();
+		System.out.println("\n");
+		TransactionManager transaction = new TransactionManager(1,2,400);
+		TransactionManager transaction2 = new TransactionManager(1,2,400);
 		printAllAccounts();
     }
     

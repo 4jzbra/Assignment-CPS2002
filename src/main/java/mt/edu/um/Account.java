@@ -5,17 +5,15 @@ public class Account {
 	private int accountNumber;   // unique account number
 	private String accountName;  // eg fixed account, savings, etc...
 	private long accountBalance; // current amount in the account
-	private long eolt;           // end time of last transaction occurred
 	
 	public Account(){      //default constructor
 
 	}
 	
-	public Account(int accNo, String accName, long accBal, long et){
+	public Account(int accNo, String accName, long accBal){
 		setAccountNumber(accNo);
 		setAccountName(accName);
 		setAccountBalance(accBal);
-		setEolt(et);
 	}
 	
 	public boolean adjustBalance(long amount){   // checks if balance is correct
@@ -39,10 +37,6 @@ public class Account {
 		accountBalance = accBal;
 	}
 	
-	public void setEolt(long et){
-		eolt = et;
-	}
-	
 	int getAccountNumber(){
 		return accountNumber;
 	}
@@ -54,11 +48,6 @@ public class Account {
 	long getAccountBalance(){
 		return accountBalance;
 	}
-	
-	long getEolt(){
-		return eolt;
-	}
-	
 	
 	public void printAccountDetails() {
 		System.out.println("Account Number: " + accountNumber + "\tName: "
