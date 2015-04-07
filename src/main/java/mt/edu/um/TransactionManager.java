@@ -21,29 +21,29 @@ public class TransactionManager {
 		Account source = AccountDatabase.getAccount(src);
 		Account destination = AccountDatabase.getAccount(dst);
 
-		boolean bool1 = true, bool2 = true;
+		boolean boolSrc = true, boolDst = true;
 		Date date = new Date();
 		long now = date.getTime();
 
 		if (map.containsKey(src)) {
 			if (map.get(src) > now)
 				System.out.println("Error: 15 seconds have not passed");
-				bool1 = false;
+				boolSrc = false;
 		}
 
 		if (map.containsKey(dst)) {
 			if (map.get(dst) > now)
 				System.out.println("Error: 15 seconds have not passed");
-				bool2 = false;
+				boolDst = false;
 		}
 		
-		if ((transaction.process() == true) && bool1 && bool2) {
+		if ((transaction.process() == true) && boolSrc && boolDst) {
 			map.put(source.getAccountNumber(), now + 15000);
 			map.put(destination.getAccountNumber(), now + 15000);
 
 			source.setAccountBalance(source.getAccountBalance() - amount);
-			destination.setAccountBalance(destination.getAccountBalance()+ amount);
-			numTransactionsProcessed++;
+			destination.setAccountBalance(destination.getAccountBalance() + amount);
+			++numTransactionsProcessed;
 			System.out.println("Transaction Processed Succesfully");
 			return true;
 		} else
