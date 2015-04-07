@@ -32,15 +32,18 @@ public class App
 		TransactionManager transaction2 = new TransactionManager(3,4,400);
 		System.out.println(transaction2.getNumTransactionsProcessed());
 		printAllAccounts();
-		
+	/*	
 		try {
 		    Thread.sleep(16000);                 //1000 milliseconds is one second.
 		} catch(InterruptedException ex) {
 		    Thread.currentThread().interrupt();
-		} 
+		} */  
 		
-		TransactionManager transaction3 = new TransactionManager(1,5,4000);
+		TransactionManager transaction3 = new TransactionManager(1,5,4000); //ok
 		System.out.println(transaction3.getNumTransactionsProcessed());
+		printAllAccounts();
+		TransactionManager transaction4 = new TransactionManager(4,3,8000); //insufficient
+		System.out.println(transaction.getNumTransactionsProcessed());
 		printAllAccounts();
     }
     

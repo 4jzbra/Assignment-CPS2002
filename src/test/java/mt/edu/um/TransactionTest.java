@@ -9,38 +9,38 @@ public class TransactionTest {
 	final Account acc1 = new Account(1, "Fixed", 6000);
 	final Account acc2 = new Account(2, "Savings", 4500);
 	
-	@Test
+	@Test 
 	public void processTest1() {
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
-		transaction = new Transaction(1,2,4000);
+		transaction = new Transaction(1, 2, 4000);
 		boolean actual = transaction.process();
 		Assert.assertEquals(true, actual);
 	}
 	
-	@Test
+	@Test // wrong source account
 	public void processTest2() {
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
-		transaction = new Transaction(3,1,4000);
+		transaction = new Transaction(3, 1, 4000);
 		boolean actual = transaction.process();
 		Assert.assertEquals(false, actual);
 	}
 	
-	@Test
+	@Test // wrong destination account
 	public void processTest3() {
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
-		transaction = new Transaction(1,3,4000);
+		transaction = new Transaction(1, 3, 4000);
 		boolean actual = transaction.process();
 		Assert.assertEquals(false, actual);
 	}
 	
-	@Test
+	@Test // insufficient balance
 	public void processTest4() {
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
-		transaction = new Transaction(1,2,8000);
+		transaction = new Transaction(1, 2, 8000);
 		boolean actual = transaction.process();
 		Assert.assertEquals(false, actual);
 	}

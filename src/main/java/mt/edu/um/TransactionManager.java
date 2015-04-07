@@ -6,7 +6,7 @@ import java.util.HashMap;;
 public class TransactionManager {
 	
 	private static int numTransactionsProcessed;
-	private static HashMap<Integer, Long> map = new HashMap<Integer, Long>();
+	private static HashMap<Integer, Long> map = new HashMap<Integer, Long>();  // long to keep track of time
 	
 	public TransactionManager(){   
 
@@ -16,6 +16,8 @@ public class TransactionManager {
 		processTransaction(src, dst, amt);
 	}
 	
+	// method that ensures that transaction is valid (including that an account is not involved
+	// in more that 1 transaction every 15 seconds
 	public boolean processTransaction(int src, int dst, long amount){
 		Transaction transaction = new Transaction(src, dst, amount);
 		Account source = AccountDatabase.getAccount(src);
@@ -40,15 +42,17 @@ public class TransactionManager {
 		}
 		
 		if ((transaction.process() == true) && boolSrc && boolDst) {
-			map.put(source.getAccountNumber(), now + 15000);
-			map.put(destination.getAccountNumber(), now + 15000);
+			map.put(source.getAccountNumber(), now + 15000);    // keeping track of source account & time
+			map.put(destination.getAccountNumber(), now + 15000);  // keeping track of destination account & time
 
-			source.setAccountBalance(source.getAccountBalance() - amount);
-			destination.setAccountBalance(destination.getAccountBalance() + amount);
+			source.setAccountBalance(source.getAccountBalance() - amount);  // transfer source
+			destination.setAccountBalance(destination.getAccountBalance() + amount); // transfer destination
+			
 			++numTransactionsProcessed;
 			System.out.println("Transaction Processed Succesfully");
 			return true;
-		} else
+		} 
+		else
 			return false;
 	}
 	

@@ -21,13 +21,13 @@ public class AccountDatabaseTest {
 		Assert.assertEquals(expected, actual);	
 	}
 	
-	@Test
+	@Test  // when account is unique
 	public void addNewAccountTest1() {
 		final Account acc = new Account(9, "Savings", 2000);
 		Assert.assertEquals(true, database.addNewAccount(acc));
 	}
 	
-	@Test
+	@Test  // when account already exists
 	public void addNewAccountTest2(){
 		Account acc1 = new Account(1, "Fixed", 5600);
 		Account acc2 = new Account(1, "Savings", 89000);
@@ -35,14 +35,14 @@ public class AccountDatabaseTest {
 		Assert.assertEquals(false, database.addNewAccount(acc2));
 	}
 	
-	@Test
+	@Test  // when account already exists
 	public void alreadyExistsTest1(){
 		Account newAcc = new Account(1, "Fixed", 5600);
 		AccountDatabase.accountsArray.add(newAcc);
 		Assert.assertEquals(true, database.alreadyExists(1));	
 	}
 	
-	@Test
+	@Test  // when account is unique
 	public void alreadyExistsTest2(){
 		Account newAcc = new Account(1, "Fixed", 5600);
 		AccountDatabase.accountsArray.add(newAcc);

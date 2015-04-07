@@ -2,9 +2,9 @@ package mt.edu.um;
 
 public class Transaction {
 
-	protected int sourceAccountNumber; 
-	protected int destinationAccountNumber;
-	protected long amount;
+	private int sourceAccountNumber; 
+	private int destinationAccountNumber;
+	private long amount;
 
 
 	public Transaction() { 
@@ -16,20 +16,26 @@ public class Transaction {
 		setDestinationAccountNumber(dst);
 		setAmount(amt);
 	}
-
+	
+	//method to check whether the transaction to be processed is valid or not
 	public boolean process() {
 		Account source = AccountDatabase.getAccount(sourceAccountNumber);
 		Account destination = AccountDatabase.getAccount(destinationAccountNumber);
 		
-		if ((source == null) || (destination == null)) { 
-			System.out.println("Error: Source/Destination account does not exist!");
+		if (source == null) { 
+			System.out.println("Error: Source account does not exist!");
+			return false;
+		}
+		if (destination == null){
+			System.out.println("Error: Destination account does not exist!");
 			return false;
 		}
 		
 		if ((source.getAccountBalance() >= 0) && (source.getAccountBalance() - amount) >= 0) {
 			return true;
-		} else {
-			System.out.println("Error: Source account balance is not sufficient");
+		} 
+		else {
+			System.out.println("Error: Insufficient Source account balance");
 			return false;
 		}
 	}

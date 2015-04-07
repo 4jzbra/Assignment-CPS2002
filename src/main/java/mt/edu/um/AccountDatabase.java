@@ -11,6 +11,7 @@ public class AccountDatabase{
 		accountsArray.clear();
 	}
 	
+	//method to search for an account
 	public static Account getAccount(int accountNumber){
 		for(int i = 0; i < accountsArray.size(); ++i){
 			if (accountNumber == accountsArray.get(i).getAccountNumber()){
@@ -20,6 +21,7 @@ public class AccountDatabase{
 		return null;
 	}
 	
+	//method that returns the size of the database
 	public int getSize(){
 		return accountsArray.size();
 	}
@@ -29,7 +31,8 @@ public class AccountDatabase{
 		if (alreadyExists(acc.getAccountNumber()) == true) {
 			System.out.println("Error: Account number " + acc.getAccountNumber() + " already exists!");
 			return false;
-		} else {
+		} 
+		else {
 			accountsArray.add(acc);
 			return true;
 		}
