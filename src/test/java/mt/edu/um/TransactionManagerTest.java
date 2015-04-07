@@ -39,14 +39,11 @@ public class TransactionManagerTest {
 	}
 	
 	@Test
-	// account does not exist test
+	// accounts do not exist test
 	public void processTransactionTest4() {
-		final Account acc1 = new Account(15, "Savings", 5000);
 		Assert.assertEquals(false, transactionM.processTransaction(15, 16, 2000));
-		
 	}
 	
-
 	@Test
 	//testing constructor
 	public void constructorTest() {
