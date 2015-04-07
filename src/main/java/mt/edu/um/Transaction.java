@@ -1,7 +1,5 @@
 package mt.edu.um;
 
-import java.util.Date;
-
 public class Transaction {
 
 	protected int sourceAccountNumber; 
