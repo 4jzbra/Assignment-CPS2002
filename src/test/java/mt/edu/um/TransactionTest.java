@@ -14,8 +14,7 @@ public class TransactionTest {
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
 		transaction = new Transaction(1, 2, 4000);
-		boolean actual = transaction.process();
-		Assert.assertEquals(true, actual);
+		Assert.assertEquals(true, transaction.process());
 	}
 	
 	@Test // invalid source account
@@ -48,7 +47,7 @@ public class TransactionTest {
 		transaction = new Transaction();
 		int expected = 120;
 		transaction.setSourceAccountNumber(expected);
-		Assert.assertEquals(expected, transaction.getSourceAccountNumber());
+		Assert.assertTrue(expected == transaction.getSourceAccountNumber());
 	}
 	
 	@Test
@@ -56,7 +55,7 @@ public class TransactionTest {
 		transaction = new Transaction();
 		int expected = 155;
 		transaction.setDestinationAccountNumber(expected);
-		Assert.assertEquals(expected, transaction.getDestinationAccountNumber());
+		Assert.assertTrue(expected == transaction.getDestinationAccountNumber());
 	}
 	
 	@Test
@@ -64,7 +63,7 @@ public class TransactionTest {
 		transaction = new Transaction();
 		long expected = 10000;
 		transaction.setAmount(expected);
-		Assert.assertEquals(expected, transaction.getAmount());
+		Assert.assertTrue(expected == transaction.getAmount());
 	}
 	
 	@Test
@@ -72,7 +71,7 @@ public class TransactionTest {
 		transaction = new Transaction();
 		int expected = 40000;
 		transaction.setSourceAccountNumber(expected);
-		Assert.assertTrue(transaction.getSourceAccountNumber() == expected);
+		Assert.assertTrue(expected == transaction.getSourceAccountNumber());
 	}
 	
 	@Test
@@ -80,7 +79,7 @@ public class TransactionTest {
 		transaction = new Transaction();
 		int expected = 20000;
 		transaction.setDestinationAccountNumber(expected);
-		Assert.assertTrue(transaction.getDestinationAccountNumber() == expected);
+		Assert.assertTrue(expected == transaction.getDestinationAccountNumber());
 	}
 	
 	@Test
@@ -88,7 +87,7 @@ public class TransactionTest {
 		transaction = new Transaction();
 		int expected = 3000;
 		transaction.setAmount(expected);
-		Assert.assertTrue(transaction.getAmount() == expected);
+		Assert.assertTrue(expected == transaction.getAmount());
 	}
 	
 
