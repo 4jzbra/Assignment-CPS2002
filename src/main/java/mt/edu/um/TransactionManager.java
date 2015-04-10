@@ -22,10 +22,14 @@ public class TransactionManager {
 		Transaction transaction = new Transaction(src, dst, amount);
 		Account source = AccountDatabase.getAccount(src);
 		Account destination = AccountDatabase.getAccount(dst);
+		
+		if (transaction.process() == false){
+			return false;
+		}
 
 		boolean boolSrc = true, boolDst = true;
 		Date date = new Date();
-		long now = date.getTime();
+		long now = date.getTime();     // storing current time
 
 		if (map.containsKey(src)) {
 			if (map.get(src) > now){
@@ -41,7 +45,7 @@ public class TransactionManager {
 			}
 		}
 		
-		if ((transaction.process() == true) && boolSrc && boolDst) {
+		if (boolSrc && boolDst) {
 			map.put(source.getAccountNumber(), now + 15000);    // keeping track of source account & time
 			map.put(destination.getAccountNumber(), now + 15000);  // keeping track of destination account & time
 
