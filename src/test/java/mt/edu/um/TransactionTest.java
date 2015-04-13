@@ -6,8 +6,8 @@ import org.junit.Test;
 
 public class TransactionTest {
 	private Transaction transaction;
-	AccountDatabase database;
-	Account acc1, acc2;
+	private AccountDatabase database;
+	private Account acc1, acc2;
 	
 	@Before
 	public void initialize(){
