@@ -1,13 +1,20 @@
 package mt.edu.um;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class TransactionTest {
 	private Transaction transaction;
-	AccountDatabase database = new AccountDatabase();
-	final Account acc1 = new Account(1, "Fixed", 6000);
-	final Account acc2 = new Account(2, "Savings", 4500);
+	AccountDatabase database;
+	Account acc1, acc2;
+	
+	@Before
+	public void initialize(){
+		database = new AccountDatabase();
+		acc1 = new Account(1, "Fixed", 6000);
+		acc2 = new Account(2, "Savings", 4500);
+	}
 	
 	@Test 
 	public void processTest1() {
