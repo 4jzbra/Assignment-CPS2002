@@ -1,11 +1,19 @@
 package mt.edu.um;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class TransactionManagerTest {
-	private TransactionManager transactionM = new TransactionManager();
-	private AccountDatabase database = new AccountDatabase();
+	private TransactionManager transactionM;
+	private AccountDatabase database;
+	
+	
+	@Before
+	public void initialize(){
+		transactionM = new TransactionManager();
+		database = new AccountDatabase();
+	}
 
 	@Test
 	public void processTransactionTest1() {
