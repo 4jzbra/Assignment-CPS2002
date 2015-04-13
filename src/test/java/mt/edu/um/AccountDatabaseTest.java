@@ -1,11 +1,17 @@
 package mt.edu.um;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class AccountDatabaseTest {
 	
-	final AccountDatabase database = new AccountDatabase();
+	private AccountDatabase database;
+	
+	@Before
+	public void intialize(){
+		database = new AccountDatabase();
+	}
 	
 	@Test
 	public void initialEmptyDatabase(){

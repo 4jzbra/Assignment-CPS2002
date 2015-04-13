@@ -74,5 +74,4 @@ public class TransactionManagerTest {
 		TransactionManager tm = new TransactionManager(7, 8, 1100);
 		Assert.assertEquals(num + 1, tm.getNumTransactionsProcessed());
 	}
-
 }

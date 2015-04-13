@@ -1,11 +1,17 @@
 package mt.edu.um;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 
 public class AccountTest {
-	final Account acc = new Account();
+	private Account acc;
+	
+	@Before
+	public void initialize(){
+		acc = new Account();
+	}
 
 	@Test
 	public void adjustBalanceTest1(){
