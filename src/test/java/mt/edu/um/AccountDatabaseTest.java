@@ -10,6 +10,7 @@ public class AccountDatabaseTest {
 	
 	@Before
 	public void intialize(){
+		AccountDatabase.accountsArray.clear(); //make sure ArrayList is empty
 		database = new AccountDatabase();
 	}
 	
@@ -54,7 +55,6 @@ public class AccountDatabaseTest {
 	
 	@Test  // when account already exists
 	public void addNewAccountTest2(){
-		AccountDatabase.accountsArray.clear();
 		Account acc1 = new Account(1, "Fixed", 5600);
 		Account acc2 = new Account(1, "Savings", 89000);
 		database.addNewAccount(acc1);
@@ -63,7 +63,6 @@ public class AccountDatabaseTest {
 	
 	@Test  // checking if account already exists
 	public void alreadyExistsTest1(){
-		AccountDatabase.accountsArray.clear();
 		Account newAcc = new Account(1, "Fixed", 5600);
 		AccountDatabase.accountsArray.add(newAcc);
 		Assert.assertEquals(true, database.alreadyExists(1));	
