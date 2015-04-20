@@ -23,11 +23,9 @@ public class Transaction {
 		Account destination = AccountDatabase.getAccount(destinationAccountNumber);
 		
 		if (source == null) { 
-			System.out.println("Error: Source account does not exist!");
 			return false;
 		}
 		if (destination == null){
-			System.out.println("Error: Destination account does not exist!");
 			return false;
 		}
 		
@@ -35,7 +33,6 @@ public class Transaction {
 			return true;
 		} 
 		else {
-			System.out.println("Error: Insufficient Source account balance");
 			return false;
 		}
 	}
