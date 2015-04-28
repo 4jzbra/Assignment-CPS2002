@@ -8,6 +8,7 @@ public class AtomicTransaction extends Transaction {   // the leaf of the compos
 	
 	public AtomicTransaction(int src, int dst, long amt) {
 		super(src, dst, amt);
+		//process();
 	}	
 	
 	public boolean process() {
@@ -15,6 +16,8 @@ public class AtomicTransaction extends Transaction {   // the leaf of the compos
 		Account destination = AccountDatabase.getAccount(getDestinationAccountNumber());
 		
 		if (source == null || destination == null) { 
+			System.out.println("source "+source.getAccountNumber());
+			System.out.println("destination "+destination.getAccountNumber());
 			throw new NullPointerException();
 		}
 		

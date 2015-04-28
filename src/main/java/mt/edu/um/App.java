@@ -66,6 +66,12 @@ public class App
     	
     	ct1.addTransaction(ct2);
     	ct1.addTransaction(ct3); 
+    	
+    	//
+    	Transaction test = null;
+    	TransactionFactory tr = new TransactionFactory();
+    	test = tr.getTransaction("Compound");
+    	if(test.addTransaction(t1)) System.out.println("Added successfully");
     }
     
     

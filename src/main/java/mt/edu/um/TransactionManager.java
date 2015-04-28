@@ -14,14 +14,18 @@ public class TransactionManager {
 
 	}
 	
-	public TransactionManager(int src, int dst, long amt){
-		processTransaction(src, dst, amt);
+	public TransactionManager(int src, int dst, long amt, String type){
+		processTransaction(src, dst, amt, type);
 	}
 	
 	// method that ensures that transaction is valid (including that an account is not involved
 	// in more than 1 transaction every 15 seconds
-	public boolean processTransaction(int src, int dst, long amount){
-		Transaction transaction = new AtomicTransaction(src, dst, amount);
+	public boolean processTransaction(int src, int dst, long amount, String type){
+		/* new code */
+		Transaction transaction = new TransactionFactory().getTransaction(type);
+		
+		/* new code */
+		//Transaction transaction = new AtomicTransaction(src, dst, amount);
 		Account source = AccountDatabase.getAccount(src);
 		Account destination = AccountDatabase.getAccount(dst);
 		

@@ -22,7 +22,7 @@ public class CompoundTransaction extends Transaction{
 		return elements.add(transaction);
 	}
 
-	// process for a compound transaction
+	// process for a compound transaction << needs to take care of time
 	public boolean process() {
 		// for all transactions in elements, transaction.process()
 		for(Transaction transaction: elements){

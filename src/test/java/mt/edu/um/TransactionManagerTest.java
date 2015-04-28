@@ -21,7 +21,7 @@ public class TransactionManagerTest {
 		final Account acc2 = new Account(2, "Savings", 3500);
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
-		Assert.assertEquals(true, transactionM.processTransaction(1, 2, 3000));
+		Assert.assertEquals(true, transactionM.processTransaction(1, 2, 3000, "Atomic"));
 	}
 
 	@Test  // insufficient balance
@@ -30,7 +30,7 @@ public class TransactionManagerTest {
 		final Account acc2 = new Account(4, "Savings", 3500);
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
-		Assert.assertEquals(false, transactionM.processTransaction(3, 4, 6000));
+		Assert.assertEquals(false, transactionM.processTransaction(3, 4, 6000, "Atomic"));
 	}
 
 	@Test // transaction of same accounts twice i.e. 15 secs have not elapsed
@@ -39,8 +39,8 @@ public class TransactionManagerTest {
 		final Account acc2 = new Account(6, "Savings", 3500);
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
-		transactionM.processTransaction(5, 6, 100);
-		Assert.assertEquals(false, transactionM.processTransaction(6, 5, 2000));
+		transactionM.processTransaction(5, 6, 100, "Atomic");
+		Assert.assertEquals(false, transactionM.processTransaction(6, 5, 2000, "Atomic"));
 	}
 	
 	@Test // transaction of same accounts after 15 seconds
@@ -49,18 +49,18 @@ public class TransactionManagerTest {
 		final Account acc2 = new Account(6, "Savings", 3500);
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
-		transactionM.processTransaction(5, 6, 100);
+		transactionM.processTransaction(5, 6, 100, "Atomic");
 		try {
 			Thread.sleep(15000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		Assert.assertEquals(true, transactionM.processTransaction(6, 5, 2000));
+		Assert.assertEquals(true, transactionM.processTransaction(6, 5, 2000, "Atomic"));
 	}
 	
 	@Test (expected = NullPointerException.class) // accounts do not exist test
 	public void processTransactionTest5() {
-		transactionM.processTransaction(15, 16, 2000);
+		transactionM.processTransaction(15, 16, 2000, "Atomic");
 	}
 	
 	@Test  //testing constructor
@@ -71,7 +71,7 @@ public class TransactionManagerTest {
 		database.addNewAccount(acc2);
 
 		int num = transactionM.getNumTransactionsProcessed();
-		TransactionManager tm = new TransactionManager(7, 8, 1100);
+		TransactionManager tm = new TransactionManager(7, 8, 1100, "Atomic");
 		Assert.assertEquals(num + 1, tm.getNumTransactionsProcessed());
 	}
 }
