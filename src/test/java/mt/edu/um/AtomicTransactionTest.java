@@ -40,12 +40,12 @@ public class AtomicTransactionTest {
 		 transaction.process(); // this generates a NullPointerException
 	}
 	
-	@Test // insufficient balance
+	@Test (expected = IllegalArgumentException.class) // insufficient balance
 	public void processTest4() {
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
 		transaction = new AtomicTransaction(1, 2, 8000);
-		Assert.assertEquals(false, transaction.process());
+		transaction.process();
 	}
 	
 	

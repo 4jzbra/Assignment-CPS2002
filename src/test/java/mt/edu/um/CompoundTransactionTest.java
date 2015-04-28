@@ -23,11 +23,7 @@ public class CompoundTransactionTest {
 		database.addNewAccount(acc2);
 		database.addNewAccount(acc3);
 		transaction = new CompoundTransaction("Prepare Bank Loan");
-		try {
-		    Thread.sleep(16000);                 //1000 milliseconds is one second.
-		} catch(InterruptedException ex) {
-		    Thread.currentThread().interrupt();
-		}
+		transaction.addTransaction(new AtomicTransaction(1,2,5000));
 		transaction.addTransaction(new AtomicTransaction(2,3, 8000));
 		Assert.assertEquals(true, transaction.process());
 	}
