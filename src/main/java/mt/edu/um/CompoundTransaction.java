@@ -2,40 +2,29 @@ package mt.edu.um;
 
 import java.util.ArrayList;
 
-public class CompoundTransaction{
+public class CompoundTransaction extends Transaction{
 	// using composite design pattern - tree of transactions
 	
-	private String name;   // name of compound transaction
+	//private String name;   // name of compound transaction << din nahseb imbad niehdu hsieba bil-factory pattern wara li nehilsu composite
 	
-	private ArrayList<Transaction> childTrans;  //leaves
-	private ArrayList<CompoundTransaction> childTrans2;  // for sub transactions (otherwise use interfaces...)
+	private ArrayList<Transaction> elements;
 	
 	
-	public CompoundTransaction(){
-		
+	public CompoundTransaction(int src, int dst, long amt){
+		super(src, dst, amt);
+		elements = new ArrayList<Transaction>();
 	}
 	
-	public CompoundTransaction(String n){
-		setName(n);
-		this.childTrans =  new ArrayList<Transaction>();
-		this.childTrans2 = new ArrayList<CompoundTransaction>();
+	public void addTransaction(Transaction transaction){
+		elements.add(transaction);
 	}
-	
-	public void addTrans(Transaction t){
-		childTrans.add(t);
-	}
-	
-	public void addTrans2(CompoundTransaction ct){
-		childTrans2.add(ct);
+
+	// process for a compound transaction
+	public boolean process() {
+		//for all transactions in elements, element.process()
+		return false;
 	}
 	
 	
-	public void setName(String n){
-		name = n;
-	}
-	
-	public String getName(){
-		return name;
-	}
 
 }

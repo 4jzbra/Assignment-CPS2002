@@ -21,7 +21,7 @@ public class TransactionManager {
 	// method that ensures that transaction is valid (including that an account is not involved
 	// in more than 1 transaction every 15 seconds
 	public boolean processTransaction(int src, int dst, long amount){
-		Transaction transaction = new Transaction(src, dst, amount);
+		Transaction transaction = new AtomicTransaction(src, dst, amount);
 		Account source = AccountDatabase.getAccount(src);
 		Account destination = AccountDatabase.getAccount(dst);
 		

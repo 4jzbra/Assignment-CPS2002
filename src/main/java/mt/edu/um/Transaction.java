@@ -1,7 +1,7 @@
 package mt.edu.um;
 
-public class Transaction {
-
+public abstract class Transaction {
+	
 	private int sourceAccountNumber; 
 	private int destinationAccountNumber;
 	private long amount;
@@ -18,24 +18,7 @@ public class Transaction {
 	}
 	
 	//method to check whether the transaction to be processed is valid or not
-	public boolean process() {
-		Account source = AccountDatabase.getAccount(sourceAccountNumber);
-		Account destination = AccountDatabase.getAccount(destinationAccountNumber);
-		
-		if (source == null) { 
-			return false;
-		}
-		if (destination == null){
-			return false;
-		}
-		
-		if ((source.getAccountBalance() >= 0) && (source.getAccountBalance() - amount) >= 0) {
-			return true;
-		} 
-		else {
-			return false;
-		}
-	}
+	public abstract boolean process();
 
 	public void setSourceAccountNumber(int accNo) {
 		sourceAccountNumber = accNo;
@@ -48,7 +31,6 @@ public class Transaction {
 	public void setAmount(long amt) {
 		amount = amt;
 	}
-
 
 	public int getSourceAccountNumber() {
 		return sourceAccountNumber;
