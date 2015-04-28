@@ -27,7 +27,11 @@ public class CompoundTransaction extends Transaction{
 	public boolean process() {
 		// for all transactions in elements, transaction.process()
 		for(Transaction transaction: elements){
-			if(!transaction.process()) throw new IllegalArgumentException ("ERROR IN TRANSACTION");
+			try{
+				transaction.process();
+			}catch(IllegalArgumentException e){
+				 throw new IllegalArgumentException("ERROR IN TRANSACTION");
+			}
 		}
 		return true;
 	}
