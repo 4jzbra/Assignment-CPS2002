@@ -13,9 +13,7 @@ public abstract class Transaction {
 	}
 
 	public Transaction(int src, int dst, long amt) {
-		setSourceAccountNumber(src);
-		setDestinationAccountNumber(dst);
-		setAmount(amt);
+		setDetails(src, dst, amt);
 	}
 	
 	//method to check whether the transaction to be processed is valid or not
@@ -25,6 +23,12 @@ public abstract class Transaction {
 	
 	public boolean addTransaction(Transaction transaction){
 		throw new UnsupportedOperationException();
+	}
+	
+	public void setDetails(int src, int dst, long amt){
+		setSourceAccountNumber(src);
+		setDestinationAccountNumber(dst);
+		setAmount(amt);
 	}
 
 	public void setSourceAccountNumber(int accNo) {

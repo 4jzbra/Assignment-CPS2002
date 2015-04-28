@@ -29,7 +29,7 @@ public class CompoundTransaction extends Transaction{
 			try{
 				transaction.process();
 			}catch(IllegalArgumentException e){
-				 throw new IllegalArgumentException("ERROR IN TRANSACTION");
+				throw new IllegalArgumentException("ERROR IN TRANSACTION");
 			}
 		}
 		return true;

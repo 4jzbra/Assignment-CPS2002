@@ -23,7 +23,7 @@ public class CompoundTransactionTest {
 		database.addNewAccount(acc2);
 		database.addNewAccount(acc3);
 		transaction = new CompoundTransaction("Prepare Bank Loan");
-		transaction.addTransaction(new AtomicTransaction(1,2,5000));
+		transaction.addTransaction(new AtomicTransaction(1,2, 5000));
 		transaction.addTransaction(new AtomicTransaction(2,3, 8000));
 		Assert.assertEquals(true, transaction.process());
 	}

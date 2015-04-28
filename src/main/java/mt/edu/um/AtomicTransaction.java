@@ -11,6 +11,7 @@ public class AtomicTransaction extends Transaction {   // the leaf of the compos
 		//process();
 	}	
 	
+		
 	public boolean process() {
 		Account source = AccountDatabase.getAccount(getSourceAccountNumber());
 		Account destination = AccountDatabase.getAccount(getDestinationAccountNumber());
@@ -25,7 +26,7 @@ public class AtomicTransaction extends Transaction {   // the leaf of the compos
 			return true;
 		} 
 		else {
-			throw new IllegalArgumentException ("ERROR IN TRANSACTION!");
+			throw new IllegalArgumentException("ERROR IN TRANSACTION!");
 		}
 	}
 }

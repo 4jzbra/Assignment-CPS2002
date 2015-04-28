@@ -24,13 +24,13 @@ public class TransactionManagerTest {
 		Assert.assertEquals(true, transactionM.processTransaction(1, 2, 3000, "Atomic"));
 	}
 
-	@Test  // insufficient balance
+	@Test (expected = IllegalArgumentException.class)  // insufficient balance
 	public void processTransactionTest2() {
 		final Account acc1 = new Account(3, "Savings", 5000);
 		final Account acc2 = new Account(4, "Savings", 3500);
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
-		Assert.assertEquals(false, transactionM.processTransaction(3, 4, 6000, "Atomic"));
+		transactionM.processTransaction(3, 4, 6000, "Atomic");
 	}
 
 	@Test // transaction of same accounts twice i.e. 15 secs have not elapsed

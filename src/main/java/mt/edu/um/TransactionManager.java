@@ -23,7 +23,7 @@ public class TransactionManager {
 	public boolean processTransaction(int src, int dst, long amount, String type){
 		/* new code */
 		Transaction transaction = new TransactionFactory().getTransaction(type);
-		
+		transaction.setDetails(src, dst, amount);
 		/* new code */
 		//Transaction transaction = new AtomicTransaction(src, dst, amount);
 		Account source = AccountDatabase.getAccount(src);
