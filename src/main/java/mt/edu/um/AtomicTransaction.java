@@ -22,7 +22,7 @@ public class AtomicTransaction extends Transaction {   // the leaf of the compos
 			return true;
 		} 
 		else {
-			return false;
+			throw new IllegalArgumentException ("ERROR IN TRANSACTION!");
 		}
 	}
 }
