@@ -1,4 +1,5 @@
 package mt.edu.um;
+import java.lang.UnsupportedOperationException;;
 
 public abstract class Transaction {
 	
@@ -18,7 +19,9 @@ public abstract class Transaction {
 	}
 	
 	//method to check whether the transaction to be processed is valid or not
-	public abstract boolean process();
+	public boolean process(){
+		throw new UnsupportedOperationException();
+	}
 
 	public void setSourceAccountNumber(int accNo) {
 		sourceAccountNumber = accNo;
