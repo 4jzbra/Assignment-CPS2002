@@ -59,7 +59,7 @@ public class App
     	Transaction ct2 = new CompoundTransaction();
     	Transaction ct3 = new CompoundTransaction();
     	
-    	ct2.addTransaction(t1);
+        ct2.addTransaction(t1);
     	ct2.addTransaction(t2);
     	ct3.addTransaction(t3);
     	ct3.addTransaction(t4);
