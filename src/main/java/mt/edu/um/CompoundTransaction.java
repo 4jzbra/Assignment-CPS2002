@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class CompoundTransaction extends Transaction{
 	// using composite design pattern
 	
-	private String name;   // name of compound transaction << din nahseb imbad niehdu hsieba bil-factory pattern wara li nehilsu composite
+	private String name;   // name of compound transaction
 	
 	private ArrayList<Transaction> elements;
 	
