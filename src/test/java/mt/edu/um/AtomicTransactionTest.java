@@ -24,20 +24,20 @@ public class AtomicTransactionTest {
 		Assert.assertEquals(true, transaction.process());
 	}
 	
-	@Test // invalid source account
+	@Test (expected = NullPointerException.class) // invalid source account
 	public void processTest2() {
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
 		transaction = new AtomicTransaction(3, 1, 4000);
-		Assert.assertEquals(false, transaction.process());
+		transaction.process();
 	}
 	
-	@Test // invalid destination account
+	@Test (expected = NullPointerException.class) // invalid destination account
 	public void processTest3() {
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
 		transaction = new AtomicTransaction(1, 3, 4000);
-		Assert.assertEquals(false, transaction.process());
+		 transaction.process();
 	}
 	
 	@Test // insufficient balance

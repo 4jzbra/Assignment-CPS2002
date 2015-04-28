@@ -58,9 +58,9 @@ public class TransactionManagerTest {
 		Assert.assertEquals(true, transactionM.processTransaction(6, 5, 2000));
 	}
 	
-	@Test  // accounts do not exist test
+	@Test (expected = NullPointerException.class) // accounts do not exist test
 	public void processTransactionTest5() {
-		Assert.assertEquals(false, transactionM.processTransaction(15, 16, 2000));
+		transactionM.processTransaction(15, 16, 2000);
 	}
 	
 	@Test  //testing constructor
