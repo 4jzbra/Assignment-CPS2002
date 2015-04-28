@@ -13,7 +13,7 @@ public class CompoundTransaction extends Transaction{
 		
 	}
 	
-	// not sure about this constructor
+	
 	public CompoundTransaction(String n){ 
 		setName(n);
 		elements = new ArrayList<Transaction>();
