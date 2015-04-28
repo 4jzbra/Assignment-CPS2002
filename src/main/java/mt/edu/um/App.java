@@ -50,22 +50,22 @@ public class App
     */
     	
     	// Testing Compound Transactions (change 1)  [ignoring tm]
-    	/*Transaction t1 = new Transaction(1,2,300);
-    	Transaction t2 = new Transaction(3,4,400);
-    	Transaction t3 = new Transaction(1,5,900);
-    	Transaction t4 = new Transaction(1,4,350);
+    	AtomicTransaction t1 = new AtomicTransaction(1,2,300);
+    	AtomicTransaction t2 = new AtomicTransaction(3,4,400);
+    	AtomicTransaction t3 = new AtomicTransaction(1,5,900);
+    	AtomicTransaction t4 = new AtomicTransaction(1,4,350);
     	
-    	CompoundTransaction ct1 = new CompoundTransaction("Buy a Property");  // root transaction
-    	CompoundTransaction ct2 = new CompoundTransaction("Prepare Bank Loan");
-    	CompoundTransaction ct3 = new CompoundTransaction("Pay Fees");
+    	CompoundTransaction ct1 = new CompoundTransaction();  // root transaction
+    	CompoundTransaction ct2 = new CompoundTransaction();
+    	CompoundTransaction ct3 = new CompoundTransaction();
     	
-    	ct2.addTrans(t1);
-    	ct2.addTrans(t2);
-    	ct3.addTrans(t3);
-    	ct3.addTrans(t4);
+    	ct2.addTransaction(t1);
+    	ct2.addTransaction(t2);
+    	ct3.addTransaction(t3);
+    	ct3.addTransaction(t4);
     	
-    	ct1.addTrans2(ct2);
-    	ct1.addTrans2(ct3);*/
+    	ct1.addTransaction(ct2);
+    	ct1.addTransaction(ct3);
     }
     
     

@@ -7,7 +7,7 @@ public class CompoundTransaction extends Transaction{
 	
 	//private String name;   // name of compound transaction << din nahseb imbad niehdu hsieba bil-factory pattern wara li nehilsu composite
 	
-	private ArrayList<Transaction> elements = new ArrayList<Transaction>();
+	private ArrayList<Transaction> elements;
 	
 	public CompoundTransaction(){
 		
@@ -16,6 +16,7 @@ public class CompoundTransaction extends Transaction{
 	// not sure about this constructor
 	public CompoundTransaction(int src, int dst, long amt){
 		super(src, dst, amt); 
+		elements = new ArrayList<Transaction>();
 	}
 	
 	// adding atomic and/or compound transactions to the ArrayList
@@ -27,7 +28,7 @@ public class CompoundTransaction extends Transaction{
 	public boolean process() {
 		// for all transactions in elements, transaction.process()
 		for(Transaction transaction: elements){
-			if(!transaction.process()) return false;
+			if(!transaction.process()) return false;  
 		}
 		return true;
 	}
