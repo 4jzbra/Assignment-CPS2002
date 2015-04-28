@@ -7,15 +7,14 @@ public class CompoundTransaction extends Transaction{
 	
 	private String name;   // name of compound transaction
 	
-	private ArrayList<Transaction> elements;
+	private ArrayList<Transaction> elements = new ArrayList<Transaction>();
 	
 	public CompoundTransaction(){
-		elements = new ArrayList<Transaction>();
+		
 	}
 	
 	public CompoundTransaction(String n){ 
 		setName(n);
-		elements = new ArrayList<Transaction>();
 	}
 	
 	// adding atomic and/or compound transactions to the ArrayList
