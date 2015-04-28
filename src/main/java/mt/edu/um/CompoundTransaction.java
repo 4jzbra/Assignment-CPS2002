@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class CompoundTransaction extends Transaction{
 	// using composite design pattern
 	
-	//private String name;   // name of compound transaction << din nahseb imbad niehdu hsieba bil-factory pattern wara li nehilsu composite
+	private String name;   // name of compound transaction << din nahseb imbad niehdu hsieba bil-factory pattern wara li nehilsu composite
 	
 	private ArrayList<Transaction> elements;
 	
@@ -14,8 +14,8 @@ public class CompoundTransaction extends Transaction{
 	}
 	
 	// not sure about this constructor
-	public CompoundTransaction(int src, int dst, long amt){
-		super(src, dst, amt); 
+	public CompoundTransaction(String n){ 
+		setName(n);
 		elements = new ArrayList<Transaction>();
 	}
 	
@@ -31,6 +31,14 @@ public class CompoundTransaction extends Transaction{
 			if(!transaction.process()) throw new SecurityException ("ERROR IN TRANSACTION");
 		}
 		return true;
+	}
+	
+	public void setName(String n){
+		name = n;
+	}
+	
+	public String getName(){
+		return name;
 	}
 
 }
