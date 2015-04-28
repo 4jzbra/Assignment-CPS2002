@@ -11,10 +11,11 @@ public class CompoundTransaction extends Transaction{
 	
 	
 	public CompoundTransaction(int src, int dst, long amt){
-		super(src, dst, amt);
+		super(src, dst, amt); //not sure about this
 		elements = new ArrayList<Transaction>();
 	}
 	
+	//adding atomic and/or compound transactions to the ArrayList
 	public void addTransaction(Transaction transaction){
 		elements.add(transaction);
 	}
