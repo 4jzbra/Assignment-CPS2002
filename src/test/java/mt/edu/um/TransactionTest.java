@@ -20,7 +20,7 @@ public class TransactionTest {
 	public void processTest1() {
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
-		transaction = new Transaction(1, 2, 4000);
+		transaction = new AtomicTransaction(1, 2, 4000);
 		Assert.assertEquals(true, transaction.process());
 	}
 	
@@ -28,7 +28,7 @@ public class TransactionTest {
 	public void processTest2() {
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
-		transaction = new Transaction(3, 1, 4000);
+		transaction = new AtomicTransaction(3, 1, 4000);
 		Assert.assertEquals(false, transaction.process());
 	}
 	
@@ -36,7 +36,7 @@ public class TransactionTest {
 	public void processTest3() {
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
-		transaction = new Transaction(1, 3, 4000);
+		transaction = new AtomicTransaction(1, 3, 4000);
 		Assert.assertEquals(false, transaction.process());
 	}
 	
@@ -44,14 +44,14 @@ public class TransactionTest {
 	public void processTest4() {
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
-		transaction = new Transaction(1, 2, 8000);
+		transaction = new AtomicTransaction(1, 2, 8000);
 		Assert.assertEquals(false, transaction.process());
 	}
 	
 	
 	@Test
 	public void setSourceAccountNumberTest(){
-		transaction = new Transaction();
+		transaction = new AtomicTransaction();
 		int expected = 120;
 		transaction.setSourceAccountNumber(expected);
 		Assert.assertTrue(expected == transaction.getSourceAccountNumber());
@@ -59,7 +59,7 @@ public class TransactionTest {
 	
 	@Test
 	public void setDestinationAccountNumberTest(){
-		transaction = new Transaction();
+		transaction = new AtomicTransaction();
 		int expected = 155;
 		transaction.setDestinationAccountNumber(expected);
 		Assert.assertTrue(expected == transaction.getDestinationAccountNumber());
@@ -67,7 +67,7 @@ public class TransactionTest {
 	
 	@Test
 	public void setAmountTest(){
-		transaction = new Transaction();
+		transaction = new AtomicTransaction();
 		long expected = 10000;
 		transaction.setAmount(expected);
 		Assert.assertTrue(expected == transaction.getAmount());
@@ -75,7 +75,7 @@ public class TransactionTest {
 	
 	@Test
 	public void getSourceAccountNumberTest(){
-		transaction = new Transaction();
+		transaction = new AtomicTransaction();
 		int expected = 40000;
 		transaction.setSourceAccountNumber(expected);
 		Assert.assertTrue(expected == transaction.getSourceAccountNumber());
@@ -83,7 +83,7 @@ public class TransactionTest {
 	
 	@Test
 	public void getDestinationAccountNumberTest(){
-		transaction = new Transaction();
+		transaction = new AtomicTransaction();
 		int expected = 20000;
 		transaction.setDestinationAccountNumber(expected);
 		Assert.assertTrue(expected == transaction.getDestinationAccountNumber());
@@ -91,7 +91,7 @@ public class TransactionTest {
 	
 	@Test
 	public void getAmountTest(){
-		transaction = new Transaction();
+		transaction = new AtomicTransaction();
 		int expected = 3000;
 		transaction.setAmount(expected);
 		Assert.assertTrue(expected == transaction.getAmount());

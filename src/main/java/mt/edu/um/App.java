@@ -50,7 +50,7 @@ public class App
     */
     	
     	// Testing Compound Transactions (change 1)  [ignoring tm]
-    	Transaction t1 = new Transaction(1,2,300);
+    	/*Transaction t1 = new Transaction(1,2,300);
     	Transaction t2 = new Transaction(3,4,400);
     	Transaction t3 = new Transaction(1,5,900);
     	Transaction t4 = new Transaction(1,4,350);
@@ -65,7 +65,7 @@ public class App
     	ct3.addTrans(t4);
     	
     	ct1.addTrans2(ct2);
-    	ct1.addTrans2(ct3);
+    	ct1.addTrans2(ct3);*/
     }
     
     
