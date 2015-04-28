@@ -22,6 +22,10 @@ public abstract class Transaction {
 	public boolean process(){
 		throw new UnsupportedOperationException();
 	}
+	
+	public boolean addTransaction(Transaction transaction){
+		throw new UnsupportedOperationException();
+	}
 
 	public void setSourceAccountNumber(int accNo) {
 		sourceAccountNumber = accNo;

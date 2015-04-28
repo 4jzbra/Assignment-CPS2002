@@ -10,7 +10,7 @@ public class CompoundTransaction extends Transaction{
 	private ArrayList<Transaction> elements;
 	
 	public CompoundTransaction(){
-		
+		elements = new ArrayList<Transaction>();
 	}
 	
 	public CompoundTransaction(String n){ 
@@ -19,8 +19,8 @@ public class CompoundTransaction extends Transaction{
 	}
 	
 	// adding atomic and/or compound transactions to the ArrayList
-	public void addTransaction(Transaction transaction){
-		elements.add(transaction);
+	public boolean addTransaction(Transaction transaction){
+		return elements.add(transaction);
 	}
 
 	// process for a compound transaction
