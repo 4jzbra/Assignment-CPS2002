@@ -29,7 +29,7 @@ public class AtomicTransactionTest {
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
 		transaction = new AtomicTransaction(3, 1, 4000);
-		transaction.process();
+		transaction.process(); // this generates a NullPointerException
 	}
 	
 	@Test (expected = NullPointerException.class) // invalid destination account
@@ -37,7 +37,7 @@ public class AtomicTransactionTest {
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
 		transaction = new AtomicTransaction(1, 3, 4000);
-		 transaction.process();
+		 transaction.process(); // this generates a NullPointerException
 	}
 	
 	@Test // insufficient balance
