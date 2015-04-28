@@ -13,10 +13,7 @@ public class AtomicTransaction extends Transaction {   // the leaf of the compos
 		Account source = AccountDatabase.getAccount(getSourceAccountNumber());
 		Account destination = AccountDatabase.getAccount(getDestinationAccountNumber());
 		
-		if (source == null) { 
-			return false;
-		}
-		if (destination == null){
+		if (source == null || destination == null) { 
 			return false;
 		}
 		
