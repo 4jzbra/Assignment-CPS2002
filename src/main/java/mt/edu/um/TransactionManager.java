@@ -10,8 +10,6 @@ public class TransactionManager {
 	
 	public HashMap<Integer, Long> map = new HashMap<Integer, Long>();  // long to keep track of time
 	
-	private ArrayList<Transaction> elements;
-	
 	public TransactionManager(){   
 
 	}
@@ -38,7 +36,7 @@ public class TransactionManager {
 		Date date = new Date();
 		long now = date.getTime();     // storing current time
 
-		if (map.containsKey(src)) {
+		if (map.containsKey(src)) { //check if time elapsed
 			if (map.get(src) > now){
 				boolSrc = false;
 			}
@@ -66,18 +64,19 @@ public class TransactionManager {
 	
 	//Compound
 	public boolean processTransaction(Transaction transaction) {
+		ArrayList<Transaction> elements;
 		elements = transaction.getElements();
-		System.out.println("no of elements "+ elements.size());
+		
 		for (Transaction temp : elements) {
 			if(temp instanceof AtomicTransaction){
 				processTransaction(temp.getSourceAccountNumber(), temp.getDestinationAccountNumber(), temp.getAmount());
 			} else{
-				processTransaction(temp);
+				if(temp.process())
+					processTransaction(temp);
 			}
 		}
 		return true;
 	}
-	
 	
 	int getNumTransactionsProcessed(){
 		return numTransactionsProcessed;

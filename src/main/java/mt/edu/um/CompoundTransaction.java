@@ -3,10 +3,7 @@ package mt.edu.um;
 import java.util.ArrayList;
 
 public class CompoundTransaction extends Transaction{
-	// using composite design pattern
-	
 	private String name;   // name of compound transaction
-	
 	private ArrayList<Transaction> elements = new ArrayList<Transaction>();
 	
 	public CompoundTransaction(){
@@ -17,7 +14,7 @@ public class CompoundTransaction extends Transaction{
 		setName(n);
 	}
 	
-	// adding atomic and/or compound transactions to the ArrayList
+	// adding atomic and/or compound transactions to the ArrayList, does not allow duplicate transactions
 	public boolean addTransaction(Transaction transaction){
 		if(elements.contains(transaction)) return false;
 		else return elements.add(transaction);
@@ -25,14 +22,10 @@ public class CompoundTransaction extends Transaction{
 
 	// process for a compound transaction << needs to take care of time
 	public boolean process() {
-		Transaction transaction = null;
-		
 		for(Transaction temp: elements){
-			transaction = temp;
-			System.out.println("Compound s "+temp.getSourceAccountNumber());
-			System.out.println("Compound d "+temp.getDestinationAccountNumber());
+			if(temp == null) return false;
 			try{
-				transaction.process();
+				temp.process();
 			}catch(IllegalArgumentException e){
 				System.out.println("CompoundTransaction status: false");
 				throw new IllegalArgumentException("ERROR IN TRANSACTION");
