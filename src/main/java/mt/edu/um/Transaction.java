@@ -18,9 +18,7 @@ public abstract class Transaction {
 	}
 	
 	//method to check whether the transaction to be processed is valid or not
-	public boolean process(){
-		throw new UnsupportedOperationException();
-	}
+	public abstract boolean process();
 	
 	public boolean addTransaction(Transaction transaction){
 		throw new UnsupportedOperationException();

@@ -67,11 +67,28 @@ public class App
     	ct1.addTransaction(ct2);
     	ct1.addTransaction(ct3); 
     	
-    	//trying the factory
-    	Transaction test = null;
+    	//testing the factory & compound
     	TransactionFactory tr = new TransactionFactory();
-    	test = tr.getTransaction("Compound");
-    	if(test.addTransaction(t1)) System.out.println("Added successfully");
+    	
+    	Transaction compTrans1 = null;
+    	compTrans1 = tr.getTransaction("Compound");
+    	if(compTrans1.addTransaction(t1)) System.out.println("t1 Added successfully");
+    	if(compTrans1.addTransaction(t2)) System.out.println("t2 Added successfully");
+    	
+    	Transaction compTrans2 = null;
+    	compTrans2 = tr.getTransaction("Compound");
+    	if(compTrans2.addTransaction(compTrans1)) System.out.println("compTrans1 Added successfully");
+    	
+    	System.out.println(acc1.getAccountNumber()+" bal: "+acc1.getAccountBalance());
+    	System.out.println(acc2.getAccountNumber()+" bal: "+acc2.getAccountBalance()); 
+    	System.out.println(acc3.getAccountNumber()+" bal: "+acc3.getAccountBalance());
+    	System.out.println(acc4.getAccountNumber()+" bal: "+acc4.getAccountBalance());
+    	TransactionManager tm = new TransactionManager(compTrans1);
+    	System.out.println(acc1.getAccountNumber()+" bal: "+acc1.getAccountBalance()); //bal changed
+    	System.out.println(acc2.getAccountNumber()+" bal: "+acc2.getAccountBalance()); //bal changed
+    	System.out.println(acc3.getAccountNumber()+" bal: "+acc3.getAccountBalance()); //bal did not change
+    	System.out.println(acc4.getAccountNumber()+" bal: "+acc4.getAccountBalance()); //bal did not change
+    	
     }
     
     

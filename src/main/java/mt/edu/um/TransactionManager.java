@@ -20,6 +20,10 @@ public class TransactionManager {
 		processTransaction(src,dst,amount);
 	}
 	
+	public TransactionManager(Transaction trans){   
+		processTransaction(trans);
+	}
+	
 	//Atomic
 	public boolean processTransaction(int src, int dst, long amount){
 		Transaction transaction = new AtomicTransaction(src, dst, amount);

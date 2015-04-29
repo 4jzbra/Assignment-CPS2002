@@ -8,7 +8,6 @@ public class AtomicTransaction extends Transaction {   // the leaf of the compos
 	
 	public AtomicTransaction(int src, int dst, long amt) {
 		super(src, dst, amt);
-		//process();
 	}	
 	
 		
