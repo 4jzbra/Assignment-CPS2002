@@ -89,6 +89,8 @@ public class App
     	System.out.println(acc3.getAccountNumber()+" bal: "+acc3.getAccountBalance()); //bal did not change
     	System.out.println(acc4.getAccountNumber()+" bal: "+acc4.getAccountBalance()); //bal did not change
     	
+    	System.out.println(tm.getNumTransactionsProcessed());
+    	
     }
     
     
