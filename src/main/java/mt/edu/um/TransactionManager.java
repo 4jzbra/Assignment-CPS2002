@@ -24,13 +24,9 @@ public class TransactionManager {
 	
 	//Atomic
 	public boolean processTransaction(int src, int dst, long amount){
-		Transaction transaction = new AtomicTransaction(src, dst, amount);
+		//Transaction transaction = new AtomicTransaction(src, dst, amount);
 		Account source = AccountDatabase.getAccount(src);
 		Account destination = AccountDatabase.getAccount(dst);
-		
-		if (transaction.process() == false){
-			return false;
-		}
 
 		boolean boolSrc = true, boolDst = true;
 		Date date = new Date();
@@ -47,7 +43,7 @@ public class TransactionManager {
 				boolDst = false;
 			}
 		}
-		
+		System.out.println("prev no of transactions" + numTransactionsProcessed);
 		if (boolSrc && boolDst) {
 			map.put(source.getAccountNumber(), now + 15000);    // keeping track of source account & time
 			map.put(destination.getAccountNumber(), now + 15000);  // keeping track of destination account & time

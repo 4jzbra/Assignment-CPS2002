@@ -55,9 +55,9 @@ public class App
     	Transaction t3 = new AtomicTransaction(1,5,900);
     	Transaction t4 = new AtomicTransaction(1,4,350);
     	
-    	Transaction ct1 = new CompoundTransaction();  // root transaction
-    	Transaction ct2 = new CompoundTransaction();
-    	Transaction ct3 = new CompoundTransaction();
+    	Transaction ct1 = new CompoundTransaction("MAIN");  // root transaction
+    	Transaction ct2 = new CompoundTransaction("SUB1");
+    	Transaction ct3 = new CompoundTransaction("SUB2");
     	
         ct2.addTransaction(t1);
     	ct2.addTransaction(t2);
@@ -84,7 +84,7 @@ public class App
     	System.out.println(acc2.getAccountNumber()+" bal: "+acc2.getAccountBalance()); 
     	System.out.println(acc3.getAccountNumber()+" bal: "+acc3.getAccountBalance());
     	System.out.println(acc4.getAccountNumber()+" bal: "+acc4.getAccountBalance());
-    	TransactionManager tm = new TransactionManager(compTrans2);
+    	TransactionManager tm = new TransactionManager(ct1);
     	System.out.println(acc1.getAccountNumber()+" bal: "+acc1.getAccountBalance()); 
     	System.out.println(acc2.getAccountNumber()+" bal: "+acc2.getAccountBalance()); 
     	System.out.println(acc3.getAccountNumber()+" bal: "+acc3.getAccountBalance()); 
