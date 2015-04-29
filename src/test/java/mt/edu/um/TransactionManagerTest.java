@@ -11,7 +11,7 @@ public class TransactionManagerTest {
 	
 	@Before
 	public void initialize(){
-		transactionM = new AtomicTransactionManager();
+		transactionM = new TransactionManager();
 		database = new AccountDatabase();
 	}
 
@@ -71,7 +71,7 @@ public class TransactionManagerTest {
 		database.addNewAccount(acc2);
 
 		int num = transactionM.getNumTransactionsProcessed();
-		TransactionManager tm = new AtomicTransactionManager(7, 8, 1100);
+		TransactionManager tm = new TransactionManager(7, 8, 1100);
 		Assert.assertEquals(num + 1, tm.getNumTransactionsProcessed());
 	}
 }

@@ -26,7 +26,7 @@ public class CompoundTransactionTest {
 		transaction = new CompoundTransaction("Prepare Bank Loan");
 		transaction.addTransaction(new AtomicTransaction(1,2, 5000));
 		transaction.addTransaction(new AtomicTransaction(2,3, 8000));
-		tm = new CompoundTransactionManager();
+		tm = new TransactionManager();
 		Assert.assertEquals(true, tm.processTransaction(transaction));
 	}
 
