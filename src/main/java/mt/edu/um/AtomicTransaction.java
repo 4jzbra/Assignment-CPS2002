@@ -23,9 +23,11 @@ public class AtomicTransaction extends Transaction {   // the leaf of the compos
 		}
 		
 		if ((source.getAccountBalance() >= 0) && (source.getAccountBalance() - getAmount()) >= 0) {
+			System.out.println("AtomicTransaction status: true");
 			return true;
 		} 
 		else {
+			System.out.println("AtomicTransaction status: false");
 			throw new IllegalArgumentException("ERROR IN TRANSACTION!");
 		}
 	}

@@ -24,15 +24,30 @@ public class CompoundTransaction extends Transaction{
 
 	// process for a compound transaction << needs to take care of time
 	public boolean process() {
-		// for all transactions in elements, transaction.process()
-		for(Transaction transaction: elements){
+		Transaction transaction = null;
+		
+		for(Transaction temp: elements){
+			transaction = temp;
+			System.out.println("Compound s"+temp.getSourceAccountNumber());
 			try{
 				transaction.process();
 			}catch(IllegalArgumentException e){
+				System.out.println("CompoundTransaction status: false");
 				throw new IllegalArgumentException("ERROR IN TRANSACTION");
 			}
+			
+			try {
+			    Thread.sleep(16000);                 //1000 milliseconds is one second.
+			} catch(InterruptedException ex) {
+			    Thread.currentThread().interrupt();
+			}  
 		}
+		System.out.println("CompoundTransaction status: true");
 		return true;
+	}
+	
+	public ArrayList<Transaction> getElements(){
+		return elements;
 	}
 	
 	public void setName(String n){

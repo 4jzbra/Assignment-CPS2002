@@ -8,6 +8,7 @@ public class CompoundTransactionTest {
 	private Transaction transaction;
 	private AccountDatabase database;
 	private Account acc1, acc2, acc3;
+	private TransactionManager tm;
 	
 	@Before
 	public void initialize(){
@@ -25,7 +26,8 @@ public class CompoundTransactionTest {
 		transaction = new CompoundTransaction("Prepare Bank Loan");
 		transaction.addTransaction(new AtomicTransaction(1,2, 5000));
 		transaction.addTransaction(new AtomicTransaction(2,3, 8000));
-		Assert.assertEquals(true, transaction.process());
+		tm = new CompoundTransactionManager();
+		Assert.assertEquals(true, tm.processTransaction(transaction));
 	}
 
 }
