@@ -1,5 +1,6 @@
 package mt.edu.um;
-import java.lang.UnsupportedOperationException;;
+import java.lang.UnsupportedOperationException;
+import java.util.ArrayList;
 
 public abstract class Transaction {
 	
@@ -29,6 +30,10 @@ public abstract class Transaction {
 		setSourceAccountNumber(src);
 		setDestinationAccountNumber(dst);
 		setAmount(amt);
+	}
+	
+	public ArrayList<Transaction> getElements(){
+		throw new UnsupportedOperationException();
 	}
 
 	public void setSourceAccountNumber(int accNo) {
