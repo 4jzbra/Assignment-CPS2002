@@ -79,15 +79,16 @@ public class App
     	compTrans2 = tr.getTransaction("Compound");
     	if(compTrans2.addTransaction(compTrans1)) System.out.println("compTrans1 Added successfully");
     	
+    	
     	System.out.println(acc1.getAccountNumber()+" bal: "+acc1.getAccountBalance());
     	System.out.println(acc2.getAccountNumber()+" bal: "+acc2.getAccountBalance()); 
     	System.out.println(acc3.getAccountNumber()+" bal: "+acc3.getAccountBalance());
     	System.out.println(acc4.getAccountNumber()+" bal: "+acc4.getAccountBalance());
-    	TransactionManager tm = new TransactionManager(compTrans1);
-    	System.out.println(acc1.getAccountNumber()+" bal: "+acc1.getAccountBalance()); //bal changed
-    	System.out.println(acc2.getAccountNumber()+" bal: "+acc2.getAccountBalance()); //bal changed
-    	System.out.println(acc3.getAccountNumber()+" bal: "+acc3.getAccountBalance()); //bal did not change
-    	System.out.println(acc4.getAccountNumber()+" bal: "+acc4.getAccountBalance()); //bal did not change
+    	TransactionManager tm = new TransactionManager(compTrans2);
+    	System.out.println(acc1.getAccountNumber()+" bal: "+acc1.getAccountBalance()); 
+    	System.out.println(acc2.getAccountNumber()+" bal: "+acc2.getAccountBalance()); 
+    	System.out.println(acc3.getAccountNumber()+" bal: "+acc3.getAccountBalance()); 
+    	System.out.println(acc4.getAccountNumber()+" bal: "+acc4.getAccountBalance()); 
     	
     	System.out.println(tm.getNumTransactionsProcessed());
     	
