@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class AtomicTransactionTest {
-	private Transaction transaction;
+	private AtomicTransaction transaction;
 	private AccountDatabase database;
 	private Account acc1, acc2;
 	

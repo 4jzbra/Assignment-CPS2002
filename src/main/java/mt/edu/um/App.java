@@ -55,9 +55,9 @@ public class App
     	Transaction t3 = new AtomicTransaction(1,5,900);
     	Transaction t4 = new AtomicTransaction(1,4,350);
     	
-    	Transaction ct1 = new CompoundTransaction("MAIN");  // root transaction
-    	Transaction ct2 = new CompoundTransaction("SUB1");
-    	Transaction ct3 = new CompoundTransaction("SUB2");
+    	CompoundTransaction ct1 = new CompoundTransaction("MAIN");  // root transaction
+    	CompoundTransaction ct2 = new CompoundTransaction("SUB1");
+    	CompoundTransaction ct3 = new CompoundTransaction("SUB2");
     	
         ct2.addTransaction(t1);
     	ct2.addTransaction(t2);
@@ -67,10 +67,11 @@ public class App
     	ct1.addTransaction(ct2);
     	ct1.addTransaction(ct3); 
     	
-    	//testing the factory & compound
+    	//testing the factory & compound 
+    	/*
     	TransactionFactory tr = new TransactionFactory();
     	
-    	Transaction compTrans1 = null;
+    	CompoundTransaction compTrans1 = null;
     	compTrans1 = tr.getTransaction("Compound");
     	if(compTrans1.addTransaction(t1)) System.out.println("t1 Added successfully");
     	if(compTrans1.addTransaction(t2)) System.out.println("t2 Added successfully");
@@ -84,13 +85,13 @@ public class App
     	compTrans3 = tr.getTransaction("Compound");
     	if(compTrans3.addTransaction(compTrans1)) System.out.println("compTrans1 Added successfully");
     	if(compTrans3.addTransaction(compTrans2)) System.out.println("compTrans2 Added successfully");
-    	
+    	*/
     	
     	System.out.println(acc1.getAccountNumber()+" bal: "+acc1.getAccountBalance());
     	System.out.println(acc2.getAccountNumber()+" bal: "+acc2.getAccountBalance()); 
     	System.out.println(acc3.getAccountNumber()+" bal: "+acc3.getAccountBalance());
     	System.out.println(acc4.getAccountNumber()+" bal: "+acc4.getAccountBalance());
-    	TransactionManager tm = new TransactionManager(compTrans3);
+    	TransactionManager tm = new TransactionManager(ct1);
     	System.out.println(acc1.getAccountNumber()+" bal: "+acc1.getAccountBalance()); 
     	System.out.println(acc2.getAccountNumber()+" bal: "+acc2.getAccountBalance()); 
     	System.out.println(acc3.getAccountNumber()+" bal: "+acc3.getAccountBalance()); 
@@ -105,8 +106,8 @@ public class App
     
     public static void printAllAccounts() {
     	Account acc = new Account();
-		for (int index = 0; index < database.accountsArray.size(); index++) {
-			acc = database.accountsArray.get(index);
+		for (int index = 0; index < AccountDatabase.accountsArray.size(); index++) {
+			acc = AccountDatabase.accountsArray.get(index);
 			System.out.println("Account Number: " + acc.getAccountNumber() + "\tName: "
 					+ acc.getAccountName() + "\tBalance: " + acc.getAccountBalance());
 		}

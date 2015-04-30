@@ -1,14 +1,14 @@
 package mt.edu.um;
 
 import java.util.ArrayList;
-import java.util.Date;
+//import java.util.Date;
 import java.util.HashMap;;
 
 public class TransactionManager {
 	
 	private static int numTransactionsProcessed;
 	
-	private static HashMap<Integer, Long> map = new HashMap<Integer, Long>();  // long to keep track of time
+	//private static HashMap<Integer, Long> map = new HashMap<Integer, Long>();  // long to keep track of time
 	
 	public TransactionManager(){   
 

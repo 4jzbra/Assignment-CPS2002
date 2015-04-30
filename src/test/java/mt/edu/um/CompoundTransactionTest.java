@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CompoundTransactionTest {
-	private Transaction transaction;
+	private CompoundTransaction transaction;
 	private AccountDatabase database;
 	private Account acc1, acc2, acc3;
 	private TransactionManager tm;
