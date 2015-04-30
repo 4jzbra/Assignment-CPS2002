@@ -1,13 +1,18 @@
 package mt.edu.um;
 import java.lang.NullPointerException;
 
-public class AtomicTransaction extends Transaction {   // the leaf of the composite design pattern
+public class AtomicTransaction implements Transaction {   // the leaf of the composite design pattern
 		
+	private int sourceAccountNumber; 
+	private int destinationAccountNumber;
+	private long amount;
 	
 	public AtomicTransaction(){	}
 	
 	public AtomicTransaction(int src, int dst, long amt) {
-		super(src, dst, amt);
+		setSourceAccountNumber(src);
+		setDestinationAccountNumber(dst);
+		setAmount(amt);
 	}	
 	
 		
@@ -29,5 +34,29 @@ public class AtomicTransaction extends Transaction {   // the leaf of the compos
 			System.out.println("AtomicTransaction status: false");
 			throw new IllegalArgumentException("ERROR IN TRANSACTION!");
 		}
+	}
+	
+	public void setSourceAccountNumber(int accNo) {
+		sourceAccountNumber = accNo;
+	}
+
+	public void setDestinationAccountNumber(int accNo) {
+		destinationAccountNumber = accNo;
+	}
+
+	public void setAmount(long amt) {
+		amount = amt;
+	}
+
+	public int getSourceAccountNumber() {
+		return sourceAccountNumber;
+	}
+
+	public int getDestinationAccountNumber() {
+		return destinationAccountNumber;
+	}
+
+	public long getAmount() {
+		return amount;
 	}
 }
