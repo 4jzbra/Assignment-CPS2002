@@ -6,9 +6,9 @@ import java.util.HashMap;;
 
 public class TransactionManager {
 	
-	public int numTransactionsProcessed;
+	private static int numTransactionsProcessed;
 	
-	public HashMap<Integer, Long> map = new HashMap<Integer, Long>();  // long to keep track of time
+	private static HashMap<Integer, Long> map = new HashMap<Integer, Long>();  // long to keep track of time
 	
 	public TransactionManager(){   
 
@@ -28,42 +28,22 @@ public class TransactionManager {
 		Account source = AccountDatabase.getAccount(src);
 		Account destination = AccountDatabase.getAccount(dst);
 
-		boolean boolSrc = true, boolDst = true;
-		Date date = new Date();
-		long now = date.getTime();     // storing current time
-
-		if (map.containsKey(src)) { //check if time elapsed
-			if (map.get(src) > now){
-				boolSrc = false;
-			}
-		}
-
-		if (map.containsKey(dst)) {
-			if (map.get(dst) > now){
-				boolDst = false;
-			}
-		}
-		System.out.println("prev no of transactions" + numTransactionsProcessed);
-		if (boolSrc && boolDst) {
-			map.put(source.getAccountNumber(), now + 15000);    // keeping track of source account & time
-			map.put(destination.getAccountNumber(), now + 15000);  // keeping track of destination account & time
-
-			source.setAccountBalance(source.getAccountBalance() - amount);  // transfer source
-			destination.setAccountBalance(destination.getAccountBalance() + amount); // transfer destination
+		source.setAccountBalance(source.getAccountBalance() - amount);  // transfer source
+		destination.setAccountBalance(destination.getAccountBalance() + amount); // transfer destination
 			
-			++numTransactionsProcessed;
-			return true;
-		} 
-		else
-			return false;
+		++numTransactionsProcessed;
+		return true;
 	}
 	
 	//Compound
 	public boolean processTransaction(Transaction transaction) {
 		ArrayList<Transaction> elements;
-		elements = transaction.getElements();
+		CompoundTransaction trans;
+		trans = (CompoundTransaction) transaction; //try
+		elements = trans.getElements();
 		
 		for (Transaction temp : elements) {
+			
 			if(temp instanceof AtomicTransaction){
 				processTransaction(temp.getSourceAccountNumber(), temp.getDestinationAccountNumber(), temp.getAmount());
 			} else{
