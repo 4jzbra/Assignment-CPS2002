@@ -51,7 +51,7 @@ public class App
     	
     	// Testing Compound Transactions (change 1)  [ignoring tm]
     	Transaction t1 = new AtomicTransaction(1,2,300);
-    	Transaction t2 = new AtomicTransaction(3,4,400);
+    	Transaction t2 = new AtomicTransaction(1,4,400);
     	Transaction t3 = new AtomicTransaction(1,5,900);
     	Transaction t4 = new AtomicTransaction(1,4,350);
     	
@@ -77,14 +77,20 @@ public class App
     	
     	Transaction compTrans2 = null;
     	compTrans2 = tr.getTransaction("Compound");
-    	if(compTrans2.addTransaction(compTrans1)) System.out.println("compTrans1 Added successfully");
+    	if(compTrans2.addTransaction(t3)) System.out.println("t3 Added successfully");
+    	if(compTrans2.addTransaction(t4)) System.out.println("t4 Added successfully");
+    	
+    	Transaction compTrans3 = null;
+    	compTrans3 = tr.getTransaction("Compound");
+    	if(compTrans3.addTransaction(compTrans1)) System.out.println("compTrans1 Added successfully");
+    	if(compTrans3.addTransaction(compTrans2)) System.out.println("compTrans2 Added successfully");
     	
     	
     	System.out.println(acc1.getAccountNumber()+" bal: "+acc1.getAccountBalance());
     	System.out.println(acc2.getAccountNumber()+" bal: "+acc2.getAccountBalance()); 
     	System.out.println(acc3.getAccountNumber()+" bal: "+acc3.getAccountBalance());
     	System.out.println(acc4.getAccountNumber()+" bal: "+acc4.getAccountBalance());
-    	TransactionManager tm = new TransactionManager(ct1);
+    	TransactionManager tm = new TransactionManager(compTrans3);
     	System.out.println(acc1.getAccountNumber()+" bal: "+acc1.getAccountBalance()); 
     	System.out.println(acc2.getAccountNumber()+" bal: "+acc2.getAccountBalance()); 
     	System.out.println(acc3.getAccountNumber()+" bal: "+acc3.getAccountBalance()); 
