@@ -42,11 +42,16 @@ public class TransactionManager {
 		trans = (CompoundTransaction) transaction; //try
 		elements = trans.getElements();
 		
+		
+		AtomicTransaction at;
+		
 		for (Transaction temp : elements) {
 			
 			if(temp instanceof AtomicTransaction){
-				processTransaction(temp.getSourceAccountNumber(), temp.getDestinationAccountNumber(), temp.getAmount());
+				at = (AtomicTransaction)temp;
+				processTransaction(at.getSourceAccountNumber(), at.getDestinationAccountNumber(), at.getAmount());
 			} else{
+				
 				if(temp.process())
 					processTransaction(temp);
 			}
