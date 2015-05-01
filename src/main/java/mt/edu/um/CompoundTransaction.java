@@ -7,7 +7,7 @@ public class CompoundTransaction implements Transaction{
 	private ArrayList<Transaction> elements = new ArrayList<Transaction>();
 	
 	public CompoundTransaction(){
-		
+
 	}
 	
 	public CompoundTransaction(String n){ 
@@ -20,20 +20,8 @@ public class CompoundTransaction implements Transaction{
 		else return elements.add(transaction);
 	}
 
-	// process for a compound transaction << needs to take care of time
 	public boolean process() {
-		for(Transaction temp: elements){
-			if(temp == null) return false;
-			
-			try{
-				temp.process();
-			}catch(IllegalArgumentException e){
-				System.out.println("CompoundTransaction status: false");
-				throw new IllegalArgumentException("ERROR IN TRANSACTION");
-			}
-
-		}
-		System.out.println("CompoundTransaction successful");
+		if(elements.isEmpty()) throw new IllegalArgumentException("Compound transaction has no elements.");
 		return true;
 	}
 	

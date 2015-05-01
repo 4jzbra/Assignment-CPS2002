@@ -65,7 +65,7 @@ public class App
     	ct3.addTransaction(t4);
     	
     	ct1.addTransaction(ct2);
-    	ct1.addTransaction(ct3); 
+    	ct1.addTransaction(ct3);
     	
     	//testing the factory & compound 
     	/*

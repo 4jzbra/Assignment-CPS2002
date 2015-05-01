@@ -44,26 +44,30 @@ public class TransactionManager {
 	
 	//Compound
 	public boolean processTransaction(Transaction transaction) {
-		ArrayList<Transaction> elements;
-		CompoundTransaction trans;
-		trans = (CompoundTransaction) transaction; //try
-		elements = trans.getElements();
+		CompoundTransaction compoundT = (CompoundTransaction) transaction;
+
+		boolean bool = false;
 		
+		try{
+			bool = compoundT.process();	
+		}catch(IllegalArgumentException e){
+			throw new IllegalArgumentException(e.getMessage());
+		} 
 		
-		AtomicTransaction at;
-		
-		for (Transaction temp : elements) {
-			
-			if(temp instanceof AtomicTransaction){
-				at = (AtomicTransaction)temp;
-				processTransaction(at.getSourceAccountNumber(), at.getDestinationAccountNumber(), at.getAmount());
-			} else{
-				
-				if(temp.process())
-					processTransaction(temp);
+		ArrayList<Transaction> elements = compoundT.getElements();
+		if(bool){
+			for (Transaction temp : elements) {
+				if(temp instanceof AtomicTransaction){
+					AtomicTransaction atomicT = (AtomicTransaction)temp;
+					processTransaction(atomicT.getSourceAccountNumber(), atomicT.getDestinationAccountNumber(), atomicT.getAmount());
+				} else{
+					if(temp.process())
+						processTransaction(temp);
+				}
 			}
+			return true;
 		}
-		return true;
+		else return false;
 	}
 	
 	int getNumTransactionsProcessed(){
