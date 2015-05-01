@@ -1,15 +1,11 @@
 package mt.edu.um;
 
 import java.util.ArrayList;
-//import java.util.Date;
-import java.util.HashMap;;
 
 public class TransactionManager {
 	
 	private static int numTransactionsProcessed;
-	
-	//private static HashMap<Integer, Long> map = new HashMap<Integer, Long>();  // long to keep track of time
-	
+		
 	public TransactionManager(){   
 
 	}
@@ -24,15 +20,26 @@ public class TransactionManager {
 	
 	//Atomic
 	public boolean processTransaction(int src, int dst, long amount){
-		//Transaction transaction = new AtomicTransaction(src, dst, amount);
-		Account source = AccountDatabase.getAccount(src);
-		Account destination = AccountDatabase.getAccount(dst);
-
-		source.setAccountBalance(source.getAccountBalance() - amount);  // transfer source
-		destination.setAccountBalance(destination.getAccountBalance() + amount); // transfer destination
+		Transaction transaction = new AtomicTransaction(src, dst, amount);
+		boolean bool = false;
+		
+		try{
+			bool = transaction.process(); //since this can throw an exception, it was put in a try and catch block
+		} catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+		
+		if(bool){
+			Account source = AccountDatabase.getAccount(src);
+			Account destination = AccountDatabase.getAccount(dst);
+	
+			source.setAccountBalance(source.getAccountBalance() - amount);  // transfer source
+			destination.setAccountBalance(destination.getAccountBalance() + amount); // transfer destination
+				
+			++numTransactionsProcessed;
 			
-		++numTransactionsProcessed;
-		return true;
+			return true;
+		} else return false;
 	}
 	
 	//Compound
