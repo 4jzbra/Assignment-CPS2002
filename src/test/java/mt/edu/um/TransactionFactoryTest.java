@@ -31,5 +31,4 @@ public class TransactionFactoryTest {
 		Assert.assertEquals(null, factory.getTransaction("abc"));
 	}
 	
-	
 }
