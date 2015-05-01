@@ -33,38 +33,13 @@ public class TransactionManagerTest {
 		transactionM.processTransaction(3, 4, 6000);
 	}
 
-	@Test // transaction of same accounts twice i.e. 15 secs have not elapsed
-	public void processTransactionTest3() {
-		final Account acc1 = new Account(5, "Savings", 5000);
-		final Account acc2 = new Account(6, "Savings", 3500);
-		database.addNewAccount(acc1);
-		database.addNewAccount(acc2);
-		transactionM.processTransaction(5, 6, 100);
-		Assert.assertEquals(false, transactionM.processTransaction(6, 5, 2000));
-	}
-	
-	@Test // transaction of same accounts after 15 seconds
-	public void processTransactionTest4() {
-		final Account acc1 = new Account(5, "Savings", 5000);
-		final Account acc2 = new Account(6, "Savings", 3500);
-		database.addNewAccount(acc1);
-		database.addNewAccount(acc2);
-		transactionM.processTransaction(5, 6, 100);
-		try {
-			Thread.sleep(15000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		Assert.assertEquals(true, transactionM.processTransaction(6, 5, 2000));
-	}
-	
 	@Test (expected = NullPointerException.class) // accounts do not exist test
 	public void processTransactionTest5() {
 		transactionM.processTransaction(15, 16, 2000);
 	}
 	
-	@Test  //testing constructor
-	public void constructorTest() {
+	@Test  //testing constructor for AtomicTransaction
+	public void constructorTest1() {
 		final Account acc1 = new Account(7, "Savings", 4000);
 		final Account acc2 = new Account(8, "Savings", 2600);
 		database.addNewAccount(acc1);
@@ -74,4 +49,22 @@ public class TransactionManagerTest {
 		TransactionManager tm = new TransactionManager(7, 8, 1100);
 		Assert.assertEquals(num + 1, tm.getNumTransactionsProcessed());
 	}
+	
+	@Test  //testing constructor for CompoundTransaction
+	public void constructorTest2() {
+		final Account acc1 = new Account(7, "Savings", 4000);
+		final Account acc2 = new Account(8, "Savings", 2600);
+		database.addNewAccount(acc1);
+		database.addNewAccount(acc2);
+		
+		Transaction t1 = new AtomicTransaction(7, 8, 1100);
+		CompoundTransaction compTrans = new CompoundTransaction();
+		compTrans.addTransaction(t1);
+		
+		int num = transactionM.getNumTransactionsProcessed();
+		TransactionManager tm = new TransactionManager(compTrans);
+		Assert.assertEquals(num + 1, tm.getNumTransactionsProcessed());
+	}
+	
+	
 }

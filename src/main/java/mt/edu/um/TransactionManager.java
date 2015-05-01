@@ -14,8 +14,8 @@ public class TransactionManager {
 		processTransaction(src,dst,amount);
 	}
 	
-	public TransactionManager(Transaction trans){   
-		processTransaction(trans);
+	public TransactionManager(CompoundTransaction transaction){   
+		processTransaction(transaction);
 	}
 	
 	//Atomic
