@@ -25,8 +25,10 @@ public class TransactionManager {
 		
 		try{
 			bool = transaction.process(); //since this can throw an exception, it was put in a try and catch block
-		} catch(Exception e){
-			System.out.println(e.getMessage());
+		} catch(NullPointerException ex){
+			throw ex;
+		} catch(IllegalArgumentException ex){
+			throw ex;
 		}
 		
 		if(bool){
