@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class TransactionManager {
 	
-	private static int numTransactionsProcessed;
+	private int numTransactionsProcessed;
 		
 	public TransactionManager(){   
 

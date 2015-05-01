@@ -92,6 +92,7 @@ public class App
     	System.out.println(acc3.getAccountNumber()+" bal: "+acc3.getAccountBalance());
     	System.out.println(acc4.getAccountNumber()+" bal: "+acc4.getAccountBalance());
     	TransactionManager tm = new TransactionManager(ct1);
+    	tm.processTransaction(3, 1, 45);
     	System.out.println(acc1.getAccountNumber()+" bal: "+acc1.getAccountBalance()); 
     	System.out.println(acc2.getAccountNumber()+" bal: "+acc2.getAccountBalance()); 
     	System.out.println(acc3.getAccountNumber()+" bal: "+acc3.getAccountBalance()); 
