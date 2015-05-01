@@ -23,16 +23,14 @@ public class AtomicTransaction implements Transaction {   // the leaf of the com
 		if (source == null || destination == null) { 
 			System.out.println("source "+source.getAccountNumber());
 			System.out.println("destination "+destination.getAccountNumber());
-			throw new NullPointerException();
+			throw new NullPointerException("Source and/or Destination account does not exist.");
 		}
 		
 		if ((source.getAccountBalance() >= 0) && (source.getAccountBalance() - getAmount()) >= 0) {
-			System.out.println("AtomicTransaction status: true");
 			return true;
 		} 
 		else {
-			System.out.println("AtomicTransaction status: false");
-			throw new IllegalArgumentException("ERROR IN TRANSACTION!");
+			throw new IllegalArgumentException("Insufficient balance");
 		}
 	}
 	
