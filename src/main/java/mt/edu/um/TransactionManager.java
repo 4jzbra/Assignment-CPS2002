@@ -52,8 +52,8 @@ public class TransactionManager {
 		
 		try{
 			bool = compoundT.process();	
-		}catch(IllegalArgumentException e){
-			throw new IllegalArgumentException(e.getMessage());
+		}catch(IllegalArgumentException ex){
+			throw ex;
 		} 
 		
 		ArrayList<Transaction> elements = compoundT.getElements();
