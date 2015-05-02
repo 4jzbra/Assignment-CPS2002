@@ -14,12 +14,12 @@ public class TransactionFactory {
 	
 	// for typical compound transactions  (not sure about this!)
 	public Transaction getDepositType(String type){
-		if(type.equalsIgnoreCase("High Risk")){
+		if(type.equalsIgnoreCase("High Risk Deposit")){
 			AtomicTransaction aT1 = new AtomicTransaction();
 			aT1.setSourceAccountNumber(3123);
 			return aT1;
 		}
-		else if(type.equalsIgnoreCase("Low Risk")){
+		else if(type.equalsIgnoreCase("Low Risk Deposit")){
 			AtomicTransaction aT2 = new AtomicTransaction();
 			aT2.setSourceAccountNumber(8665);
 			return aT2;
