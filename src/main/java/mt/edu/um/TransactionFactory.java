@@ -9,7 +9,7 @@ public class TransactionFactory {
 		else if(type.equalsIgnoreCase("Atomic")){
 			return new AtomicTransaction();
 		}
-		else return null;  // or exception?
+		else return null; 
 	}
 
 }
