@@ -19,11 +19,11 @@ public class CompoundTransactionTest {
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
 		database.addNewAccount(acc3);
+		transaction = new CompoundTransaction("Prepare Bank Loan");
 	}
 	
 	@Test 
 	public void processTest1() {
-		transaction = new CompoundTransaction("Prepare Bank Loan");
 		transaction.addTransaction(new AtomicTransaction(1,2, 5000));
 		transaction.addTransaction(new AtomicTransaction(2,3, 8000));
 		tm = new TransactionManager();
@@ -32,17 +32,17 @@ public class CompoundTransactionTest {
 	
 	@Test (expected = IllegalArgumentException.class)
 	public void processTest2() {
-		transaction = new CompoundTransaction("Prepare Bank Loan");
 		tm = new TransactionManager();
 		tm.processTransaction(transaction);
 	}
 	
 	@Test
-	public void addTransactionTest(){
+	public void addTransactionTest1(){
 		transaction = new CompoundTransaction();
 		transaction.addTransaction(new AtomicTransaction(1,2,100));
 		Assert.assertEquals(1, transaction.getElements().size());
 	}
+	
 	
 	@Test
 	public void setNameTest(){

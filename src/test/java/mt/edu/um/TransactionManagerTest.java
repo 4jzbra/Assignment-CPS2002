@@ -7,6 +7,9 @@ import org.junit.Test;
 public class TransactionManagerTest {
 	private TransactionManager transactionM;
 	private AccountDatabase database;
+	private AtomicTransaction atomicT1; ////////
+	private AtomicTransaction atomicT2;/////////
+	private AtomicTransaction atomicT3;/////////
 	private CompoundTransaction compoundT;
 
 	
@@ -14,6 +17,9 @@ public class TransactionManagerTest {
 	public void initialize() {
 		transactionM = new TransactionManager();
 		database = new AccountDatabase();
+		atomicT1 = new AtomicTransaction(3, 4, 500);
+		atomicT2 = new AtomicTransaction(4, 3, 750);
+		atomicT3 = new AtomicTransaction(1, 4, 1555);
 		compoundT = new CompoundTransaction("Main Transaction");
 	}
 
@@ -48,15 +54,23 @@ public class TransactionManagerTest {
 		final Account acc2 = new Account(4, "Savings", 3500);
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
-		Transaction t1 = new AtomicTransaction(3,4,300);
-    	Transaction t2 = new AtomicTransaction(4,3,400);
-    	compoundT.addTransaction(t1);
-    	compoundT.addTransaction(t2);
+    	compoundT.addTransaction(atomicT1);
+    	compoundT.addTransaction(atomicT2);
     	Assert.assertEquals(true, transactionM.processTransaction(compoundT));
 	}
 	
+	public void processTransactionTest5() {      // when account does not exist
+		final Account acc1 = new Account(3, "Savings", 5000);
+		final Account acc2 = new Account(4, "Savings", 3500);
+		database.addNewAccount(acc1);
+		database.addNewAccount(acc2);
+    	compoundT.addTransaction(atomicT3);
+    	compoundT.addTransaction(atomicT2);
+    	Assert.assertEquals(false, transactionM.processTransaction(compoundT));
+	}
+	
 	@Test (expected = IllegalArgumentException.class) // compound transaction with no elements
-	public void processTransactionTest5() {
+	public void processTransactionTest6() {
 		transactionM.processTransaction(compoundT);
 	}
 	
