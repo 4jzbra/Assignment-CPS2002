@@ -12,7 +12,7 @@ public class TypicalCompound {    // using facade design pattern
 		commission = new CompoundTransaction();
 	}
 	
-	
+	//public processDeposit()
 	
 
 

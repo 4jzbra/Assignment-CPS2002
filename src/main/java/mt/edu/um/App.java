@@ -106,7 +106,7 @@ public class App
     
     
     public static void printAllAccounts() {
-    	Account acc = new Account();
+    	Account acc;
 		for (int index = 0; index < AccountDatabase.accountsArray.size(); index++) {
 			acc = AccountDatabase.accountsArray.get(index);
 			System.out.println("Account Number: " + acc.getAccountNumber() + "\tName: "
