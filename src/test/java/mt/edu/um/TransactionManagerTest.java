@@ -39,12 +39,14 @@ public class TransactionManagerTest {
 		final Account acc2 = new Account(4, "Savings", 3500);
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
-		transactionM.processTransaction(3, 4, 6000);
+		
+		Assert.assertEquals(false, transactionM.processTransaction(3, 4, 6000));
 	}
 
 	@Test (expected = NullPointerException.class) // accounts do not exist test 
 	public void processTransactionTest3() {
-		transactionM.processTransaction(15, 16, 2000);
+		
+		Assert.assertEquals(false, transactionM.processTransaction(15, 16, 2000));
 	}
 	
 	//Tests for Compound processTransaction
