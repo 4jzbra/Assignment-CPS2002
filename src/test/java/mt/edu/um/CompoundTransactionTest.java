@@ -20,6 +20,7 @@ public class CompoundTransactionTest {
 		database.addNewAccount(acc2);
 		database.addNewAccount(acc3);
 		transaction = new CompoundTransaction("Prepare Bank Loan");
+		transaction = new CompoundTransaction();
 	}
 	
 	@Test 
@@ -38,7 +39,6 @@ public class CompoundTransactionTest {
 	
 	@Test
 	public void addTransactionTest1(){
-		transaction = new CompoundTransaction();
 		transaction.addTransaction(new AtomicTransaction(1,2,100));
 		Assert.assertEquals(1, transaction.getElements().size());
 	}
@@ -46,9 +46,14 @@ public class CompoundTransactionTest {
 	
 	@Test
 	public void setNameTest(){
-		transaction = new CompoundTransaction();
 		transaction.setName("Pay Loan");
 		Assert.assertEquals("Pay Loan", transaction.getName());
+	}
+	
+	@Test
+	public void getNameTest(){
+		transaction.setName("Pay Deposit");
+		Assert.assertEquals("Pay Deposit", transaction.getName());
 	}
 
 }
