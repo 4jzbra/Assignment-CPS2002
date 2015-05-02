@@ -12,6 +12,7 @@ public class TransactionFactory {
 		else return null; 
 	}
 	
+	/*
 	// for typical compound transactions  (not sure about this!)
 	public Transaction getDepositType(String type){
 		if(type.equalsIgnoreCase("High Risk Deposit")){
@@ -25,6 +26,6 @@ public class TransactionFactory {
 			return aT2;
 		}
 		else return null;
-	}
+	}  */
 
 }
