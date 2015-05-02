@@ -1,6 +1,6 @@
 package mt.edu.um;
 
-public class Account {
+public final class Account {
 	
 	private int accountNumber;   // unique account number
 	private String accountName;  // eg fixed account, savings, etc...
