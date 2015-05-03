@@ -1,5 +1,7 @@
 package mt.edu.um;
 
+import java.util.ArrayList;
+
 public abstract class Builder {
 	
 	static Builder getRiskBuilder(String risk){
@@ -10,7 +12,7 @@ public abstract class Builder {
 	
 	public void buildDepost(){};
 	
-	public void buildMainTransaction(){};
+	public void buildMainTransaction(ArrayList<Integer> dstAccounts, ArrayList<Double> amounts){};
 	
 	public void buildCommision(){};
 	
