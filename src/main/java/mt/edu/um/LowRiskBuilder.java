@@ -17,9 +17,11 @@ public class LowRiskBuilder extends Builder {
 		compoundTransaction  = new CompoundTransaction();
 	}
 	
-	public void buildDeposit(){
+	public void buildDeposit(int dstAcc, long depositAmt){
 		AtomicTransaction depositTrans = new AtomicTransaction();
 		depositTrans.setSourceAccountNumber(DEP_SRC_ACCOUNT); //we need to create an account for this somewhere in the program
+		depositTrans.setDestinationAccountNumber(dstAcc); //dest account here not specified
+		depositTrans.setAmount(depositAmt);
 		compoundTransaction.addTransaction(depositTrans);
 	}                                         
 	

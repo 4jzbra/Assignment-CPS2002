@@ -8,20 +8,18 @@ public class App
 
     public static void main( String[] args )
     {
-    	testingHighRisk();
-    	
-    	
-    	
-    	
+    	testingHighRisk(); //not working properly
+    	  	
     	
     	
     }
+    
     public static void testingHighRisk(){
     	createAccounts();
     	/* Accounts needed for high and low risk */
     	Account a = new Account(3123, "High risk deposit source acc", 10000);
     	Account b = new Account(8665, "Low risk deposit source acc", 10000);
-    	Account c = new Account(3143, "High risk main transaction source acc", 10000);
+    	Account c = new Account(3143, "High risk main transaction source acc", 50000);
     	Account d = new Account(3133, "Low risk main transaction source acc", 10000);
     	Account e = new Account(6565, "High risk commission source acc", 10000);
     	Account f = new Account(4444, "High risk commission destination acc", 10000);
@@ -43,7 +41,7 @@ public class App
     	long[] amounts = {200,400,3000,2300,400};
     	
     	Director director = new Director();
-    	CompoundTransaction trans = director.createTransaction("high", dstAccounts, amounts);
+    	CompoundTransaction trans = director.createTransaction("high",6,400, dstAccounts, amounts);
     	
     	System.out.println(a.getAccountNumber()+" bal: "+a.getAccountBalance());
     	System.out.println(c.getAccountNumber()+" bal: "+c.getAccountBalance()); 
@@ -54,6 +52,8 @@ public class App
     	System.out.println(c.getAccountNumber()+" bal: "+c.getAccountBalance()); 
     	System.out.println(e.getAccountNumber()+" bal: "+e.getAccountBalance());
     	System.out.println(f.getAccountNumber()+" bal: "+f.getAccountBalance());
+    	
+    	//printAllAccounts();
     }
     
     public static void testing(){
@@ -157,12 +157,14 @@ public class App
 		Account acc3 = new Account(3, "Savings", 2500);
 		Account acc4 = new Account(4, "Fixed", 4000);
 		Account acc7 = new Account(5, "Visa", -500);
+		Account acc8 = new Account(6, "Fixed", 400);
 		
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
 		database.addNewAccount(acc3);
 		database.addNewAccount(acc4);
 		database.addNewAccount(acc7);
+		database.addNewAccount(acc8);
     }
     
     public static void printAllAccounts() {
