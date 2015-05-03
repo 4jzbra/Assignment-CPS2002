@@ -7,6 +7,29 @@ public class App
     public static void main( String[] args )
     {
     	
+    	/* Accounts needed for high and low risk */
+    	Account a = new Account(3123, "High risk deposit source acc", 10000);
+    	Account b = new Account(8665, "Low risk deposit source acc", 10000);
+    	Account c = new Account(3143, "High risk main transaction source acc", 10000);
+    	Account d = new Account(3133, "Low risk main transaction source acc", 10000);
+    	Account e = new Account(6565, "High risk commission source acc", 10000);
+    	Account f = new Account(4444, "High risk commission destination acc", 10000);
+    	Account g = new Account(6588, "Low risk commission source acc", 10000);
+    	Account h = new Account(4445, "Low risk commission destination acc", 10000);
+    	
+    	database.addNewAccount(a);
+    	database.addNewAccount(b);
+    	database.addNewAccount(c);
+    	database.addNewAccount(d);
+    	database.addNewAccount(e);
+    	database.addNewAccount(f);
+    	database.addNewAccount(g);
+    	database.addNewAccount(h);
+    	
+    	/*                                        */
+    	
+    	
+    	
     	Account acc1 = new Account(1, "Fixed", 10000);
 		Account acc2 = new Account(2, "Savings", 2000);
 		Account acc3 = new Account(3, "Savings", 2500);

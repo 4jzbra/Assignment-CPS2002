@@ -12,7 +12,7 @@ public abstract class Builder {
 	
 	public void buildDepost(){};
 	
-	public void buildMainTransaction(ArrayList<Integer> dstAccounts, ArrayList<Double> amounts){};
+	public void buildMainTransaction(ArrayList<Integer> dstAccounts, ArrayList<Long> amounts){};
 	
 	public void buildCommision(){};
 	
