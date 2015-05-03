@@ -17,6 +17,7 @@ public class LowRiskBuilder extends Builder {
 		compoundTransaction  = new CompoundTransaction();
 	}
 	
+	
 	public boolean buildDeposit(int dstAcc, long depositAmt){
 		AtomicTransaction depositTrans = new AtomicTransaction();
 		depositTrans.setSourceAccountNumber(DEP_SRC_ACCOUNT); //we need to create an account for this somewhere in the program
@@ -30,18 +31,20 @@ public class LowRiskBuilder extends Builder {
 		for(int i = 0; i < dstAccounts.length && i < amounts.length; i++){
 			AtomicTransaction atomicTrans = new AtomicTransaction(MAIN_SRC_ACCOUNT, dstAccounts[i], amounts[i]);
 			mainTrans.addTransaction(atomicTrans);
-		}
+		}		
 		return compoundTransaction.addTransaction(mainTrans);
 	}
 	
 	public boolean buildCommission(long[] amounts){
-		CompoundTransaction commisionTrans = new CompoundTransaction("Commission");
-		for(long amt: amounts){
-			long commission = (long)0.05*amt;
-			AtomicTransaction atomicTrans = new AtomicTransaction(COMM_SRC_ACCOUNT, COMM_DST_ACCOUNT, commission);
-			commisionTrans.addTransaction(atomicTrans);
-		}
-		return compoundTransaction.addTransaction(commisionTrans);
+		CompoundTransaction commissionTrans = new CompoundTransaction("Commission");
+		// here not sure if there should be a transaction for a commission for every element in the main transaction
+		for(int i = 0; i < amounts.length; i++){
+			double commission = 0.05*amounts[i];
+			System.out.println("commission "+commission);
+			AtomicTransaction atomicTrans = new AtomicTransaction(COMM_SRC_ACCOUNT, COMM_DST_ACCOUNT, (long)commission);
+			commissionTrans.addTransaction(atomicTrans);
+		}	
+		return compoundTransaction.addTransaction(commissionTrans);
 	}
 	
 	public CompoundTransaction getWholeTransaction(){
