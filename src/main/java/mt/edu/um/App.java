@@ -1,12 +1,23 @@
 package mt.edu.um;
 
+import java.util.ArrayList;
+
 public class App 
 {
 	private static AccountDatabase database = new AccountDatabase();
 
     public static void main( String[] args )
     {
+    	testingHighRisk();
     	
+    	
+    	
+    	
+    	
+    	
+    }
+    public static void testingHighRisk(){
+    	createAccounts();
     	/* Accounts needed for high and low risk */
     	Account a = new Account(3123, "High risk deposit source acc", 10000);
     	Account b = new Account(8665, "Low risk deposit source acc", 10000);
@@ -28,8 +39,16 @@ public class App
     	
     	/*                                        */
     	
+    	int[] dstAccounts = {1,2,3,4,5};
+    	long[] amounts = {200,400,3000,2300,400};
+    	
+    	Director director = new Director();
+    	CompoundTransaction trans = (CompoundTransaction)director.createTransaction("high", dstAccounts, amounts);
     	
     	
+    }
+    
+    public static void testing(){
     	Account acc1 = new Account(1, "Fixed", 10000);
 		Account acc2 = new Account(2, "Savings", 2000);
 		Account acc3 = new Account(3, "Savings", 2500);
@@ -121,12 +140,22 @@ public class App
     	System.out.println(acc3.getAccountNumber()+" bal: "+acc3.getAccountBalance()); 
     	System.out.println(acc4.getAccountNumber()+" bal: "+acc4.getAccountBalance()); 
     	
-    	System.out.println(tm.getNumTransactionsProcessed());
-    	
+    	System.out.println(tm.getNumTransactionsProcessed()); 
     }
     
-    
-    
+    public static void createAccounts(){
+    	Account acc1 = new Account(1, "Fixed", 10000);
+		Account acc2 = new Account(2, "Savings", 2000);
+		Account acc3 = new Account(3, "Savings", 2500);
+		Account acc4 = new Account(4, "Fixed", 4000);
+		Account acc7 = new Account(5, "Visa", -500);
+		
+		database.addNewAccount(acc1);
+		database.addNewAccount(acc2);
+		database.addNewAccount(acc3);
+		database.addNewAccount(acc4);
+		database.addNewAccount(acc7);
+    }
     
     public static void printAllAccounts() {
     	Account acc;

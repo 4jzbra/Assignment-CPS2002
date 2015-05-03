@@ -1,7 +1,5 @@
 package mt.edu.um;
 
-import java.util.ArrayList;
-
 public abstract class Builder {
 	
 	
@@ -9,7 +7,7 @@ public abstract class Builder {
 	
 	public void buildDepost(){};
 	
-	public void buildMainTransaction(ArrayList<Integer> dstAccounts, ArrayList<Long> amounts){};
+	public void buildMainTransaction(int[] dstAccounts, long[] amounts){};
 	
 	public void buildCommision(){};
 	

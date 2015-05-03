@@ -1,17 +1,21 @@
 package mt.edu.um;
 
-import java.util.ArrayList;
-
 public class Director {
 	
-	public Transaction createTransaction(String type, ArrayList<Integer> dstAccounts, ArrayList<Long> amounts){
+	public Transaction createTransaction(String type, int[] dstAccounts, long[] amounts){
 		Transaction trans = null;
 		
 		if(type.equalsIgnoreCase("high")){
-			Builder builder = new HighRiskBuilder(dstAccounts, amounts);
+			Builder builder = new HighRiskBuilder();
+			builder.buildDepost();
+			builder.buildMainTransaction(dstAccounts, amounts);
+			builder.buildCommision();
 			trans = builder.getWholeTransaction();
 		}else if(type.equalsIgnoreCase("low")){
-			Builder builder = new LowRiskBuilder(dstAccounts, amounts);
+			Builder builder = new LowRiskBuilder();
+			builder.buildDepost();
+			builder.buildMainTransaction(dstAccounts, amounts);
+			builder.buildCommision();
 			trans = builder.getWholeTransaction();
 		}
 		

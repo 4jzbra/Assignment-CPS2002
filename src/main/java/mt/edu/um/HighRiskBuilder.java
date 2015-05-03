@@ -12,18 +12,12 @@ public class HighRiskBuilder extends Builder {
 		
 	private CompoundTransaction compoundTransaction = null; 
 	
-	public HighRiskBuilder(String name, ArrayList<Integer> dstAccounts, ArrayList<Long> amounts) {
-		compoundTransaction  = new CompoundTransaction(name);
-		buildDeposit();
-		buildMainTransaction(dstAccounts, amounts);
-		buildCommision(amounts);
+	public HighRiskBuilder(){
+		compoundTransaction  = new CompoundTransaction();
 	}
 	
-	public HighRiskBuilder(ArrayList<Integer> dstAccounts, ArrayList<Long> amounts) {
-		compoundTransaction  = new CompoundTransaction();
-		buildDeposit();
-		buildMainTransaction(dstAccounts, amounts);
-		buildCommision(amounts);
+	public HighRiskBuilder(String name) {
+		compoundTransaction  = new CompoundTransaction(name);
 	}
 	
 	public void buildDeposit(){
@@ -32,15 +26,15 @@ public class HighRiskBuilder extends Builder {
 		compoundTransaction.addTransaction(depositTrans);
 	}                                         
 	
-	public void buildMainTransaction(ArrayList<Integer> dstAccounts, ArrayList<Long> amounts){
+	public void buildMainTransaction(int[] dstAccounts, long[] amounts){
 		CompoundTransaction mainTrans = new CompoundTransaction("Main Transaction");
-		for(int i = 0; i < dstAccounts.size() && i < amounts.size(); i++){
-			AtomicTransaction atomicTrans = new AtomicTransaction(MAIN_SRC_ACCOUNT, dstAccounts.get(i).intValue(), amounts.get(i).longValue());
+		for(int i = 0; i < dstAccounts.length && i < amounts.length; i++){
+			AtomicTransaction atomicTrans = new AtomicTransaction(MAIN_SRC_ACCOUNT, dstAccounts[i], amounts[i]);
 			mainTrans.addTransaction(atomicTrans);
 		}		
 	}
 	
-	public void buildCommision(ArrayList<Long> amounts){
+	public void buildCommision(long[] amounts){
 		CompoundTransaction commisionTrans = new CompoundTransaction("Commission");
 		for(long amt: amounts){
 			long commission = (long)0.1*amt;

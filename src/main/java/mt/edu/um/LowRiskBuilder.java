@@ -1,7 +1,5 @@
 package mt.edu.um;
 
-import java.util.ArrayList;
-
 public class LowRiskBuilder extends Builder {
 	
 	private final int DEP_SRC_ACCOUNT = 8665;
@@ -11,18 +9,12 @@ public class LowRiskBuilder extends Builder {
 		
 	private CompoundTransaction compoundTransaction = null; 
 	
-	public LowRiskBuilder(String name, ArrayList<Integer> dstAccounts, ArrayList<Long> amounts) {
+	public LowRiskBuilder(String name) {
 		compoundTransaction  = new CompoundTransaction(name);
-		buildDeposit();
-		buildMainTransaction(dstAccounts, amounts);
-		buildCommision(amounts);
 	}
 	
-	public LowRiskBuilder(ArrayList<Integer> dstAccounts, ArrayList<Long> amounts) {
+	public LowRiskBuilder() {
 		compoundTransaction  = new CompoundTransaction();
-		buildDeposit();
-		buildMainTransaction(dstAccounts, amounts);
-		buildCommision(amounts);
 	}
 	
 	public void buildDeposit(){
@@ -31,15 +23,15 @@ public class LowRiskBuilder extends Builder {
 		compoundTransaction.addTransaction(depositTrans);
 	}                                         
 	
-	public void buildMainTransaction(ArrayList<Integer> dstAccounts, ArrayList<Long> amounts){
+	public void buildMainTransaction(int[] dstAccounts, long[] amounts){
 		CompoundTransaction mainTrans = new CompoundTransaction("Main Transaction");
-		for(int i = 0; i < dstAccounts.size() && i < amounts.size(); i++){
-			AtomicTransaction atomicTrans = new AtomicTransaction(MAIN_SRC_ACCOUNT, dstAccounts.get(i).intValue(), amounts.get(i).longValue());
+		for(int i = 0; i < dstAccounts.length && i < amounts.length; i++){
+			AtomicTransaction atomicTrans = new AtomicTransaction(MAIN_SRC_ACCOUNT, dstAccounts[i], amounts[i]);
 			mainTrans.addTransaction(atomicTrans);
 		}		
 	}
 	
-	public void buildCommision(ArrayList<Long> amounts){
+	public void buildCommision(long[] amounts){
 		CompoundTransaction commisionTrans = new CompoundTransaction("Commission");
 		for(long amt: amounts){
 			long commission = (long)0.05*amt;
