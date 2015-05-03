@@ -35,19 +35,20 @@ public class App
     	database.addNewAccount(g);
     	database.addNewAccount(h);
     	
-    	/*                                        */
+    	/* ************************************* */
     	
     	int[] dstAccounts = {1,2,3,4,5};
     	long[] amounts = {200,400,3000,2300,400};
     	
     	Director director = new Director();
-    	CompoundTransaction trans = director.createTransaction("high",6,400, dstAccounts, amounts);
+    	CompoundTransaction highRiskTrans = director.createTransaction("high",6,400, dstAccounts, amounts);
     	
     	System.out.println(a.getAccountNumber()+" bal: "+a.getAccountBalance());
     	System.out.println(c.getAccountNumber()+" bal: "+c.getAccountBalance()); 
     	System.out.println(e.getAccountNumber()+" bal: "+e.getAccountBalance());
     	System.out.println(f.getAccountNumber()+" bal: "+f.getAccountBalance());    	
-    	TransactionManager tm = new TransactionManager(trans);
+    	TransactionManager tm = new TransactionManager();
+    	tm.processTransaction(highRiskTrans);
     	System.out.println(a.getAccountNumber()+" bal: "+a.getAccountBalance());
     	System.out.println(c.getAccountNumber()+" bal: "+c.getAccountBalance()); 
     	System.out.println(e.getAccountNumber()+" bal: "+e.getAccountBalance());
