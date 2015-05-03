@@ -3,7 +3,7 @@ package mt.edu.um;
 public abstract class Builder {
 	
 	
-	public abstract Transaction getWholeTransaction();
+	public abstract CompoundTransaction getWholeTransaction();
 	
 	public void buildDepost(){};
 	

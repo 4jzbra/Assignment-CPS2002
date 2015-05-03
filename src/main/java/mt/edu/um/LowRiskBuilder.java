@@ -40,7 +40,7 @@ public class LowRiskBuilder extends Builder {
 		}	
 	}
 	
-	public Transaction getWholeTransaction(){
+	public CompoundTransaction getWholeTransaction(){
 		return compoundTransaction;  
 	}
 

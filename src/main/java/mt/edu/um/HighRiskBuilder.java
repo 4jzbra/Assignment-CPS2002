@@ -1,6 +1,5 @@
 package mt.edu.um;
 
-import java.util.ArrayList;
 
 
 public class HighRiskBuilder extends Builder {
@@ -43,7 +42,7 @@ public class HighRiskBuilder extends Builder {
 		}	
 	}
 	
-	public Transaction getWholeTransaction(){
+	public CompoundTransaction getWholeTransaction(){
 		return compoundTransaction;  
 	}
 

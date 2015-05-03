@@ -2,10 +2,11 @@ package mt.edu.um;
 
 public class Director {
 	
-	public Transaction createTransaction(String type, int[] dstAccounts, long[] amounts){
-		Transaction trans = null;
+	public CompoundTransaction createTransaction(String type, int[] dstAccounts, long[] amounts){
+		CompoundTransaction trans = null;
 		
 		if(type.equalsIgnoreCase("high")){
+			System.out.println("high");
 			Builder builder = new HighRiskBuilder();
 			builder.buildDepost();
 			builder.buildMainTransaction(dstAccounts, amounts);
