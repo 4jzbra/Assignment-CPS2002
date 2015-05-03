@@ -10,12 +10,12 @@ public class App
     {
     	testingHighRisk(); //not working properly
     	  	
-    	
+    	//testing();
     	
     }
     
     public static void testingHighRisk(){
-    	createAccounts();
+    	createAccounts(); //creates accounts from 1 to 7
     	/* Accounts needed for high and low risk */
     	Account a = new Account(3123, "High risk deposit source acc", 10000);
     	Account b = new Account(8665, "Low risk deposit source acc", 10000);
