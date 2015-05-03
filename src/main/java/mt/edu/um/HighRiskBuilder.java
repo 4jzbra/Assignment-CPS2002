@@ -43,8 +43,9 @@ public class HighRiskBuilder extends Builder {
 		CompoundTransaction commissionTrans = new CompoundTransaction("Commission");
 		
 		for(int i = 0; i < amounts.length; i++){
-			long commission = (long)0.1*amounts[i];
-			AtomicTransaction atomicTrans = new AtomicTransaction(COMM_SRC_ACCOUNT, COMM_DST_ACCOUNT, commission);
+			double commission = 0.1*amounts[i];
+			System.out.println("commission "+commission);
+			AtomicTransaction atomicTrans = new AtomicTransaction(COMM_SRC_ACCOUNT, COMM_DST_ACCOUNT, (long)commission);
 			commissionTrans.addTransaction(atomicTrans);
 		}	
 		compoundTransaction.addTransaction(commissionTrans);
