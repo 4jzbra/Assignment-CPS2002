@@ -17,14 +17,14 @@ public class App
     public static void testingHighRisk(){
     	createAccounts(); //creates accounts from 1 to 7
     	/* Accounts needed for high and low risk */
-    	Account a = new Account(3123, "High risk deposit source acc", 10000);
-    	Account b = new Account(8665, "Low risk deposit source acc", 10000);
-    	Account c = new Account(3143, "High risk main transaction source acc", 50000);
-    	Account d = new Account(3133, "Low risk main transaction source acc", 10000);
-    	Account e = new Account(6565, "High risk commission source acc", 10000);
-    	Account f = new Account(4444, "High risk commission destination acc", 10000);
-    	Account g = new Account(6588, "Low risk commission source acc", 10000);
-    	Account h = new Account(4445, "Low risk commission destination acc", 10000);
+    	Account a = new Account(3123, "High risk deposit source acc", 20000);
+    	Account b = new Account(8665, "Low risk deposit source acc", 20000);
+    	Account c = new Account(3143, "High risk main transaction source acc", 20000);
+    	Account d = new Account(3133, "Low risk main transaction source acc", 20000);
+    	Account e = new Account(6565, "High risk commission source acc", 20000);
+    	Account f = new Account(4444, "High risk commission destination acc", 20000);
+    	Account g = new Account(6588, "Low risk commission source acc", 20000);
+    	Account h = new Account(4445, "Low risk commission destination acc", 20000);
     	
     	database.addNewAccount(a);
     	database.addNewAccount(b);
