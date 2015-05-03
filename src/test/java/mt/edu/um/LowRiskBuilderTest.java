@@ -10,7 +10,7 @@ public class LowRiskBuilderTest {
 	
 	@Before
 	public void init(){
-		lowRisk = new HighRiskBuilder();
+		lowRisk = new LowRiskBuilder();
 	}
 	
 	@Test
