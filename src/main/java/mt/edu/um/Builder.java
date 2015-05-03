@@ -4,11 +4,8 @@ import java.util.ArrayList;
 
 public abstract class Builder {
 	
-	static Builder getRiskBuilder(String risk){
-		
-		//need to implement
-		return null;
-	}
+	
+	public abstract Transaction getWholeTransaction();
 	
 	public void buildDepost(){};
 	

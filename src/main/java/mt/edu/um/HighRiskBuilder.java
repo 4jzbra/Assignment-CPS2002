@@ -10,10 +10,17 @@ public class HighRiskBuilder extends Builder {
 	private final int COMM_SRC_ACCOUNT = 6565;
 	private final int COMM_DST_ACCOUNT = 4444;
 		
-	private CompoundTransaction compoundTransaction; 
+	private CompoundTransaction compoundTransaction = null; 
 	
 	public HighRiskBuilder(String name, ArrayList<Integer> dstAccounts, ArrayList<Long> amounts) {
 		compoundTransaction  = new CompoundTransaction(name);
+		buildDeposit();
+		buildMainTransaction(dstAccounts, amounts);
+		buildCommision(amounts);
+	}
+	
+	public HighRiskBuilder(ArrayList<Integer> dstAccounts, ArrayList<Long> amounts) {
+		compoundTransaction  = new CompoundTransaction();
 		buildDeposit();
 		buildMainTransaction(dstAccounts, amounts);
 		buildCommision(amounts);
@@ -43,7 +50,7 @@ public class HighRiskBuilder extends Builder {
 	}
 	
 	public Transaction getWholeTransaction(){
-		return compoundTransaction;  /////
+		return compoundTransaction;  
 	}
 
 }
