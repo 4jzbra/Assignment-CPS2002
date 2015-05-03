@@ -42,4 +42,11 @@ public class HighRiskBuilderTest {
 		CompoundTransaction transaction = highRisk.getWholeTransaction();
 		Assert.assertEquals(3,transaction.getElements().size()); //deposit, main & commission = 3 elements 
 	}
+	
+	@Test
+	public void ConstructorTest(){
+		CompoundTransaction ct  = new CompoundTransaction("High risk transfer");
+		final String name = "High risk transfer";
+		Assert.assertEquals(name, ct.getName());
+	}
 }

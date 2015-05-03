@@ -26,7 +26,7 @@ public class LowRiskBuilderTest {
 	}
 	
 	@Test
-	public void buildCommission(){
+	public void buildCommissionTest(){
     	long[] amounts = {200,400,3000,2300,400};
 		Assert.assertEquals(true, lowRisk.buildCommission(amounts));
 	}
@@ -40,6 +40,13 @@ public class LowRiskBuilderTest {
     	lowRisk.buildCommission(amounts);
 		
 		CompoundTransaction transaction = lowRisk.getWholeTransaction();
-		Assert.assertEquals(3,transaction.getElements().size()); //deposit, main & commission = 3 elements 
+		Assert.assertEquals(3, transaction.getElements().size()); //deposit, main & commission = 3 elements 
+	}
+	
+	@Test
+	public void ConstructorTest(){
+		CompoundTransaction ct  = new CompoundTransaction("Low risk transfer");
+		final String name = "Low risk transfer";
+		Assert.assertEquals(name, ct.getName());
 	}
 }

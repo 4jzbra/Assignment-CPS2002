@@ -1,19 +1,9 @@
 package mt.edu.um;
 
+import org.junit.Assert;
 import org.junit.Before;
-<<<<<<< HEAD
-
-public class DirectorTest {
-	
-	private Director dir;
-	
-	@Before
-	public void initialize(){
-		dir = new Director();
-	}
-=======
 import org.junit.Test;
->>>>>>> origin/part2
+
 
 public class DirectorTest {
 	
@@ -44,6 +34,8 @@ public class DirectorTest {
     	//not ready
     	Director director = new Director();
     	CompoundTransaction highRiskTrans = director.createTransaction("high",6, 400, dstAccounts, amounts);
+    	System.out.println(highRiskTrans.getElements().size());
+    	Assert.assertEquals(3, highRiskTrans.getElements().size());
 	}
 	
 }
