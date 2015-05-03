@@ -8,14 +8,15 @@ public class Director {
 		if(type.equalsIgnoreCase("high")){
 			System.out.println("high");
 			Builder builder = new HighRiskBuilder();
-			builder.buildDeposit(depositDstAcc,depositAmt); //depositDstAcc,depositAmt are not in the assignment 
+			builder.buildDeposit(depositDstAcc, depositAmt); //depositDstAcc,depositAmt are not in the assignment 
 			builder.buildMainTransaction(dstAccounts, amounts);
 			builder.buildCommission(amounts);
 			
 			trans = builder.getWholeTransaction();
+			
 		}else if(type.equalsIgnoreCase("low")){
 			Builder builder = new LowRiskBuilder();
-			builder.buildDeposit(depositDstAcc,depositAmt);
+			builder.buildDeposit(depositDstAcc, depositAmt);
 			builder.buildMainTransaction(dstAccounts, amounts);
 			builder.buildCommission(amounts);
 			
