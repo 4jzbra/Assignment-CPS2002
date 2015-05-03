@@ -31,7 +31,7 @@ public class LowRiskBuilder extends Builder {
 		}		
 	}
 	
-	public void buildCommision(long[] amounts){
+	public void buildCommission(long[] amounts){
 		CompoundTransaction commisionTrans = new CompoundTransaction("Commission");
 		for(long amt: amounts){
 			long commission = (long)0.05*amt;

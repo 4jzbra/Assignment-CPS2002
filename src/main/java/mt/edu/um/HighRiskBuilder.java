@@ -31,19 +31,23 @@ public class HighRiskBuilder extends Builder {
 			AtomicTransaction atomicTrans = new AtomicTransaction(MAIN_SRC_ACCOUNT, dstAccounts[i], amounts[i]);
 			mainTrans.addTransaction(atomicTrans);
 		}		
+		compoundTransaction.addTransaction(mainTrans);
 	}
 	
-	public void buildCommision(long[] amounts){
+	public void buildCommission(long[] amounts){
 		CompoundTransaction commisionTrans = new CompoundTransaction("Commission");
 		for(long amt: amounts){
 			long commission = (long)0.1*amt;
 			AtomicTransaction atomicTrans = new AtomicTransaction(COMM_SRC_ACCOUNT, COMM_DST_ACCOUNT, commission);
 			commisionTrans.addTransaction(atomicTrans);
 		}	
+		compoundTransaction.addTransaction(commisionTrans);
 	}
 	
 	public CompoundTransaction getWholeTransaction(){
 		return compoundTransaction;  
 	}
+
+
 
 }

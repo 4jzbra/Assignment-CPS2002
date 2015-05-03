@@ -50,7 +50,10 @@ public class App
     	System.out.println(e.getAccountNumber()+" bal: "+e.getAccountBalance());
     	System.out.println(f.getAccountNumber()+" bal: "+f.getAccountBalance());    	
     	TransactionManager tm = new TransactionManager(trans);
-    	
+    	System.out.println(a.getAccountNumber()+" bal: "+a.getAccountBalance());
+    	System.out.println(c.getAccountNumber()+" bal: "+c.getAccountBalance()); 
+    	System.out.println(e.getAccountNumber()+" bal: "+e.getAccountBalance());
+    	System.out.println(f.getAccountNumber()+" bal: "+f.getAccountBalance());
     }
     
     public static void testing(){

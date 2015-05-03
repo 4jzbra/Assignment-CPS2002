@@ -20,8 +20,10 @@ public class AtomicTransaction implements Transaction {   // the leaf of the com
 		Account source = AccountDatabase.getAccount(getSourceAccountNumber());
 		Account destination = AccountDatabase.getAccount(getDestinationAccountNumber());
 		
-		if (source == null || destination == null) { 
-			throw new NullPointerException("Source and/or Destination account does not exist.");
+		if (source == null) { 
+			throw new NullPointerException("Source account "+getSourceAccountNumber()+" does not exist.");
+		} else if(destination == null){
+			throw new NullPointerException("Destination account "+getDestinationAccountNumber()+" does not exist.");
 		}
 		
 		if ((source.getAccountBalance() >= 0) && (source.getAccountBalance() - getAmount()) >= 0) {
