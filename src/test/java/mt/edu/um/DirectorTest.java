@@ -44,8 +44,8 @@ public class DirectorTest {
     	long[] amounts = {200,400,3000,2300,400}; 
     	//not ready
     	Director director = new Director();
-    	CompoundTransaction highRiskTrans = director.createTransaction("low",6, 400, dstAccounts, amounts);
-    	Assert.assertEquals(3, highRiskTrans.getElements().size());
+    	CompoundTransaction lowRiskTrans = director.createTransaction("low",6, 400, dstAccounts, amounts);
+    	Assert.assertEquals(3, lowRiskTrans.getElements().size());
 	}
 	
 }
