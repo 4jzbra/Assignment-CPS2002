@@ -28,7 +28,7 @@ public class HighRiskBuilderTest {
 	}
 	
 	@Test
-	public void buildCommission(){
+	public void buildCommissionTest(){
     	long[] amounts = {200,400,3000,2300,400};
 		Assert.assertEquals(true, highRisk.buildCommission(amounts));
 	}

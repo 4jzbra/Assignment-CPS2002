@@ -28,13 +28,23 @@ public class DirectorTest {
 	
 	//testing a high risk creation
 	@Test
-	public void createTransactionTest(){
+	public void createTransactionTest1(){
 		int[] dstAccounts = {1,2,3,4,5};
     	long[] amounts = {200,400,3000,2300,400}; 
     	//not ready
     	Director director = new Director();
     	CompoundTransaction highRiskTrans = director.createTransaction("high",6, 400, dstAccounts, amounts);
-    	System.out.println(highRiskTrans.getElements().size());
+    	Assert.assertEquals(3, highRiskTrans.getElements().size());
+	}
+	
+	//testing a low risk creation
+	@Test
+	public void createTransactionTest2(){
+		int[] dstAccounts = {1,2,3,4,5};
+    	long[] amounts = {200,400,3000,2300,400}; 
+    	//not ready
+    	Director director = new Director();
+    	CompoundTransaction highRiskTrans = director.createTransaction("low",6, 400, dstAccounts, amounts);
     	Assert.assertEquals(3, highRiskTrans.getElements().size());
 	}
 	
