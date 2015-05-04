@@ -45,8 +45,9 @@ public class LowRiskBuilderTest {
 	
 	@Test
 	public void ConstructorTest(){
-		CompoundTransaction ct  = new CompoundTransaction("Low risk transfer");
+		Builder lowRiskC = new LowRiskBuilder("Low risk transfer");
 		final String name = "Low risk transfer";
+		CompoundTransaction ct = lowRiskC.getWholeTransaction();
 		Assert.assertEquals(name, ct.getName());
 	}
 }
