@@ -54,6 +54,24 @@ public class App
     	System.out.println(e.getAccountNumber()+" bal: "+e.getAccountBalance());
     	System.out.println(f.getAccountNumber()+" bal: "+f.getAccountBalance());
     	
+    	System.out.println("LOW RISK");
+    	//Trying low    // difference to be seen only in the commission part...
+    	int[] dstAccounts2 = {1,2,3,4,5};
+    	long[] amounts2 = {200,400,3000,2300,400};
+    	
+    	Director director2 = new Director();
+    	CompoundTransaction highRiskTrans2 = director2.createTransaction("low",6,400, dstAccounts2, amounts2);
+    	
+    	System.out.println(b.getAccountNumber()+" bal: "+b.getAccountBalance());
+    	System.out.println(d.getAccountNumber()+" bal: "+d.getAccountBalance()); 
+    	System.out.println(g.getAccountNumber()+" bal: "+g.getAccountBalance());
+    	System.out.println(h.getAccountNumber()+" bal: "+h.getAccountBalance());    	
+    	TransactionManager tm2 = new TransactionManager();
+    	tm2.processTransaction(highRiskTrans2);
+    	System.out.println(b.getAccountNumber()+" bal: "+b.getAccountBalance());
+    	System.out.println(d.getAccountNumber()+" bal: "+d.getAccountBalance()); 
+    	System.out.println(g.getAccountNumber()+" bal: "+g.getAccountBalance());
+    	System.out.println(h.getAccountNumber()+" bal: "+h.getAccountBalance());
     	//printAllAccounts();
     }
     

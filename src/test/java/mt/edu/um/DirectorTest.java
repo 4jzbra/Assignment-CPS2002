@@ -7,17 +7,27 @@ import org.junit.Test;
 
 public class DirectorTest {
 	
+	private Account acc1,
+					acc2,
+					acc3,
+					acc4,
+					acc5,
+					acc6;
+	private AccountDatabase database;
+	
 	@Before
 	public void init(){
 		//creation of accounts
-    	Account acc1 = new Account(1, "Fixed", 3000);
-		Account acc2 = new Account(2, "Savings", 2000);
-		Account acc3 = new Account(3, "Savings", 2500);
-		Account acc4 = new Account(4, "Fixed", 4000);
-		Account acc5 = new Account(5, "Visa", -500);
-		Account acc6 = new Account(6, "Fixed", 400);
+    	acc1 = new Account(1, "Fixed", 3000);
+		acc2 = new Account(2, "Savings", 2000);
+		acc3 = new Account(3, "Savings", 2500);
+		acc4 = new Account(4, "Fixed", 4000);
+		acc5 = new Account(5, "Visa", -500);
+		acc6 = new Account(6, "Fixed", 400);
 		//adding accounts to the database
-		AccountDatabase database = new AccountDatabase();
+		
+		database = new AccountDatabase();
+		
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
 		database.addNewAccount(acc3);
