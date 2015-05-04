@@ -6,11 +6,13 @@ import org.junit.Assert;
 
 public class HighRiskBuilderTest {
 	
-	private Builder highRisk;
+	private Builder highRisk,
+					highRisk2;
 	
 	@Before
 	public void init(){
 		highRisk = new HighRiskBuilder();
+		highRisk2 = new HighRiskBuilder("High risk transfer");
 	}
 	
 	@Test
@@ -44,9 +46,9 @@ public class HighRiskBuilderTest {
 	}
 	
 	@Test
-	public void ConstructorTest(){
-		CompoundTransaction ct  = new CompoundTransaction("High risk transfer");
+	public void ConstructorTest(){     // testing constructor - name of compound transaction
 		final String name = "High risk transfer";
+		CompoundTransaction ct = highRisk2.getWholeTransaction();
 		Assert.assertEquals(name, ct.getName());
 	}
 }

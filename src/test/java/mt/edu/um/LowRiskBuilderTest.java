@@ -6,11 +6,13 @@ import org.junit.Test;
 
 public class LowRiskBuilderTest {
 	
-	private Builder lowRisk;
+	private Builder lowRisk,
+					lowRisk2;
 	
 	@Before
 	public void init(){
 		lowRisk = new LowRiskBuilder();
+		lowRisk2 = new LowRiskBuilder("Low risk transfer");
 	}
 	
 	@Test
@@ -44,10 +46,9 @@ public class LowRiskBuilderTest {
 	}
 	
 	@Test
-	public void ConstructorTest(){
-		Builder lowRiskC = new LowRiskBuilder("Low risk transfer");
+	public void ConstructorTest(){     // testing constructor - name of compound transaction
 		final String name = "Low risk transfer";
-		CompoundTransaction ct = lowRiskC.getWholeTransaction();
+		CompoundTransaction ct = lowRisk2.getWholeTransaction();
 		Assert.assertEquals(name, ct.getName());
 	}
 }
