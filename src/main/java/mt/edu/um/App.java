@@ -55,7 +55,7 @@ public class App
     	System.out.println(f.getAccountNumber()+" bal: "+f.getAccountBalance());
     	
     }
-    
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////////   
     public static void traversing(){
     	Account acc1 = new Account(1, "Fixed", 10000);
 		Account acc2 = new Account(2, "Savings", 5000);
@@ -68,10 +68,32 @@ public class App
 		database.addNewAccount(acc4);
 		
 		Transaction t1 = new AtomicTransaction(2, 3, 400);
+		Transaction t2 = new AtomicTransaction(2, 1, 1000);
+		//Transaction t3 = new AtomicTransaction(3, 4, 1750);
+		//Transaction t4 = new AtomicTransaction(3, 2, 900);
 		
+		CompoundTransaction ct = new CompoundTransaction("Main");
+		
+		ct.addTransaction(t1);
+		ct.addTransaction(t2);
+		
+		System.out.println(acc1.getAccountNumber()+" bal: "+acc1.getAccountBalance());
+    	System.out.println(acc2.getAccountNumber()+" bal: "+acc2.getAccountBalance());
+    	System.out.println(acc3.getAccountNumber()+" bal: "+acc3.getAccountBalance());
+    	System.out.println(acc4.getAccountNumber()+" bal: "+acc4.getAccountBalance());
+    	TransactionManager tm = new TransactionManager();
+    	tm.processTransaction(ct);
+    	System.out.println(acc1.getAccountNumber()+" bal: "+acc1.getAccountBalance());
+    	System.out.println(acc2.getAccountNumber()+" bal: "+acc2.getAccountBalance());
+    	System.out.println(acc3.getAccountNumber()+" bal: "+acc3.getAccountBalance());
+    	System.out.println(acc4.getAccountNumber()+" bal: "+acc4.getAccountBalance());
+    	
+    	TraverseTransactions tt = new TraverseTransactions(ct);
+    	
+    	tt.traverse();
 		
     }
-    
+ ////////////////////////////////////////////////////////////////////////////////////////////////////////////   
     public static void testing(){
     	Account acc1 = new Account(1, "Fixed", 10000);
 		Account acc2 = new Account(2, "Savings", 2000);

@@ -7,4 +7,3 @@ public abstract interface TransactionIterator {
 	public Iterator<Transaction> createIterator();
 	
 }
-
