@@ -1,8 +1,9 @@
 package mt.edu.um;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class CompoundTransaction implements Transaction{
+public class CompoundTransaction implements Transaction, TransactionIterator{
 	private String name;   // name of compound transaction
 	private ArrayList<Transaction> elements = new ArrayList<Transaction>();
 	
@@ -36,6 +37,10 @@ public class CompoundTransaction implements Transaction{
 	
 	public String getName(){
 		return name;
+	}
+	
+	public Iterator<Transaction> createIterator(){
+		return elements.iterator();
 	}
 
 

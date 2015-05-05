@@ -1,14 +1,14 @@
 package mt.edu.um;
 
-import java.util.ArrayList;
-
 public class App 
 {
 	private static AccountDatabase database = new AccountDatabase();
 
     public static void main( String[] args )
     {
-    	testingHighRisk(); //not working properly
+    	//testingHighRisk(); //not working properly
+    	
+    	traversing();  // for change 3 - work in progress...
     	  	
     	//testing();
     	
@@ -54,79 +54,22 @@ public class App
     	System.out.println(e.getAccountNumber()+" bal: "+e.getAccountBalance());
     	System.out.println(f.getAccountNumber()+" bal: "+f.getAccountBalance());
     	
-    	System.out.println("LOW RISK");
-    	//Trying low    // difference to be seen only in the commission part...
-    	int[] dstAccounts2 = {1,2,3,4,5};
-    	long[] amounts2 = {200,400,3000,2300,400};
-    	
-    	Director director2 = new Director();
-    	CompoundTransaction lowRiskTrans = director2.createTransaction("low",6,400, dstAccounts2, amounts2);
-    	
-    	System.out.println(b.getAccountNumber()+" bal: "+b.getAccountBalance());
-    	System.out.println(d.getAccountNumber()+" bal: "+d.getAccountBalance()); 
-    	System.out.println(g.getAccountNumber()+" bal: "+g.getAccountBalance());
-    	System.out.println(h.getAccountNumber()+" bal: "+h.getAccountBalance());    	
-    	TransactionManager tm2 = new TransactionManager();
-    	tm2.processTransaction(lowRiskTrans);
-    	System.out.println(b.getAccountNumber()+" bal: "+b.getAccountBalance());
-    	System.out.println(d.getAccountNumber()+" bal: "+d.getAccountBalance()); 
-    	System.out.println(g.getAccountNumber()+" bal: "+g.getAccountBalance());
-    	System.out.println(h.getAccountNumber()+" bal: "+h.getAccountBalance());
-    	//printAllAccounts();
-    	
-    	//----------------------------------------------------------------------------------------
-    	// For change 3 (temporary) - using low risk from above
-    	ArrayList<Transaction> ele = new ArrayList<Transaction>(); // 1st level break
-    	ArrayList<Transaction> ele2 = new ArrayList<Transaction>(); //2nd level break
-    	ArrayList<Transaction> ele3 = new ArrayList<Transaction>(); //3nd level break
-    	//NEED TO FIND AN EFFICIENT METHOD FOR THE BREAKS ABOVE (tree traversal or something else?)
-    	//AtomicTransaction trs = new AtomicTransaction();
-    	//CompoundTransaction trs2 = new CompoundTransaction();
-    	
-    	// Get all atomic transactions (ie get rid all compound transactions)
-    	ele = lowRiskTrans.getElements();
-    	for (Transaction t: ele){  // in this case we have 3 elements (1 is atomic)
-    		if (t instanceof CompoundTransaction){
-    			ele2.addAll(((CompoundTransaction) t).getElements());
-    		}
-    		else
-    			ele2.add(t);  // adding the atomic as well
-    	}
-
-    	//printing the new array list ele2
-    	System.out.println("SIZE of ele2 " + ele2.size());    // 11 atomic
-    	for (Transaction t : ele2){
-    		AtomicTransaction at;
-    		at = (AtomicTransaction) t;
-    		System.out.println(at.getAmount());		
-    	}
-    	
-    	for (Transaction t: ele2){  // so now we have 11 atomic
-    		if (t instanceof CompoundTransaction){
-    			ele3.addAll(((CompoundTransaction) t).getElements());
-    		}
-    		else
-    			ele3.add(t); 
-    	}
-    	
-    	//printing the new array list ele2
-    	System.out.println("SIZE of ele3 " + ele2.size());   // size remained 11 atomic so all leaves were reached
-    	for (Transaction t : ele3){
-    		AtomicTransaction at;
-    		at = (AtomicTransaction) t;
-    		System.out.println(at.getAmount());
-    	}
-    	
-    	
-    	//then methods to sort/filter
-
-    	
-    	
-    	/*
-    	trs2 = (CompoundTransaction) ele.get(1);
-    	num = trs.getSourceAccountNumber();
-    	System.out.println(num); */
-    	
+    }
+    
+    public static void traversing(){
+    	Account acc1 = new Account(1, "Fixed", 10000);
+		Account acc2 = new Account(2, "Savings", 5000);
+		Account acc3 = new Account(3, "Savings2", 3000);
+		Account acc4 = new Account(4, "Visa", 200);
+		
+		database.addNewAccount(acc1);
+		database.addNewAccount(acc2);
+		database.addNewAccount(acc3);
+		database.addNewAccount(acc4);
+		
+		Transaction t1 = new AtomicTransaction(2, 3, 400);
+		
+		
     }
     
     public static void testing(){
