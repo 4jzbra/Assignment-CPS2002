@@ -56,7 +56,7 @@ public class App
     	
     }
  ///////////////////////////////////////////////////////////////////////////////////////////////////////////   
-    public static void traversing(){
+    public static void traversing(){        // not working when elements are compound
     	Account acc1 = new Account(1, "Fixed", 10000);
 		Account acc2 = new Account(2, "Savings", 5000);
 		Account acc3 = new Account(3, "Savings2", 3000);
@@ -69,26 +69,34 @@ public class App
 		
 		Transaction t1 = new AtomicTransaction(2, 3, 400);
 		Transaction t2 = new AtomicTransaction(2, 1, 1000);
-		//Transaction t3 = new AtomicTransaction(3, 4, 1750);
-		//Transaction t4 = new AtomicTransaction(3, 2, 900);
+		Transaction t3 = new AtomicTransaction(3, 4, 1750);
+		Transaction t4 = new AtomicTransaction(3, 2, 900);
+		Transaction t5 = new AtomicTransaction(1, 4, 20);
 		
-		CompoundTransaction ct = new CompoundTransaction("Main");
+		CompoundTransaction ct1 = new CompoundTransaction("Main");
+		CompoundTransaction ct2 = new CompoundTransaction("Sub1");
+		CompoundTransaction ct3 = new CompoundTransaction("Sub2");
 		
-		ct.addTransaction(t1);
-		ct.addTransaction(t2);
+		ct2.addTransaction(t1);
+		ct2.addTransaction(t2);
+		ct3.addTransaction(t3);
+		ct3.addTransaction(t4);
+		ct1.addTransaction(ct2);
+		ct1.addTransaction(ct3);
+		ct1.addTransaction(t5);
 		
 		System.out.println(acc1.getAccountNumber()+" bal: "+acc1.getAccountBalance());
     	System.out.println(acc2.getAccountNumber()+" bal: "+acc2.getAccountBalance());
     	System.out.println(acc3.getAccountNumber()+" bal: "+acc3.getAccountBalance());
     	System.out.println(acc4.getAccountNumber()+" bal: "+acc4.getAccountBalance());
     	TransactionManager tm = new TransactionManager();
-    	tm.processTransaction(ct);
+    	tm.processTransaction(ct1);
     	System.out.println(acc1.getAccountNumber()+" bal: "+acc1.getAccountBalance());
     	System.out.println(acc2.getAccountNumber()+" bal: "+acc2.getAccountBalance());
     	System.out.println(acc3.getAccountNumber()+" bal: "+acc3.getAccountBalance());
     	System.out.println(acc4.getAccountNumber()+" bal: "+acc4.getAccountBalance());
     	
-    	TraverseTransactions tt = new TraverseTransactions(ct);
+    	TraverseTransactions tt = new TraverseTransactions(ct1);
     	
     	tt.traverse();
 		

@@ -20,14 +20,17 @@ public class TraverseTransactions {
 		
 	}
 	
-	public void printTransaction(Iterator<Transaction> iter){
+	public void printTransaction(Iterator<Transaction> iter){  // still needs to be fixed
 		
 		while(iter.hasNext()){
-			AtomicTransaction t = (AtomicTransaction) iter.next();
-			System.out.println("-----USING ITERATOR-----");
-			System.out.println("Source: " + t.getSourceAccountNumber());
-			System.out.println("Destination: " + t.getDestinationAccountNumber());
-			System.out.println("Amount: " + t.getAmount());
+			if (iter.next() instanceof CompoundTransaction) continue;
+			else{
+				AtomicTransaction t = (AtomicTransaction) iter.next();
+				System.out.println("-----USING ITERATOR-----");
+				System.out.println("Source: " + t.getSourceAccountNumber());
+				System.out.println("Destination: " + t.getDestinationAccountNumber());
+				System.out.println("Amount: " + t.getAmount());
+			}
 		}
 	}
 }
