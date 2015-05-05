@@ -18,6 +18,7 @@ public class HighRiskBuilder extends Builder {
 	}
 	
 	
+	@Override
 	public boolean buildDeposit(int dstAcc, long depositAmt){
 		AtomicTransaction depositTrans = new AtomicTransaction();
 		depositTrans.setSourceAccountNumber(DEP_SRC_ACCOUNT); //we need to create an account for this somewhere in the program
@@ -26,6 +27,7 @@ public class HighRiskBuilder extends Builder {
 		return compoundTransaction.addTransaction(depositTrans);
 	}                                         
 	
+	@Override
 	public boolean buildMainTransaction(int[] dstAccounts, long[] amounts){
 		CompoundTransaction mainTrans = new CompoundTransaction("Main Transaction");
 		for(int i = 0; i < dstAccounts.length && i < amounts.length; ++i){
@@ -35,6 +37,7 @@ public class HighRiskBuilder extends Builder {
 		return compoundTransaction.addTransaction(mainTrans);
 	}
 	
+	@Override
 	public boolean buildCommission(long[] amounts){
 		CompoundTransaction commissionTrans = new CompoundTransaction("Commission");
 		// here not sure if there should be a transaction for a commission for every element in the main transaction
@@ -47,6 +50,7 @@ public class HighRiskBuilder extends Builder {
 		return compoundTransaction.addTransaction(commissionTrans);
 	}
 	
+	@Override
 	public CompoundTransaction getWholeTransaction(){
 		return compoundTransaction;  
 	}

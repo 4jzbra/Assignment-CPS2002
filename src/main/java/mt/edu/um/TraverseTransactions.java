@@ -20,11 +20,11 @@ public class TraverseTransactions {
 		
 	}
 	
-	public void printTransaction(Iterator<Transaction> iter){  // still needs to be fixed
+	public void printTransaction(Iterator<Transaction> iter){ // STILL NEEDS SORTING
 		
 		while(iter.hasNext()){
-			if (iter.next() instanceof CompoundTransaction) continue;
-			else{
+			if (iter instanceof CompoundTransaction) { }
+			else {
 				AtomicTransaction t = (AtomicTransaction) iter.next();
 				System.out.println("-----USING ITERATOR-----");
 				System.out.println("Source: " + t.getSourceAccountNumber());

@@ -2,7 +2,7 @@ package mt.edu.um;
 
 public class App 
 {
-	private static AccountDatabase database = new AccountDatabase();
+	private static final AccountDatabase database = new AccountDatabase();
 
     public static void main( String[] args )
     {
@@ -97,6 +97,16 @@ public class App
     	System.out.println(acc4.getAccountNumber()+" bal: "+acc4.getAccountBalance());
     	
     	TraverseTransactions tt = new TraverseTransactions(ct1);
+    	/*
+        ArrayList <Transaction> aT;
+    	aT = ct1.getAtomicElements();
+        for (Transaction temp: aT){
+            AtomicTransaction t = (AtomicTransaction) temp;
+            System.out.println(t.getSourceAccountNumber());
+            System.out.println(t.getDestinationAccountNumber());
+            System.out.println(t.getAmount());
+        }
+        */
     	
     	tt.traverse();
 		
