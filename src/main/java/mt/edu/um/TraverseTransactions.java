@@ -13,24 +13,28 @@ public class TraverseTransactions {
 		transIter = ti;
 	}
 	
-	public void traverse(){
+	public boolean traverse(){
 		Iterator<Transaction> AtomicT = transIter.createIterator();
 		
-		printTransaction(AtomicT);
+		if (printTransaction(AtomicT)) return true;
+		
+		else return false;
 		
 	}
 	
-	public void printTransaction(Iterator<Transaction> iter){ // STILL NEEDS SORTING
+	public boolean printTransaction(Iterator<Transaction> iter){ // STILL NEEDS SORTING
 		
 		while(iter.hasNext()){
-			if (iter instanceof CompoundTransaction) { }
-			else {
+			//if (iter instanceof CompoundTransaction) { }
+			if (iter instanceof Iterator){
 				AtomicTransaction t = (AtomicTransaction) iter.next();
 				System.out.println("-----USING ITERATOR-----");
 				System.out.println("Source: " + t.getSourceAccountNumber());
 				System.out.println("Destination: " + t.getDestinationAccountNumber());
 				System.out.println("Amount: " + t.getAmount());
 			}
+			else return false;
 		}
+		return true;
 	}
 }
