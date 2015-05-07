@@ -1,5 +1,7 @@
 package mt.edu.um;
 
+import java.util.Iterator;
+
 public class App 
 {
 	private static final AccountDatabase database = new AccountDatabase();
@@ -96,7 +98,10 @@ public class App
     	System.out.println(acc3.getAccountNumber()+" bal: "+acc3.getAccountBalance());
     	System.out.println(acc4.getAccountNumber()+" bal: "+acc4.getAccountBalance());
     	
+
+    	
     	TraverseTransactions tt = new TraverseTransactions(ct1);
+    	tt.printTransaction();
     	/*
         ArrayList <Transaction> aT;
     	aT = ct1.getAtomicElements();
@@ -108,7 +113,7 @@ public class App
         }
         */
     	
-    	tt.traverse();
+    	//tt.traverse();
 		
     }
  ////////////////////////////////////////////////////////////////////////////////////////////////////////////   

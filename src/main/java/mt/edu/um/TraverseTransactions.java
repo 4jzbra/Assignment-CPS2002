@@ -1,40 +1,54 @@
 package mt.edu.um;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 
-public class TraverseTransactions {
+public class TraverseTransactions implements Comparator<Transaction> {
 		
-	private TransactionIterator transIter;
+	private CompoundTransaction compoundTransaction;
+	private ArrayList<Transaction> elements;
+	private int index;
 	
 	
 	public TraverseTransactions() {}
 	
-	public TraverseTransactions(TransactionIterator ti){
-		transIter = ti;
+	public TraverseTransactions(CompoundTransaction compoundTransaction){
+		this.compoundTransaction = compoundTransaction;
+		this.elements = compoundTransaction.getAtomicElements();
+		index = 1;
 	}
 	
-	public boolean traverse(){
+	/*public boolean traverse(){
 		Iterator<Transaction> AtomicT = transIter.createIterator();
 		
 		if (printTransaction(AtomicT)) return true;
 		
 		else return false;
-		
-	}
+	}*/
 	
-	public boolean printTransaction(Iterator<Transaction> iter){ // STILL NEEDS SORTING
+	public boolean printTransaction(){ // STILL NEEDS SORTING
+			
+		for(Iterator<Transaction> iter = compoundTransaction.createIterator(); iter.hasNext();){
+			AtomicTransaction atomicTrans = (AtomicTransaction)iter.next();
+	         System.out.println("-----USING ITERATOR-----");
+	         System.out.println(this.index++ + ". Transaction ");
+			 System.out.println("Source: " + atomicTrans.getSourceAccountNumber());
+			 System.out.println("Destination: " + atomicTrans.getDestinationAccountNumber());
+			 System.out.println("Amount: " + atomicTrans.getAmount()+"\n");
+	      } 
 		
-		while(iter.hasNext()){
-			//if (iter instanceof CompoundTransaction) { }
-			if (iter instanceof Iterator){
-				AtomicTransaction t = (AtomicTransaction) iter.next();
-				System.out.println("-----USING ITERATOR-----");
-				System.out.println("Source: " + t.getSourceAccountNumber());
-				System.out.println("Destination: " + t.getDestinationAccountNumber());
-				System.out.println("Amount: " + t.getAmount());
-			}
-			else return false;
-		}
 		return true;
 	}
+
+
+	@Override
+	public int compare(Transaction t1, Transaction t2) {
+		AtomicTransaction at1 = (AtomicTransaction) t1;
+		AtomicTransaction at2 = (AtomicTransaction) t2;
+		if(at1.getAmount() < at2.getAmount()) return -1;
+		else if(at1.getAmount() == at2.getAmount()) return 0;
+		else return 1;
+	}
+
 }

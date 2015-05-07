@@ -32,19 +32,20 @@ public class CompoundTransaction implements Transaction, TransactionIterator{
 	
 	// returns all the leaves found inside a compound transaction
     public ArrayList<Transaction> getAtomicElements(){  // not sure if this method should be here
-            ArrayList<Transaction> ele = new ArrayList<Transaction>();
-            
-            for(int i = 0; i < elements.size(); ++i) {
+            ArrayList<Transaction> atomicTransactions = new ArrayList<Transaction>();
+            System.out.println(getName()+"all elemensts: "+elements.size());
+            for(int i = 0; i < elements.size(); i++) {
                 Transaction t = elements.get(i);
                 
                 if (t instanceof AtomicTransaction) {
-                    ele.add(t);
+                    atomicTransactions.add(t);
                 }
                 else {
-                    ele.addAll(((CompoundTransaction)t).getElements());
+                    atomicTransactions.addAll(((CompoundTransaction)t).getAtomicElements()); //since there could be a compound transaction within another
                 }
             } 
-            return  ele;     
+            
+            return  atomicTransactions;     
     }
 	
 	
@@ -61,6 +62,8 @@ public class CompoundTransaction implements Transaction, TransactionIterator{
         elements = getAtomicElements();
 		return elements.iterator();
 	}
+
+
 
 
 }
