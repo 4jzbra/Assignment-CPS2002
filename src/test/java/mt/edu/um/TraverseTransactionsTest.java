@@ -36,18 +36,8 @@ public class TraverseTransactionsTest {
 		compTrans.addTransaction(t2);
 		Iterator<Transaction> iter = compTrans.createIterator();
 		travTrans = new TraverseTransactions(compTrans);
-		Assert.assertEquals(true, travTrans.printTransaction(iter));
+		Assert.assertEquals(true, travTrans.printTransaction());
 	}
 	
-	@Test
-	public void traverseTest(){
-		Transaction t1 = new AtomicTransaction(2, 3, 2000); 
-		Transaction t2 = new AtomicTransaction(1, 2, 900); 
-		compTrans.addTransaction(t1);
-		compTrans.addTransaction(t2);
-		travTrans = new TraverseTransactions(compTrans);
-		Assert.assertEquals(true, travTrans.traverse());
-		
-	}
 
 }
