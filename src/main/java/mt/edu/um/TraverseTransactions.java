@@ -10,7 +10,7 @@ public class TraverseTransactions {
 
 	private CompoundTransaction compoundTransaction;
 	private List<Transaction> sortedElements;
-	private int index;
+	private int index;    // temp var
 
 	public TraverseTransactions() {
 	}
@@ -31,7 +31,7 @@ public class TraverseTransactions {
 	 * else return false; }
 	 */
 
-	public boolean printTransaction() { // STILL NEEDS SORTING
+	public boolean printTransaction() { 
 
 		for (Iterator<Transaction> iter = compoundTransaction.createIterator(); iter
 				.hasNext();) {
@@ -48,7 +48,7 @@ public class TraverseTransactions {
 		return true;
 	}
 
-	public boolean printAscendingOder() {
+	public boolean printAscendingOrder() {
 		
 		for (Iterator<Transaction> iter = compoundTransaction.createIterator(); iter.hasNext();) {
 			AtomicTransaction atomicTrans = (AtomicTransaction) iter.next();
@@ -56,19 +56,28 @@ public class TraverseTransactions {
 		}
 
 		Collections.sort(sortedElements, new AtomicTransaction());
-		System.out.println("Lowest amount first\n");
+		System.out.println("Lowest amount first (Ascending Order)\n");
 		printElements(sortedElements);
 		return true;
 
 	}
 
-	public boolean printDescendingOrder() {
-		return false;
+	public boolean printDescendingOrder() {  // perhaps ascending/descending might be in 1 method
+		
+		for (Iterator<Transaction> iter = compoundTransaction.createIterator(); iter.hasNext();) {
+			AtomicTransaction atomicTrans = (AtomicTransaction) iter.next();
+			sortedElements.add(atomicTrans);
+		}
+
+		Collections.sort(sortedElements, Collections.reverseOrder(new AtomicTransaction()));
+		System.out.println("Lowest amount first (Ascending Order)\n");
+		printElements(sortedElements);
+		return true;
 
 	}
 
 	public void printElements(List<Transaction> list) {
-		for (int i = 0; i < sortedElements.size(); i++) {
+		for (int i = 0; i < sortedElements.size(); ++i) {
 			AtomicTransaction atomicTrans = (AtomicTransaction) sortedElements.get(i);
 			System.out.print("Transaction "+(i+1)+": ");
 			System.out.print("Source: " + atomicTrans.getSourceAccountNumber());

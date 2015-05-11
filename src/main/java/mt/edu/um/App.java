@@ -15,10 +15,10 @@ public class App
     	//testing();
     	
     }
-    
+    /*
     public static void testingHighRisk(){
     	createAccounts(); //creates accounts from 1 to 7
-    	/* Accounts needed for high and low risk */
+    	// Accounts needed for high and low risk 
     	Account a = new Account(3123, "High risk deposit source acc", 20000);
     	Account b = new Account(8665, "Low risk deposit source acc", 20000);
     	Account c = new Account(3143, "High risk main transaction source acc", 20000);
@@ -37,7 +37,7 @@ public class App
     	database.addNewAccount(g);
     	database.addNewAccount(h);
     	
-    	/* ************************************* */
+    	// *************************************
     	
     	int[] dstAccounts = {1,2,3,4,5};
     	long[] amounts = {200,400,3000,2300,400};
@@ -56,7 +56,8 @@ public class App
     	System.out.println(e.getAccountNumber()+" bal: "+e.getAccountBalance());
     	System.out.println(f.getAccountNumber()+" bal: "+f.getAccountBalance());
     	
-    }
+    } */
+    
  ///////////////////////////////////////////////////////////////////////////////////////////////////////////   
     public static void traversing(){        // not working when elements are compound
     	Account acc1 = new Account(1, "Fixed", 10000);
@@ -102,7 +103,8 @@ public class App
     	
     	TraverseTransactions tt = new TraverseTransactions(ct1);
     	tt.printTransaction();
-    	tt.printAscendingOder();
+    	//tt.printAscendingOrder();
+    	tt.printDescendingOrder();
     	/*
         ArrayList <Transaction> aT;
     	aT = ct1.getAtomicElements();
@@ -117,7 +119,8 @@ public class App
     	//tt.traverse();
 		
     }
- ////////////////////////////////////////////////////////////////////////////////////////////////////////////   
+ //////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+    
     public static void testing(){
     	Account acc1 = new Account(1, "Fixed", 10000);
 		Account acc2 = new Account(2, "Savings", 2000);

@@ -34,9 +34,37 @@ public class TraverseTransactionsTest {
 		Transaction t2 = new AtomicTransaction(1, 2, 900); 
 		compTrans.addTransaction(t1);
 		compTrans.addTransaction(t2);
-		Iterator<Transaction> iter = compTrans.createIterator();
+		//Iterator<Transaction> iter = compTrans.createIterator();
 		travTrans = new TraverseTransactions(compTrans);
 		Assert.assertEquals(true, travTrans.printTransaction());
+	}
+	
+	@Test
+	public void printAscendingOrder(){
+		Transaction t1 = new AtomicTransaction(2, 3, 2000); 
+		Transaction t2 = new AtomicTransaction(1, 2, 900);
+		Transaction t3 = new AtomicTransaction(1, 3, 2000); 
+		Transaction t4 = new AtomicTransaction(2, 1, 700);
+		compTrans.addTransaction(t1);
+		compTrans.addTransaction(t2);
+		compTrans.addTransaction(t3);
+		compTrans.addTransaction(t4);
+		travTrans = new TraverseTransactions(compTrans);
+		Assert.assertEquals(true, travTrans.printAscendingOrder());
+	}
+	
+	@Test
+	public void printDescendingOrder(){
+		Transaction t1 = new AtomicTransaction(2, 3, 2000); 
+		Transaction t2 = new AtomicTransaction(1, 2, 900);
+		Transaction t3 = new AtomicTransaction(1, 3, 2000); 
+		Transaction t4 = new AtomicTransaction(2, 1, 700);
+		compTrans.addTransaction(t1);
+		compTrans.addTransaction(t2);
+		compTrans.addTransaction(t3);
+		compTrans.addTransaction(t4);
+		travTrans = new TraverseTransactions(compTrans);
+		Assert.assertEquals(true, travTrans.printDescendingOrder());
 	}
 	
 
