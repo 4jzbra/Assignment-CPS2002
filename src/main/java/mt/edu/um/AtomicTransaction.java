@@ -1,7 +1,8 @@
 package mt.edu.um;
 import java.lang.NullPointerException;
+import java.util.Comparator;
 
-public class AtomicTransaction implements Transaction {   // the leaf of the composite design pattern
+public class AtomicTransaction implements Transaction, Comparator<Transaction>{   // the leaf of the composite design pattern
 		
 	private int sourceAccountNumber; 
 	private int destinationAccountNumber;
@@ -56,5 +57,14 @@ public class AtomicTransaction implements Transaction {   // the leaf of the com
 
 	public long getAmount() {
 		return amount;
+	}
+
+	@Override
+	public int compare(Transaction t1, Transaction t2) {
+		AtomicTransaction at1 = (AtomicTransaction) t1;
+		AtomicTransaction at2 = (AtomicTransaction) t2;
+		if(at1.getAmount() < at2.getAmount()) return -1;
+		else if(at1.getAmount() == at2.getAmount()) return 0;
+		else return 1;
 	}
 }

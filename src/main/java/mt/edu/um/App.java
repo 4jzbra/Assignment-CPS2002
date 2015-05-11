@@ -102,6 +102,7 @@ public class App
     	
     	TraverseTransactions tt = new TraverseTransactions(ct1);
     	tt.printTransaction();
+    	tt.printAscendingOder();
     	/*
         ArrayList <Transaction> aT;
     	aT = ct1.getAtomicElements();
