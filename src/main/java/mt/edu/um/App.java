@@ -1,6 +1,6 @@
 package mt.edu.um;
 
-import java.util.Iterator;
+import iterator.Traverse;
 
 public class App 
 {
@@ -101,10 +101,14 @@ public class App
     	
 
     	
-    	TraverseTransactions tt = new TraverseTransactions(ct1);
-    	tt.printTransaction();
+    	//TraverseTransactions tt = new TraverseTransactions(ct1);
+    	//tt.printTransaction();
     	//tt.printAscendingOrder();
-    	tt.printDescendingOrder();
+    	//tt.printDescendingOrder();
+    	
+    	Traverse trav = new Traverse(ct1);
+    	trav.printTransactions();
+    	System.out.println("Here");
     	/*
         ArrayList <Transaction> aT;
     	aT = ct1.getAtomicElements();

@@ -1,5 +1,7 @@
 package mt.edu.um;
 
+import iterator.TraverseTransactions;
+
 import java.util.Iterator;
 
 import org.junit.Assert;

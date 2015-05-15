@@ -1,14 +1,16 @@
 package mt.edu.um;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import iterator.CompoundTransactionIterator;
+import iterator.TransactionIterator;
 
-public class CompoundTransaction implements Transaction, TransactionIterator{
-	private String name;   // name of compound transaction
+import java.util.ArrayList;
+
+public class CompoundTransaction implements Transaction{
+	private String name; 
 	private ArrayList<Transaction> elements = new ArrayList<Transaction>();
 	
 	public CompoundTransaction(){
-
+		
 	}
 	
 	public CompoundTransaction(String n){ 
@@ -30,25 +32,6 @@ public class CompoundTransaction implements Transaction, TransactionIterator{
 		return elements;
 	}
 	
-	// returns all the leaves found inside a compound transaction
-    public ArrayList<Transaction> getAtomicElements(){  // not sure if this method should be here
-            ArrayList<Transaction> atomicTransactions = new ArrayList<Transaction>();
-            System.out.println(getName()+"all elements: "+elements.size());
-            for(int i = 0; i < elements.size(); ++i) {
-                Transaction t = elements.get(i);
-                
-                if (t instanceof AtomicTransaction) {
-                    atomicTransactions.add(t);
-                }
-                else {
-                    atomicTransactions.addAll(((CompoundTransaction)t).getAtomicElements()); //since there could be a compound transaction within another
-                }
-            } 
-            
-            return  atomicTransactions;     
-    }
-	
-	
 	public void setName(String n){
 		name = n;
 	}
@@ -57,13 +40,8 @@ public class CompoundTransaction implements Transaction, TransactionIterator{
 		return name;
 	}
 	
-	@Override
-	public Iterator<Transaction> createIterator(){
-        elements = getAtomicElements();
-		return elements.iterator();
+	public TransactionIterator createIterator(){
+		return new CompoundTransactionIterator(elements);
 	}
-
-
-
 
 }
