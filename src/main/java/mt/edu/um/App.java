@@ -1,6 +1,8 @@
 package mt.edu.um;
 
-import iterator.TraverseTransactions;
+import iterator.CriteriaDecAmounts;
+import iterator.CriteriaIncAmounts;
+import iterator.PrintTransactions;
 
 public class App 
 {
@@ -106,9 +108,15 @@ public class App
     	//tt.printAscendingOrder();
     	//tt.printDescendingOrder();
     	
-    	TraverseTransactions trav = new TraverseTransactions(ct1);
-    	trav.printTransactions();
+    	//PrintTransactions trav = new PrintTransactions(ct1);
+    	//trav.printTransactions();
+    	
+    	CriteriaIncAmounts criteriaInc = new CriteriaIncAmounts();
+    	criteriaInc.meetCriteria(ct1);
     	System.out.println("Here");
+    	
+    	CriteriaDecAmounts criteriaDec = new CriteriaDecAmounts();
+    	criteriaDec.meetCriteria(ct1);
     	/*
         ArrayList <Transaction> aT;
     	aT = ct1.getAtomicElements();
