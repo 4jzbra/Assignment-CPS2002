@@ -2,8 +2,6 @@ package mt.edu.um;
 
 import iterator.TraverseTransactions;
 
-import java.util.Iterator;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -38,7 +36,7 @@ public class TraverseTransactionsTest {
 		compTrans.addTransaction(t2);
 		//Iterator<Transaction> iter = compTrans.createIterator();
 		travTrans = new TraverseTransactions(compTrans);
-		Assert.assertEquals(true, travTrans.printTransaction());
+		Assert.assertEquals(true, travTrans.printTransactions());
 	}
 	
 	@Test
@@ -52,7 +50,7 @@ public class TraverseTransactionsTest {
 		compTrans.addTransaction(t3);
 		compTrans.addTransaction(t4);
 		travTrans = new TraverseTransactions(compTrans);
-		Assert.assertEquals(true, travTrans.printAscendingOrder());
+		Assert.assertEquals(true, travTrans.printTransactions());
 	}
 	
 	@Test
@@ -66,7 +64,7 @@ public class TraverseTransactionsTest {
 		compTrans.addTransaction(t3);
 		compTrans.addTransaction(t4);
 		travTrans = new TraverseTransactions(compTrans);
-		Assert.assertEquals(true, travTrans.printDescendingOrder());
+		Assert.assertEquals(true, travTrans.printTransactions());
 	}
 	
 

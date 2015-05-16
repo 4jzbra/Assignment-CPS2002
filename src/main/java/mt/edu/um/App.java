@@ -1,6 +1,6 @@
 package mt.edu.um;
 
-import iterator.Traverse;
+import iterator.TraverseTransactions;
 
 public class App 
 {
@@ -106,7 +106,7 @@ public class App
     	//tt.printAscendingOrder();
     	//tt.printDescendingOrder();
     	
-    	Traverse trav = new Traverse(ct1);
+    	TraverseTransactions trav = new TraverseTransactions(ct1);
     	trav.printTransactions();
     	System.out.println("Here");
     	/*
