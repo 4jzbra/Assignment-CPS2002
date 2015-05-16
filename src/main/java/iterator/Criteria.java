@@ -7,5 +7,4 @@ public interface Criteria {
 	
 	public abstract boolean meetCriteria(CompoundTransaction transaction);
 	
-	
 }

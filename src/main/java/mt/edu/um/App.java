@@ -2,6 +2,7 @@ package mt.edu.um;
 
 import iterator.CriteriaDecAmounts;
 import iterator.CriteriaIncAmounts;
+import iterator.FilterBySrcAccNo;
 import iterator.PrintTransactions;
 
 public class App 
@@ -117,6 +118,11 @@ public class App
     	
     	CriteriaDecAmounts criteriaDec = new CriteriaDecAmounts();
     	criteriaDec.meetCriteria(ct1);
+    	System.out.println("Here");
+    	
+    	FilterBySrcAccNo filter = new FilterBySrcAccNo();
+    	filter.meetCriteria(ct1,3);
+    	
     	/*
         ArrayList <Transaction> aT;
     	aT = ct1.getAtomicElements();
