@@ -3,8 +3,6 @@ package iterator;
 import java.util.ArrayList;
 
 import mt.edu.um.AtomicTransaction;
-import mt.edu.um.CompoundTransaction;
-import mt.edu.um.Transaction;
 
 public class PrintTransactions {
 			

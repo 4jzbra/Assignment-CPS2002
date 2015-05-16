@@ -6,11 +6,11 @@ import mt.edu.um.Transaction;
 
 
 public class CompoundTransactionIterator implements TransactionIterator {
-	private ArrayList<Transaction> items;
+	private ArrayList<Transaction> items = new ArrayList<Transaction>();
 	private int currentIndex = 0;
 	
 	public CompoundTransactionIterator(ArrayList<Transaction> items){
-		this.items = items;
+		this.items.addAll(items);
 	}
 	
 	public boolean hasNext() {

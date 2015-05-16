@@ -5,7 +5,6 @@ import java.util.Collections;
 
 import mt.edu.um.AtomicTransaction;
 import mt.edu.um.CompoundTransaction;
-import mt.edu.um.Transaction;
 
 // this class prints lowest amount first
 public class CriteriaIncAmounts implements Criteria {
@@ -18,6 +17,8 @@ public class CriteriaIncAmounts implements Criteria {
 			AtomicTransaction atomicTrans = (AtomicTransaction)compoundIterator.next();
 			increasingOrder.add(atomicTrans);
 		}
+		
+		System.out.println("increasingOrder.size() ="+ increasingOrder.size());
 		
 		Collections.sort(increasingOrder, new AtomicTransaction());
 		
