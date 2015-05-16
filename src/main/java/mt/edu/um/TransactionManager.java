@@ -56,7 +56,8 @@ public class TransactionManager {
 			throw ex;
 		} 
 		
-		ArrayList<Transaction> elements = compoundT.getElements();
+		ArrayList<Transaction> elements = new ArrayList<Transaction>();
+		elements.addAll(compoundT.getElements());
 		if(bool){
 			for (Transaction temp : elements) {
 				if(temp instanceof AtomicTransaction){

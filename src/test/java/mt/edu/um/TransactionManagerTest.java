@@ -49,7 +49,7 @@ public class TransactionManagerTest {
 	
 	//Tests for Compound processTransaction
 	@Test
-	public void processTransactionTest4() {
+	public void processTransactionTest4() {  //successful transaction
 		final Account acc1 = new Account(3, "Savings", 5000);
 		final Account acc2 = new Account(4, "Savings", 3500);
 		database.addNewAccount(acc1);
@@ -72,6 +72,11 @@ public class TransactionManagerTest {
 	@Test (expected = IllegalArgumentException.class) // compound transaction with no elements
 	public void processTransactionTest6() {
 		transactionM.processTransaction(compoundT);
+	}
+	
+	@Test
+	public void processTransactionTest7(){
+		
 	}
 	
 	

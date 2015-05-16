@@ -18,8 +18,6 @@ public class CriteriaIncAmounts implements Criteria {
 			increasingOrder.add(atomicTrans);
 		}
 		
-		System.out.println("increasingOrder.size() ="+ increasingOrder.size());
-		
 		Collections.sort(increasingOrder, new AtomicTransaction());
 		
 		PrintTransactions print = new PrintTransactions();

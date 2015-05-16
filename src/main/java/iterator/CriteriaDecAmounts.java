@@ -19,8 +19,6 @@ public class CriteriaDecAmounts implements Criteria {
 			tempArray.add(atomicTrans);
 		}
 		
-		System.out.println("tempArray.size() ="+ tempArray.size());
-		
 		Collections.sort(tempArray, new AtomicTransaction());
 		
 		for(int i = tempArray.size()-1; i >= 0; i--){ //something might be wrong here
