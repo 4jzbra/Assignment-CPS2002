@@ -16,12 +16,12 @@ public class CompoundTransactionIterator implements TransactionIterator {
 	public boolean hasNext() {
 		if((currentIndex < items.size()) && (items.get(currentIndex) instanceof CompoundTransaction)){
 			CompoundTransaction temp = (CompoundTransaction) items.get(currentIndex);
-			currentIndex +=1; //skip this compound transaction in items
+			currentIndex += 1;   //skip this compound transaction in items
 			items.addAll(temp.getElements()); 
 			return this.hasNext();
 		}
-		if(currentIndex >= items.size()) return false;
-		else return true;
+		
+		return currentIndex < items.size();
 	}
 
 	public Transaction next() {

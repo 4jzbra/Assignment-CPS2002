@@ -13,7 +13,7 @@ import org.junit.Assert;
 
 public class CompoundTransactionIteratorTest {
     
-    private CompoundTransaction compoundT, compoundT2;
+    private CompoundTransaction compoundT, compoundT2, compoundT3;
     private AccountDatabase database;
     private Account acc1, acc2, acc3;
     private Transaction t1, t2, t3;
@@ -35,6 +35,7 @@ public class CompoundTransactionIteratorTest {
         compoundT.addTransaction(t2);
         compoundT.addTransaction(t3);
         compoundT2 = new CompoundTransaction();
+        compoundT3 = new CompoundTransaction();
     }
 
 
@@ -52,9 +53,11 @@ public class CompoundTransactionIteratorTest {
     
     @Test
     public void HasNext3(){
-    	compoundT2.addTransaction(t1);
-    	compoundT.addTransaction(compoundT2);
-    	CompoundTransactionIterator cti = new CompoundTransactionIterator(compoundT.getElements());
+    	//compoundT2.addTransaction(t1);
+    	//compoundT.addTransaction(compoundT2);
+    	compoundT3.addTransaction(compoundT);
+        compoundT3.addTransaction(compoundT2);
+    	CompoundTransactionIterator cti = new CompoundTransactionIterator(compoundT3.getElements());
         Assert.assertEquals(true, cti.hasNext()); 
     }
 
