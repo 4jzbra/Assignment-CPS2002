@@ -6,10 +6,9 @@ import java.util.Collections;
 import mt.edu.um.AtomicTransaction;
 import mt.edu.um.CompoundTransaction;
 
-//this class prints highest amount first   (descending order)
+//this class prints highest amount first
 public class CriteriaDecAmounts implements Criteria {
 	
-        @Override
 	public boolean meetCriteria(CompoundTransaction transaction){
 		ArrayList<AtomicTransaction> descreasingOrder = new ArrayList<AtomicTransaction>();
 		ArrayList<AtomicTransaction> tempArray = new ArrayList<AtomicTransaction>();

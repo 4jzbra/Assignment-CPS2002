@@ -6,10 +6,9 @@ import java.util.Collections;
 import mt.edu.um.AtomicTransaction;
 import mt.edu.um.CompoundTransaction;
 
-// this class prints lowest amount first   (in ascending order)
+// this class prints lowest amount first
 public class CriteriaIncAmounts implements Criteria {
 	
-        @Override
 	public boolean meetCriteria(CompoundTransaction transaction){
 		ArrayList<AtomicTransaction> increasingOrder = new ArrayList<AtomicTransaction>();
 		TransactionIterator compoundIterator = transaction.createIterator();
