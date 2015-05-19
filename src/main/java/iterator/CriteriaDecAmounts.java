@@ -21,7 +21,7 @@ public class CriteriaDecAmounts implements Criteria {
 		
 		Collections.sort(tempArray, new AtomicTransaction());
 		
-		for(int i = tempArray.size()-1; i >= 0; i--){ //something might be wrong here
+		for(int i = tempArray.size()-1; i >= 0; --i){ //something might be wrong here
 			descreasingOrder.add(tempArray.get(i));
 		}
 		

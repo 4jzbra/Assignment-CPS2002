@@ -3,7 +3,6 @@ package mt.edu.um;
 import iterator.CriteriaDecAmounts;
 import iterator.CriteriaIncAmounts;
 import iterator.FilterBySrcAccNo;
-import iterator.PrintTransactions;
 
 public class App 
 {
