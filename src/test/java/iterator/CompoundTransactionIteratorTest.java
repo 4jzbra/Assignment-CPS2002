@@ -49,6 +49,14 @@ public class CompoundTransactionIteratorTest {
         CompoundTransactionIterator cti = new CompoundTransactionIterator(compoundT2.getElements());
         Assert.assertEquals(false, cti.hasNext()); 
     }
+    
+    @Test
+    public void HasNext3(){
+    	compoundT2.addTransaction(t1);
+    	compoundT.addTransaction(compoundT2);
+    	CompoundTransactionIterator cti = new CompoundTransactionIterator(compoundT.getElements());
+        Assert.assertEquals(true, cti.hasNext()); 
+    }
 
     @Test
     public void NextTest() {         // next transaction (in this case t1)
