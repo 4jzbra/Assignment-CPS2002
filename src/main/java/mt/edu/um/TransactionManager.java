@@ -21,27 +21,26 @@ public class TransactionManager {
 	//Atomic
 	public boolean processTransaction(int src, int dst, long amount){
 		Transaction transaction = new AtomicTransaction(src, dst, amount);
-		boolean bool = false;
 		
 		try{
-			bool = transaction.process(); //since this can throw an exception, it was put in a try and catch block
+			transaction.process(); //since this can throw an exception, it was put in a try and catch block
 		} catch(NullPointerException ex){
 			throw ex;
 		} catch(IllegalArgumentException ex){
 			throw ex;
 		}
 		
-		if(bool){
-			Account source = AccountDatabase.getAccount(src);
-			Account destination = AccountDatabase.getAccount(dst);
-	
-			source.setAccountBalance(source.getAccountBalance() - amount);  // transfer source
-			destination.setAccountBalance(destination.getAccountBalance() + amount); // transfer destination
-				
-			++numTransactionsProcessed;
+		// if no exceptions are thrown, then this section will always be true
+		Account source = AccountDatabase.getAccount(src);
+		Account destination = AccountDatabase.getAccount(dst);
+
+		source.setAccountBalance(source.getAccountBalance() - amount);  // transfer source
+		destination.setAccountBalance(destination.getAccountBalance() + amount); // transfer destination
 			
-			return true;
-		} else return false;
+		++numTransactionsProcessed;
+		
+		return true;   
+		
 	}
 	
 	//Compound

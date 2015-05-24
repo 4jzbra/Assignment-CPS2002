@@ -7,10 +7,8 @@ import org.junit.Test;
 public class TransactionManagerTest {
 	private TransactionManager transactionM;
 	private AccountDatabase database;
-	private AtomicTransaction atomicT1; ////////
-	private AtomicTransaction atomicT2;/////////
-	private AtomicTransaction atomicT3;/////////
-	private CompoundTransaction compoundT;
+	private AtomicTransaction atomicT1, atomicT2, atomicT3;
+	private CompoundTransaction compoundT, compoundT2;
 
 	
 	@Before
@@ -21,6 +19,7 @@ public class TransactionManagerTest {
 		atomicT2 = new AtomicTransaction(4, 3, 750);
 		atomicT3 = new AtomicTransaction(1, 4, 1555);
 		compoundT = new CompoundTransaction("Main Transaction");
+		compoundT2 = new CompoundTransaction("Sub Transaction");
 	}
 
 	// Tests for Atomic processTransaction
@@ -59,14 +58,15 @@ public class TransactionManagerTest {
     	Assert.assertEquals(true, transactionM.processTransaction(compoundT));
 	}
 	
-	public void processTransactionTest5() {      // when account does not exist
+	@Test (expected = NullPointerException.class)   // when account does not exist
+	public void processTransactionTest5() {      
 		final Account acc1 = new Account(3, "Savings", 5000);
 		final Account acc2 = new Account(4, "Savings", 3500);
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
     	compoundT.addTransaction(atomicT3);
     	compoundT.addTransaction(atomicT2);
-    	Assert.assertEquals(false, transactionM.processTransaction(compoundT));
+    	transactionM.processTransaction(compoundT);
 	}
 	
 	@Test (expected = IllegalArgumentException.class) // compound transaction with no elements
@@ -75,8 +75,18 @@ public class TransactionManagerTest {
 	}
 	
 	@Test
-	public void processTransactionTest7(){
-		
+	public void processTransactionTest7(){   // compound transaction with another compound transaction
+		final Account acc1 = new Account(3, "Savings", 4000);
+		final Account acc2 = new Account(4, "Savings", 2700);
+		final Account acc3 = new Account(1, "Savings", 3330);
+		database.addNewAccount(acc1);
+		database.addNewAccount(acc2);
+		database.addNewAccount(acc3);
+		compoundT2.addTransaction(atomicT3);
+    	compoundT2.addTransaction(atomicT2);
+    	compoundT.addTransaction(compoundT2);
+    	compoundT.addTransaction(atomicT1);
+    	Assert.assertEquals(true, transactionM.processTransaction(compoundT));
 	}
 	
 	
