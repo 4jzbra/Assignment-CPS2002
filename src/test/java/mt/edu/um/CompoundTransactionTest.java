@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CompoundTransactionTest {
-	private CompoundTransaction transaction;
+	private CompoundTransaction transaction, transaction2;
 	private AccountDatabase database;
 	private Account acc1, acc2, acc3;
 	private TransactionManager tm;
@@ -19,7 +19,6 @@ public class CompoundTransactionTest {
 		database.addNewAccount(acc1);
 		database.addNewAccount(acc2);
 		database.addNewAccount(acc3);
-		transaction = new CompoundTransaction("Prepare Bank Loan");
 		transaction = new CompoundTransaction();
 	}
 	
@@ -45,8 +44,8 @@ public class CompoundTransactionTest {
 	
 	@Test
 	public void addTransactionTest2(){      // duplicate transaction
-		transaction.addTransaction(transaction);
-		Assert.assertEquals(false, transaction.addTransaction(transaction));
+		transaction.addTransaction(transaction2);
+		Assert.assertEquals(false, transaction.addTransaction(transaction2));
 	}
 	
 	
