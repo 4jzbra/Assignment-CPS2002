@@ -66,7 +66,7 @@ public class CompoundTransactionTest {
 		Assert.assertEquals("Pay Deposit", transaction.getName());
 	}
 		
-	@Test
+	/*@Test
 	public void testCreateIterator(){
 		Transaction expected = new AtomicTransaction(2, 3, 2000); 
         transaction.addTransaction(expected);
@@ -77,6 +77,6 @@ public class CompoundTransactionTest {
         boolean bool = false;
         if(iterator instanceof CompoundTransactionIterator) bool = true;
         Assert.assertEquals(true, bool);
-	}
+	} */
 
 }
