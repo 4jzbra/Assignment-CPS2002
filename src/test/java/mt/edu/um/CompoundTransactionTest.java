@@ -25,8 +25,8 @@ public class CompoundTransactionTest {
 	
 	@Test 
 	public void processTest1() {
-		transaction.addTransaction(new AtomicTransaction(1,2, 5000));
-		transaction.addTransaction(new AtomicTransaction(2,3, 8000));
+		transaction.addTransaction(new AtomicTransaction(1, 2, 5000));
+		transaction.addTransaction(new AtomicTransaction(2, 3, 8000));
 		tm = new TransactionManager();
 		Assert.assertEquals(true, tm.processTransaction(transaction));
 	}
@@ -39,8 +39,11 @@ public class CompoundTransactionTest {
 	
 	@Test
 	public void addTransactionTest1(){
-		transaction.addTransaction(new AtomicTransaction(1,2,100));
+		transaction.addTransaction(new AtomicTransaction(1, 2, 100));
 		Assert.assertEquals(1, transaction.getElements().size());
+	}
+	
+	@Test
 	}
 	
 	
@@ -60,8 +63,6 @@ public class CompoundTransactionTest {
 	public void testCreateIterator(){
 		Transaction expected = new AtomicTransaction(2, 3, 2000); 
         transaction.addTransaction(expected);
-        //Iterator<Transaction> result = transaction.createIterator();
-        //Assert.assertEquals(expected, result.next());
 	}
 
 }
