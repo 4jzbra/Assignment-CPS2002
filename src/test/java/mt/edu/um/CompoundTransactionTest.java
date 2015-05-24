@@ -1,5 +1,8 @@
 package mt.edu.um;
 
+import iterator.CompoundTransactionIterator;
+import iterator.TransactionIterator;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +23,7 @@ public class CompoundTransactionTest {
 		database.addNewAccount(acc2);
 		database.addNewAccount(acc3);
 		transaction = new CompoundTransaction("Prepare Bank Loan");
-		transaction = new CompoundTransaction();
+		//transaction = new CompoundTransaction();
 	}
 	
 	@Test 
@@ -66,6 +69,13 @@ public class CompoundTransactionTest {
 	public void testCreateIterator(){
 		Transaction expected = new AtomicTransaction(2, 3, 2000); 
         transaction.addTransaction(expected);
+        transaction.addTransaction(new AtomicTransaction(1, 2, 5000));
+		transaction.addTransaction(new AtomicTransaction(2, 3, 8000));
+        TransactionIterator iterator = transaction.createIterator();
+        
+        boolean bool = false;
+        if(iterator instanceof CompoundTransactionIterator) bool = true;
+        Assert.assertEquals(true, bool);
 	}
 
 }
