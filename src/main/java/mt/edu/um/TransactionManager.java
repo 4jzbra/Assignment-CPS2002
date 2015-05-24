@@ -46,30 +46,28 @@ public class TransactionManager {
 	//Compound
 	public boolean processTransaction(Transaction transaction) {
 		CompoundTransaction compoundT = (CompoundTransaction) transaction;
-
-		boolean bool = false;
 		
 		try{
-			bool = compoundT.process();	
+			compoundT.process();	
 		}catch(IllegalArgumentException ex){
 			throw ex;
 		} 
 		
 		ArrayList<Transaction> elements = new ArrayList<Transaction>();
 		elements.addAll(compoundT.getElements());
-		if(bool){
-			for (Transaction temp : elements) {
-				if(temp instanceof AtomicTransaction){
-					AtomicTransaction atomicT = (AtomicTransaction)temp;
-					processTransaction(atomicT.getSourceAccountNumber(), atomicT.getDestinationAccountNumber(), atomicT.getAmount());
-				} else{
-					if(temp.process())
-						processTransaction(temp);
-				}
+		// if no exceptions are thrown, then this section of code
+		// will either throw an exception when processing other methods or simply returns true
+		for (Transaction temp : elements) {
+			if(temp instanceof AtomicTransaction){
+				AtomicTransaction atomicT = (AtomicTransaction)temp;
+				processTransaction(atomicT.getSourceAccountNumber(), atomicT.getDestinationAccountNumber(), atomicT.getAmount());
+			} else{
+				if(temp.process())
+					processTransaction(temp);
 			}
-			return true;
 		}
-		else return false;
+		return true;
+		
 	}
 	
 	int getNumTransactionsProcessed(){
