@@ -65,18 +65,4 @@ public class CompoundTransactionTest {
 		transaction.setName("Pay Deposit");
 		Assert.assertEquals("Pay Deposit", transaction.getName());
 	}
-		
-	/*@Test
-	public void testCreateIterator(){
-		Transaction expected = new AtomicTransaction(2, 3, 2000); 
-        transaction.addTransaction(expected);
-        transaction.addTransaction(new AtomicTransaction(1, 2, 5000));
-		transaction.addTransaction(new AtomicTransaction(2, 3, 8000));
-        TransactionIterator iterator = transaction.createIterator();
-        
-        boolean bool = false;
-        if(iterator instanceof CompoundTransactionIterator) bool = true;
-        Assert.assertEquals(true, bool);
-	} */
-
 }
