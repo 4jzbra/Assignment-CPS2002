@@ -20,6 +20,7 @@ public class CompoundTransactionTest {
 		database.addNewAccount(acc2);
 		database.addNewAccount(acc3);
 		transaction = new CompoundTransaction();
+		transaction2 = new CompoundTransaction();
 	}
 	
 	@Test 
