@@ -44,6 +44,9 @@ public class CompoundTransactionTest {
 	}
 	
 	@Test
+	public void addTransactionTest2(){      // duplicate transaction
+		transaction.addTransaction(transaction);
+		Assert.assertEquals(false, transaction.addTransaction(transaction));
 	}
 	
 	
